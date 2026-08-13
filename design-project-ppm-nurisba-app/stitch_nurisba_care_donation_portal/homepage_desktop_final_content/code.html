@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PPM Nurisba - Membangun Generasi Qurani</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#00685f",
+                      "text-heading": "#1f2937",
+                      "surface-bright": "#f5faf8",
+                      "surface-container": "#eaefed",
+                      "tertiary-container": "#b05e3d",
+                      "inverse-on-surface": "#edf2f0",
+                      "secondary": "#9d4300",
+                      "primary-container": "#008378",
+                      "outline-variant": "#bcc9c6",
+                      "on-surface-variant": "#3d4947",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#370e00",
+                      "secondary-fixed": "#ffdbca",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed-variant": "#783200",
+                      "tertiary-fixed-dim": "#ffb59a",
+                      "outline": "#6d7a77",
+                      "on-error-container": "#93000a",
+                      "surface-container-low": "#f0f5f2",
+                      "tertiary-fixed": "#ffdbce",
+                      "page-bg": "#fbfcfc",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#5c2400",
+                      "primary-dark": "#115e59",
+                      "on-secondary-fixed": "#341100",
+                      "success": "#059669",
+                      "tertiary": "#924628",
+                      "inverse-primary": "#6bd8cb",
+                      "surface": "#f5faf8",
+                      "on-primary-fixed-variant": "#005049",
+                      "on-background": "#171d1c",
+                      "on-surface": "#171d1c",
+                      "secondary-fixed-dim": "#ffb690",
+                      "on-primary-container": "#f4fffc",
+                      "text-body": "#4b5563",
+                      "inverse-surface": "#2c3130",
+                      "on-tertiary-container": "#fffbff",
+                      "background": "#f5faf8",
+                      "section-bg": "#f0fdfa",
+                      "on-tertiary-fixed-variant": "#773215",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#dee4e1",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#d6dbd9",
+                      "primary-fixed-dim": "#6bd8cb",
+                      "secondary-container": "#fd761a",
+                      "surface-variant": "#dee4e1",
+                      "surface-container-high": "#e4e9e7",
+                      "surface-tint": "#006a61",
+                      "on-error": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#89f5e7",
+                      "on-primary-fixed": "#00201d",
+                      "pending": "#f59e0b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "2rem",
+                      "gutter": "1.5rem",
+                      "margin-mobile": "1rem",
+                      "touch-target": "44px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Geist"],
+                      "display-lg-mobile": ["Geist"],
+                      "number-xl": ["Geist"],
+                      "headline-md": ["Geist"],
+                      "headline-sm": ["Geist"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Geist"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                      "display-lg-mobile": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                      "number-xl": ["32px", { "lineHeight": "1", "fontWeight": "800" }],
+                      "headline-md": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                      "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                      "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        body {
+            background-color: #fbfcfc; /* page-bg */
+        }
+    </style>
+</head>
+<body class="text-text-heading font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopAppBar (Desktop Navigation) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-md border-b border-outline-variant/30 dark:border-outline/20 flex justify-between items-center px-margin-desktop h-[72px]">
+<div class="flex items-center gap-3">
+<img alt="PPM Nurisba Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfRYO36CJfheggefxoNnGZY8x8iZypXXt8C0XGkPDnGLYRUJpQMPU9ukKhOHCJ9cyzwZlOIAVckUh8a5hBcAfQ83pV35ySHYUcex7sakmKAm6Q2KGtgNk31x0-FGt00CzW10jZtGtMOocbwx2udBP9-rShIVjtvF-iP7lKbl_4BDIllDNdzTMorrhUe1N-6klZLU38lj1G_AeeUmmSn6cp0U0P6vbfQltUvwKWQZXr0wh1XCfVY-3-tz4jKuA44S-D1g"/>
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">PPM Nurisba</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-primary font-bold" href="#">Beranda</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Program</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Transparansi</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Profil</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex px-6 py-2 bg-primary text-on-primary font-label-md text-label-md rounded-full hover:bg-primary-dark transition-colors active:scale-95">
+                Donasi Sekarang
+            </button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center cursor-pointer overflow-hidden border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="A small, professional avatar portrait of a user for a top navigation bar. Clean lighting, subtle background, high resolution, suitable for a modern Islamic center web app interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrZTWc0PVphEskfP8d0MZ31umUuDo-95ybtC7RURPUTu7dv7wOlhaeSriSwHqoHMgI-B7_o-W4ArBRA9wTIotrhVqYhPbM4pMfpE2Ikfi6FyZ1haCSZNNWpGSc6HveqrbGUBfC5Df_1iqeYeA3u0QcPYKacNVtuQUHayV4BAomh-V8fb8gJAyICDEEXJdGM8YUBi0vksM6EGhe7nOlONM6f_ey1PyF2ycZZc3hG6PUWzKwm7Cq-SEG"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 pt-[72px]">
+<!-- Hero Section -->
+<section class="relative w-full max-w-7xl mx-auto px-margin-desktop py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-6 z-10">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 bg-surface-container-highest text-primary rounded-full font-label-md text-label-md w-fit">
+<span class="material-symbols-outlined" style="font-size: 18px;">auto_awesome</span>
+                    Bersama Membangun Umat
+                </div>
+<h1 class="font-display-lg text-display-lg text-text-heading">
+                    Wujudkan Masjid dan Asrama Santri — <span class="text-primary">Donasi Sekarang</span>
+</h1>
+<p class="font-body-lg text-body-lg text-text-body max-w-lg">
+                    Bantu bangun masjid ukuran 10x10 meter dan 3 ruang kelas/asrama santri ukuran 8x10 meter di atas tanah wakaf seluas 3.885 m².
+                </p>
+<div class="flex gap-4 mt-4">
+<button class="px-8 py-3 bg-secondary text-on-secondary rounded-xl font-label-md text-label-md hover:opacity-90 transition-opacity active:scale-95 shadow-md">
+                        Mulai Donasi
+                    </button>
+<button class="px-8 py-3 bg-transparent border-2 border-primary text-primary rounded-xl font-label-md text-label-md hover:bg-primary/5 transition-colors active:scale-95">
+                        Lihat Program
+                    </button>
+</div>
+</div>
+<div class="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl glass-card z-10">
+<img class="w-full h-full object-cover" data-alt="A vibrant, high-quality photograph of students engaged in learning activities at a modern Islamic educational center. The scene is bathed in soft, natural daylight, conveying a sense of hope, community, and focused study. The architectural elements in the background are clean and contemporary, aligning with the overall modernist aesthetic of the platform. Deep emerald greens and warm earthy tones dominate the color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZDp_aNYk-ry4drZE3P9AEKETKNINM-4LM57r2Sc0HkjqtsxvuU3PavtNxK9aYduYiFYMqgwkFxmvMJPUj4Eyy0cQYLb5XpfmN8bsdpSxMXJxa488NklmSiDiic8Xf2AbG8oUCcL99hUifRSfd59SQ6K4XyZXuPEDmZ9FNng6q9MTsPEHG_KxsotI7-Wo1BQqTLjR8pX1xBoP-xTJhDT3ZOksir9VgT75w2htmY0wLQZqTCUi5iWQpKKrgu35jZXkNSaMSdMRMyCuOsA"/>
+<div class="absolute bottom-6 left-6 right-6 bg-surface/90 backdrop-blur-md rounded-xl p-4 shadow-lg border border-outline-variant/30 flex justify-between items-center">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">Donasi Terkumpul Hari Ini</p>
+<p class="font-headline-sm text-headline-sm text-primary">Rp 12.500.000</p>
+</div>
+<div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+</div>
+</div>
+<!-- Decorative background elements -->
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-primary/5 to-transparent -z-10 rounded-bl-[100px]"></div>
+<div class="absolute -left-20 top-20 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
+</section>
+<!-- Category Filter -->
+<section class="w-full bg-surface py-12 border-y border-outline-variant/20">
+<div class="max-w-7xl mx-auto px-margin-desktop">
+<h2 class="font-headline-md text-headline-md text-center mb-8">Pilih Kategori Kebaikan</h2>
+<div class="flex flex-wrap justify-center gap-6">
+<button class="flex flex-col items-center gap-3 group active:scale-95 transition-transform">
+<div class="w-16 h-16 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-md group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 28px;">mosque</span>
+</div>
+<span class="font-label-md text-label-md text-text-heading group-hover:text-primary transition-colors">Wakaf</span>
+</button>
+<button class="flex flex-col items-center gap-3 group active:scale-95 transition-transform">
+<div class="w-16 h-16 rounded-full bg-surface-container text-primary flex items-center justify-center shadow-md group-hover:bg-primary group-hover:text-on-primary transition-colors border border-outline-variant/30">
+<span class="material-symbols-outlined" style="font-size: 28px;">school</span>
+</div>
+<span class="font-label-md text-label-md text-text-heading group-hover:text-primary transition-colors">Beasiswa</span>
+</button>
+<button class="flex flex-col items-center gap-3 group active:scale-95 transition-transform">
+<div class="w-16 h-16 rounded-full bg-surface-container text-primary flex items-center justify-center shadow-md group-hover:bg-primary group-hover:text-on-primary transition-colors border border-outline-variant/30">
+<span class="material-symbols-outlined" style="font-size: 28px;">health_and_safety</span>
+</div>
+<span class="font-label-md text-label-md text-text-heading group-hover:text-primary transition-colors">Kesehatan</span>
+</button>
+<button class="flex flex-col items-center gap-3 group active:scale-95 transition-transform">
+<div class="w-16 h-16 rounded-full bg-surface-container text-primary flex items-center justify-center shadow-md group-hover:bg-primary group-hover:text-on-primary transition-colors border border-outline-variant/30">
+<span class="material-symbols-outlined" style="font-size: 28px;">volunteer_activism</span>
+</div>
+<span class="font-label-md text-label-md text-text-heading group-hover:text-primary transition-colors">Sosial</span>
+</button>
+<button class="flex flex-col items-center gap-3 group active:scale-95 transition-transform">
+<div class="w-16 h-16 rounded-full bg-surface-container text-primary flex items-center justify-center shadow-md group-hover:bg-primary group-hover:text-on-primary transition-colors border border-outline-variant/30">
+<span class="material-symbols-outlined" style="font-size: 28px;">payments</span>
+</div>
+<span class="font-label-md text-label-md text-text-heading group-hover:text-primary transition-colors">Zakat</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Campaign Catalog -->
+<section class="max-w-7xl mx-auto px-margin-desktop py-16">
+<div class="flex justify-between items-end mb-10">
+<div>
+<h2 class="font-headline-md text-headline-md text-text-heading mb-2">Program Mendesak</h2>
+<p class="font-body-md text-body-md text-text-body">Bantu mereka yang sangat membutuhkan saat ini.</p>
+</div>
+<a class="font-label-md text-label-md text-primary hover:underline hidden md:block" href="#">Lihat Semua Program</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-md overflow-hidden hover-lift flex flex-col border border-outline-variant/20">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover" data-alt="A wide architectural shot of a mosque construction site in its early phases. Steel reinforcements and brickwork are visible against a bright, clear sky. The image should convey a sense of ongoing progress and community building, rendered in a crisp, modern photographic style suitable for an Islamic Center donation platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9znqWwphf2K5gzLMm-jUmUlApXI9X6J5S_jZRdjg1aWLy4MllFPtrW6cDsDBmmGQKDcf7HFQPr-7nRAu-aagtvdYKTVhl-xVrwgTdYj_v1uWRhCFC1dI7ohdxVANK1hyby-ybUipZySsg2CNAFYygk7tkV2_mk_m5N7rQAT_Ll4KF3QBcepXBHwKBM3ndyhDv0skbLhbE00sTGZnuYLukb-zy6UwV-kmkdXwD164w1CgqWWK6EUZr"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-primary">
+                            Wakaf
+                        </div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-text-heading mb-2 leading-tight">Pembangunan Masjid dan Ruang Kelas/Asrama PPM Nurul Ikhlas</h3>
+<p class="font-body-md text-body-md text-text-body line-clamp-2 mb-6">Bantu bangun masjid ukuran 10x10 meter dan 3 ruang kelas/asrama santri ukuran 8x10 meter di atas tanah wakaf seluas 3.885 m², untuk mendukung pendidikan pesantren modern di Soreang, Bandung.</p>
+<div class="mt-auto">
+<div class="flex justify-between font-label-md text-label-md mb-2">
+<span class="text-on-surface-variant">Terkumpul</span>
+<span class="text-text-heading font-bold">65%</span>
+</div>
+<div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden mb-4">
+<div class="h-full bg-success rounded-full" style="width: 65%;"></div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label-md text-label-md text-text-heading font-bold">Rp 782.470.000</p>
+<p class="text-xs text-text-body">dari target Rp 1.203.800.000</p>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-md overflow-hidden hover-lift flex flex-col border border-outline-variant/20">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover" data-alt="A close-up, high-quality portrait of a young, diligent student wearing traditional modest school attire, focused intently on an open textbook in a brightly lit library setting. The lighting is soft and cinematic, emphasizing the student's dedication and the value of education, fitting the aesthetic of an Islamic scholarship fund." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKjfAHaMgBu0fKixCWOCKOCNBcUv1QZhb8wMdC4DKsg37zqBQuFdEa0IyeQ_ML_oUgxXlhroEdOByqATrlvt4fvnndtN2rcdv8eht3rRb099vKU7g4rYoGqCMoXF-7Zmzcf-YaehRkmEc2eU-GokvmR6wYmlD16oGJp1runQcTX3MpUTMWydxRhsdyEZMwS5l-lWlhx751Xes4XPO9uDCLrai5MK8lPNSRp4ldzO0arQkg0HmsY9T4"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-primary">
+                            Beasiswa Pendidikan
+                        </div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-text-heading mb-2 leading-tight">Beasiswa Santri Berprestasi Daerah Pelosok</h3>
+<p class="font-body-md text-body-md text-text-body line-clamp-2 mb-6">Dukungan biaya pendidikan selama 1 tahun untuk santri yatim dan dhuafa yang memiliki hafalan Al-Quran.</p>
+<div class="mt-auto">
+<div class="flex justify-between font-label-md text-label-md mb-2">
+<span class="text-on-surface-variant">Terkumpul</span>
+<span class="text-text-heading font-bold">82%</span>
+</div>
+<div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden mb-4">
+<div class="h-full bg-success rounded-full" style="width: 82%;"></div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label-md text-label-md text-text-heading font-bold">Rp 41.000.000</p>
+<p class="text-xs text-text-body">dari target Rp 50.000.000</p>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-md overflow-hidden hover-lift flex flex-col border border-outline-variant/20">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover" data-alt="A wide shot depicting community volunteers distributing food packages in a well-lit, organized outdoor community center. The atmosphere is uplifting and collaborative, showcasing solidarity and care. The photograph uses a modern, clean visual style with balanced colors, highlighting the tangible impact of social aid programs." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXkWtPNUh2xAC3gCJNLbEQrJwlLPxnWbjFjrWpTbpbAEgprDaMfS4aiXXJG0pxX2SdNlzAND7DPzE-cyBSkNrNWlsFqG8hFK0vQPxKqrC4d_vF8LL5x7hCfEYpN-069noZ6sSX2YCNEt6UY3liphIx2BGw5ycjoov7U4QcmIyqKadzxcflZ6jnbfHDR4GBci06cikrhguFFU3187HCbLt9S2O21LN0hNx86hnEA-JflbmUcgf4lcif"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-primary">
+                            Bantuan Sosial
+                        </div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-text-heading mb-2 leading-tight">Paket Sembako untuk Guru Ngaji</h3>
+<p class="font-body-md text-body-md text-text-body line-clamp-2 mb-6">Apresiasi perjuangan para pahlawan tanpa tanda jasa yang berdedikasi mengajarkan Al-Quran di pelosok desa.</p>
+<div class="mt-auto">
+<div class="flex justify-between font-label-md text-label-md mb-2">
+<span class="text-on-surface-variant">Terkumpul</span>
+<span class="text-text-heading font-bold">30%</span>
+</div>
+<div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden mb-4">
+<div class="h-full bg-success rounded-full" style="width: 30%;"></div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label-md text-label-md text-text-heading font-bold">Rp 15.000.000</p>
+<p class="text-xs text-text-body">dari target Rp 50.000.000</p>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 text-center md:hidden">
+<button class="px-6 py-2 border border-outline rounded-full font-label-md text-label-md text-on-surface-variant">
+                    Lihat Semua Program
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest py-16 mt-12 border-t border-outline-variant/30">
+<div class="max-w-7xl mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-12">
+<!-- Brand Column -->
+<div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<img alt="PPM Nurisba Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTlweH7A_1qDYhr0zS8nuj0_hao6dRPGlOzJVychkB12IfdYTp_X8at-9dpz9t4QO2XdO-KD0QwLM2Xz2DS_L6rqsX0ZfoVuEy9s_lst5wIDLJQaW1lvikb-rqcWY8Bom2PHbHNt6T6dzAQ-xyzr97ux1JLo0tEqJGjsLX1YEcG-LUs0rBB2K4hLV2Kfk0spkH8wZNPjnsSGRtQw_2VUrE3VbGN5p7qybKiiqWiQFyTH6NbJkdyGRsaGZQVCvqM9mPPQ"/>
+<span class="font-headline-sm text-headline-sm text-primary">Yayasan Nurul Ikhlas Soreang Bandung</span>
+</div>
+<p class="font-body-md text-body-md text-text-body mt-2">
+                    Platform donasi dan manajemen terpercaya untuk mendukung berbagai program kebaikan Islamic Center.
+                </p>
+</div>
+<!-- Quick Links -->
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-label-md text-label-md font-bold text-text-heading uppercase tracking-wider mb-2">Tautan Cepat</h4>
+<a class="font-body-md text-body-md text-text-body hover:text-primary transition-colors" href="#">Tentang Kami</a>
+<a class="font-body-md text-body-md text-text-body hover:text-primary transition-colors" href="#">Transparansi Dana</a>
+<a class="font-body-md text-body-md text-text-body hover:text-primary transition-colors" href="#">Cara Berdonasi</a>
+<a class="font-body-md text-body-md text-text-body hover:text-primary transition-colors" href="#">Berita &amp; Artikel</a>
+</div>
+<!-- Contact Info -->
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-label-md text-label-md font-bold text-text-heading uppercase tracking-wider mb-2">Hubungi Kami</h4>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-outline">location_on</span>
+<span class="font-body-md text-body-md text-text-body">Perum Bumi Parahyangan Kencana, Jl. Bhayangkara Blok N 7 No.10-12, RT.01/RW.24, Soreang, Bandung 40911, Jawa Barat</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">mail</span>
+<span class="font-body-md text-body-md text-text-body">nurulikhlassoreang@gmail.com</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">call</span>
+<span class="font-body-md text-body-md text-text-body">082262893646</span>
+</div>
+</div>
+<!-- Social Media -->
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-label-md text-label-md font-bold text-text-heading uppercase tracking-wider mb-2">Ikuti Kami</h4>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined">video_library</span>
+</a>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-margin-desktop mt-12 pt-8 border-t border-outline-variant/20 text-center">
+<p class="font-label-md text-label-md text-text-body">
+                © 2024 Yayasan Nurul Ikhlas Soreang Bandung. Hak Cipta Dilindungi Undang-Undang.
+            </p>
+</div>
+</footer>
+</body></html>
