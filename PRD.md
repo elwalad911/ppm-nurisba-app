@@ -1,4 +1,5 @@
 # Product Requirements Document (PRD)
+
 ## PPM Nurisba App
 
 **Versi:** 2.0 (revisi — disinkronkan penuh dengan `project-plan.md` & `DESIGN.md`)
@@ -23,7 +24,7 @@ PPM Nurisba App adalah platform digital untuk Pondok Pesantren Nurisba yang menc
 
 Prioritas produk: **Trust → Security → Transparency → Performance → Accessibility → Responsive → Maintainability → Simple content management.**
 
-**Fungsi PRD ini:** mengunci *apa* yang dibangun dan *urutannya*, supaya OpenCode (AI coding agent) tidak melebarkan scope di luar yang disepakati. Detail teknis (skema DB lengkap, struktur direktori, security rules) tetap merujuk `project-plan.md`; detail visual/komponen tetap merujuk `DESIGN.md`.
+**Fungsi PRD ini:** mengunci _apa_ yang dibangun dan _urutannya_, supaya OpenCode (AI coding agent) tidak melebarkan scope di luar yang disepakati. Detail teknis (skema DB lengkap, struktur direktori, security rules) tetap merujuk `project-plan.md`; detail visual/komponen tetap merujuk `DESIGN.md`.
 
 ---
 
@@ -47,11 +48,11 @@ Ketiga area **sama-sama dalam scope produk** — bukan pilihan salah satu. Yang 
 
 ## 3. Target Pengguna
 
-| Peran | Kebutuhan Utama |
-|---|---|
-| **Pengunjung publik** | Info pesantren, temukan campaign, donasi, lihat transparansi |
-| **Donatur terdaftar** (Fase 6) | Login, lihat riwayat donasi & receipt miliknya sendiri |
-| **Admin** (Fase 4) | Kelola campaign, moderasi donasi, kelola konten (posts/events/gallery), kelola laporan transparansi |
+| Peran                          | Kebutuhan Utama                                                                                     |
+| ------------------------------ | --------------------------------------------------------------------------------------------------- |
+| **Pengunjung publik**          | Info pesantren, temukan campaign, donasi, lihat transparansi                                        |
+| **Donatur terdaftar** (Fase 6) | Login, lihat riwayat donasi & receipt miliknya sendiri                                              |
+| **Admin** (Fase 4)             | Kelola campaign, moderasi donasi, kelola konten (posts/events/gallery), kelola laporan transparansi |
 
 ---
 
@@ -65,7 +66,9 @@ P0 Foundation → P1 Public Website → P2 Content System → P3 Donation MVP
 ```
 
 ### Phase 0 — Foundation
+
 **Goal:** Project siap digunakan untuk development.
+
 - Inspect repo, konfirmasi framework/dependency/package manager
 - Setup TypeScript, Tailwind, shadcn/ui, linting, formatting, `.gitignore`, environment variables
 - Dokumentasi project, konvensi UI reusable
@@ -73,7 +76,9 @@ P0 Foundation → P1 Public Website → P2 Content System → P3 Donation MVP
 **Definition of Done:** Project jalan lokal tanpa critical build error; basic UI system berfungsi; environment strategy terdokumentasi.
 
 ### Phase 1 — Public Website MVP
+
 **Goal:** Website resmi pesantren dapat diakses publik (belum dinamis/DB).
+
 - Navbar & Footer (`DESIGN.md` §7)
 - Homepage dengan urutan section sesuai `DESIGN.md` §8 (Hero → Trust/Introduction → Featured Campaigns → About Pondok → Programs & Activities → Latest News → Upcoming Agenda → Transparency Highlight → Donation CTA → Contact → Footer)
 - Halaman Profil, Visi & Misi, Program Pendidikan, Fasilitas, Kegiatan, Kontak
@@ -82,7 +87,9 @@ P0 Foundation → P1 Public Website → P2 Content System → P3 Donation MVP
 **Definition of Done:** Semua halaman dapat diakses, responsive mobile/tablet/desktop, navigasi tidak rusak, loading/error/empty state tersedia bila relevan.
 
 ### Phase 2 — Content System
+
 **Goal:** Content tidak lagi hardcoded.
+
 - Koneksi Supabase + skema database (§6 di bawah) + RLS
 - CMS untuk **Posts** (berita), **Events** (agenda), **Gallery**, **Campaigns**
 - Dynamic public pages, image storage
@@ -90,7 +97,9 @@ P0 Foundation → P1 Public Website → P2 Content System → P3 Donation MVP
 **Definition of Done:** Admin/content source dapat mengubah content tanpa mengubah source code.
 
 ### Phase 3 — Donation MVP
+
 **Goal:** User dapat melakukan donasi end-to-end.
+
 - Campaign listing & detail (slug-based URL, sesuai `DESIGN.md` §10)
 - Donation form (nominal, quick amount, custom amount, nama/anonim, email, pesan/doa) — validasi Zod
 - Integrasi Midtrans (Snap payment: QRIS, e-wallet, VA/transfer bank)
@@ -101,7 +110,9 @@ P0 Foundation → P1 Public Website → P2 Content System → P3 Donation MVP
 **Definition of Done:** Transaksi test dapat mengalir penuh — Campaign → Donation → Midtrans → Payment → Webhook → Verification → Database update — tanpa modifikasi database manual.
 
 ### Phase 4 — Admin Dashboard
+
 **Goal:** Pengelolaan aplikasi dilakukan melalui dashboard (bukan Supabase Studio manual).
+
 - Admin authentication & authorization
 - Dashboard ringkasan: total donasi, campaign aktif, donasi sukses/pending, recent donations & activity (`DESIGN.md` §15)
 - Campaign CRUD (create/edit/publish/archive, upload image, set target & kategori & periode)
@@ -112,14 +123,18 @@ P0 Foundation → P1 Public Website → P2 Content System → P3 Donation MVP
 **Definition of Done:** Admin dapat mengelola seluruh content utama tanpa menyentuh database secara manual.
 
 ### Phase 5 — Transparency
+
 **Goal:** Meningkatkan trust publik.
+
 - Halaman transparansi publik: Income data, Expense data, Balance, Reporting period, Supporting documents, Public report detail (`DESIGN.md` §13)
 - Dikelola admin lewat `transparency_reports` (lihat §6)
 
 **Definition of Done:** Publik dapat memahami penggunaan dana berdasarkan laporan yang telah dipublikasikan.
 
 ### Phase 6 — Donor Portal
+
 **Goal:** Pengalaman personal untuk donatur terdaftar.
+
 - Donor authentication (login/register)
 - Profile, Donation history, Donation detail, Receipt
 - Digital donation certificate (jika diperlukan)
@@ -127,7 +142,9 @@ P0 Foundation → P1 Public Website → P2 Content System → P3 Donation MVP
 **Definition of Done:** Donor hanya dapat mengakses data donasi miliknya sendiri (ditegakkan oleh RLS, bukan hanya UI).
 
 ### Phase 7 — Production Hardening
+
 **Goal:** Siap produksi.
+
 - Security review, RLS review, auth review, payment flow review, webhook idempotency review
 - Input validation review, rate limiting pada endpoint publik
 - Error handling, logging, monitoring
@@ -141,7 +158,9 @@ P0 Foundation → P1 Public Website → P2 Content System → P3 Donation MVP
 ## 5. User Flow
 
 ### 5.1 Alur Donasi (Public — Phase 3)
+
 Sesuai `project-plan.md` §6 dan `DESIGN.md` §10–12:
+
 ```
 Campaign Listing → Campaign Detail → Donation Form → Create Donation (status: pending)
  → Create Midtrans Transaction (Snap Token) → Payment (QRIS/e-wallet/VA)
@@ -149,16 +168,21 @@ Campaign Listing → Campaign Detail → Donation Form → Create Donation (stat
  → Update Donation Status → Update Campaign current_amount → Display Result
    (success / pending / failed / expired)
 ```
+
 Status donasi yang valid: `pending, success, failed, expired, cancelled`.
 
 ### 5.2 Alur Admin — Kelola Campaign (Phase 4)
+
 Sesuai `project-plan.md` §22 (Testing Strategy — E2E Admin):
+
 ```
 Admin Login → Dashboard → Create Campaign → Publish → Campaign visible publicly
 ```
+
 Alur serupa berlaku untuk Posts, Events, Gallery (create → edit → publish/archive).
 
 ### 5.3 Alur Transparansi (Public — Phase 5)
+
 ```
 Transparency Header → Summary Metrics (Total Income / Expense / Balance)
  → Income/Donation Data → Expense Data → Campaign Allocation
@@ -166,6 +190,7 @@ Transparency Header → Summary Metrics (Total Income / Expense / Balance)
 ```
 
 ### 5.4 Alur Donor Portal (Phase 6)
+
 ```
 Donor Login → Dashboard (Total Donation, Recent Donation, Quick Actions)
  → Donation History (Date, Campaign, Amount, Status) → Donation Detail (Reference,
@@ -176,33 +201,36 @@ Donor Login → Dashboard (Total Donation, Recent Donation, Quick Actions)
 
 ## 6. Skema Data (Ringkasan)
 
-Sumber lengkap: `project-plan.md` §9. Tujuh entitas inti — **bukan** `expenses` sebagai tabel terpisah:
+Arsitektur database mengadopsi 10 entitas terpadu sesuai ketetapan `database.md` untuk menjamin integritas transaksi keuangan:
 
-| Tabel | Fungsi | Kolom kunci |
-|---|---|---|
-| `profiles` | Data user | `role` (`admin` \| `donor`) |
-| `campaigns` | Program donasi | `slug`, `category`, `target_amount`, `current_amount`, `status` |
-| `donations` | Transaksi donasi | `campaign_id`, `is_anonymous`, `amount`, `status`, `order_id`, `payment_reference` |
-| `posts` | Berita/artikel | `slug`, `status` (`draft`\|`published`\|`archived`) |
-| `events` | Agenda/kegiatan | `slug`, `start_at`, `end_at`, `location` |
-| `gallery` | Galeri foto | `category`, `image_url` |
-| `transparency_reports` | Laporan transparansi | `period_start`, `period_end`, `income`, `expense`, `balance`, `document_url` |
+| Tabel                    | Fungsi                                   | Kolom Kunci Utama                                                      |
+| ------------------------ | ---------------------------------------- | ---------------------------------------------------------------------- |
+| `profiles`               | Data identitas & role pengguna           | `user_id`, `role` (`admin` \| `donor`)                                 |
+| `campaigns`              | Program penggalangan dana                | `slug`, `category`, `target_amount`, `current_amount`, `status`        |
+| `donations`              | Niat & data komitmen donasi              | `campaign_id`, `amount`, `is_anonymous`, `status`                      |
+| `payments`               | Detail teknis transaksi payment gateway  | `donation_id`, `order_id` (unique), `gross_amount`, `status`           |
+| `financial_transactions` | Ledger kas mutasi keuangan terverifikasi | `campaign_id`, `donation_id`, `type` (`income` \| `expense`), `amount` |
+| `posts`                  | Publikasi berita & artikel               | `slug`, `status` (`draft` \| `published`), `published_at`              |
+| `events`                 | Agenda & kegiatan pesantren              | `slug`, `start_at`, `end_at`, `location`                               |
+| `gallery`                | Dokumentasi foto & media                 | `category`, `image_url`                                                |
+| `transparency_reports`   | Laporan transparansi periodik            | `period_start`, `period_end`, `document_url`, `published_at`           |
+| `audit_logs`             | Jejak audit tindakan administratif       | `user_id`, `action`, `entity_type`, `entity_id`                        |
 
-RLS wajib untuk semua tabel sesuai `project-plan.md` §10: publik hanya baca data yang memang publik (active campaigns, published posts/events, gallery, published reports); donor hanya baca miliknya sendiri; admin mengelola resource sesuai tanggung jawabnya. **Authorization ditegakkan di server-side + database policy, bukan hanya UI tersembunyi.**
+> **Prinsip Integritas:** Angka pemasukan pada `transparency_reports` dan `campaigns.current_amount` tidak diinput manual, melainkan diagregasi otomatis dari mutasi yang sah di `financial_transactions`
 
 ---
 
 ## 7. Kebutuhan Non-Fungsional
 
-| Aspek | Kebutuhan | Sumber |
-|---|---|---|
-| Keamanan | Server Key/Secret Key/service-role credential tidak boleh terekspos ke client; payment status hanya diupdate oleh trusted server-side logic setelah verifikasi Midtrans | `project-plan.md` §8, §18–20 |
-| Idempotency | Webhook Midtrans tidak boleh memproses ulang transaksi yang sama (retry/duplicate-safe) | `project-plan.md` §8 |
-| Rate limiting | Endpoint publik (misal create-donation) dibatasi bila diperlukan | `project-plan.md` §19, §27 (Phase 7) |
-| Aksesibilitas | WCAG 2.2 AA untuk flow publik kritikal; kontras teks minimum 4.5:1 (large text 3:1); touch target 44×44px; tidak ada status berbasis warna saja | `DESIGN.md` §20, §3 |
-| Mobile-first | Semua flow nyaman di HP; navigasi jadi compact menu; form 1 kolom | `DESIGN.md` §6 |
-| Performa | Server Components default, image dioptimasi, pagination untuk dataset besar, hindari client bundle besar | `project-plan.md` §17, `DESIGN.md` §24 |
-| SEO | Title/meta description/OG image/slug (bukan UUID) untuk campaign & artikel, sitemap, robots config | `project-plan.md` §16, `DESIGN.md` §23 |
+| Aspek         | Kebutuhan                                                                                                                                                               | Sumber                                 |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| Keamanan      | Server Key/Secret Key/service-role credential tidak boleh terekspos ke client; payment status hanya diupdate oleh trusted server-side logic setelah verifikasi Midtrans | `project-plan.md` §8, §18–20           |
+| Idempotency   | Webhook Midtrans tidak boleh memproses ulang transaksi yang sama (retry/duplicate-safe)                                                                                 | `project-plan.md` §8                   |
+| Rate limiting | Endpoint publik (misal create-donation) dibatasi bila diperlukan                                                                                                        | `project-plan.md` §19, §27 (Phase 7)   |
+| Aksesibilitas | WCAG 2.2 AA untuk flow publik kritikal; kontras teks minimum 4.5:1 (large text 3:1); touch target 44×44px; tidak ada status berbasis warna saja                         | `DESIGN.md` §20, §3                    |
+| Mobile-first  | Semua flow nyaman di HP; navigasi jadi compact menu; form 1 kolom                                                                                                       | `DESIGN.md` §6                         |
+| Performa      | Server Components default, image dioptimasi, pagination untuk dataset besar, hindari client bundle besar                                                                | `project-plan.md` §17, `DESIGN.md` §24 |
+| SEO           | Title/meta description/OG image/slug (bukan UUID) untuk campaign & artikel, sitemap, robots config                                                                      | `project-plan.md` §16, `DESIGN.md` §23 |
 
 ---
 
@@ -222,6 +250,7 @@ Merujuk `project-plan.md` §28 (Important AI Agent Rules):
 10. Jika requirement ambigu, jelaskan asumsi sebelum implementasi — jangan menebak diam-diam.
 
 **Di luar scope PRD ini** (tidak muncul di `project-plan.md`/`DESIGN.md`, sehingga tidak dikerjakan tanpa update dokumen ini terlebih dahulu):
+
 - Payment gateway selain Midtrans.
 - Live chat / chatbot in-app.
 - Model 3D interaktif / virtual tour untuk galeri/denah bangunan.
@@ -234,6 +263,7 @@ Merujuk `project-plan.md` §28 (Important AI Agent Rules):
 ## 9. Dokumen Rujukan
 
 PRD ini adalah lapisan "apa, urutan, dan batasan". Untuk detail lanjut:
+
 - `project-plan.md` — tech stack, skema database lengkap, struktur direktori, security rules, testing strategy, AI coding workflow.
 - `DESIGN.md` — design tokens, tipografi, komponen, page template per halaman, accessibility & QA checklist.
 - `content.md` — salinan konten aktual (copy campaign, profil organisasi, rekening resmi, microcopy).

@@ -20,14 +20,14 @@ PPM Nurisba App adalah platform digital Pondok Pesantren Nurisba yang berfungsi 
 
 Aplikasi harus mengutamakan:
 
-* **Trust**
-* **Security**
-* **Transparency**
-* **Performance**
-* **Accessibility**
-* **Responsive design**
-* **Maintainability**
-* **Simple content management**
+- **Trust**
+- **Security**
+- **Transparency**
+- **Performance**
+- **Accessibility**
+- **Responsive design**
+- **Maintainability**
+- **Simple content management**
 
 ---
 
@@ -85,10 +85,10 @@ Jangan melakukan refactor besar atau mengganti architecture tanpa alasan yang je
 
 Jika sebuah feature membutuhkan perubahan architecture:
 
-* jelaskan alasannya;
-* jelaskan file yang terdampak;
-* jelaskan risiko;
-* gunakan perubahan minimum yang diperlukan.
+- jelaskan alasannya;
+- jelaskan file yang terdampak;
+- jelaskan risiko;
+- gunakan perubahan minimum yang diperlukan.
 
 ---
 
@@ -96,16 +96,16 @@ Jika sebuah feature membutuhkan perubahan architecture:
 
 ## Core
 
-* **Framework:** Next.js dengan App Router
-* **Language:** TypeScript
-* **Runtime:** Node.js
-* **Package Manager:** gunakan package manager yang sudah digunakan repository
+- **Framework:** Next.js dengan App Router
+- **Language:** TypeScript
+- **Runtime:** Node.js
+- **Package Manager:** gunakan package manager yang sudah digunakan repository
 
 ## UI
 
-* Tailwind CSS
-* shadcn/ui
-* Lucide Icons atau icon library yang sudah digunakan project
+- Tailwind CSS
+- shadcn/ui
+- Lucide Icons atau icon library yang sudah digunakan project
 
 ## Backend
 
@@ -113,38 +113,38 @@ Next.js App Router digunakan sebagai full-stack framework.
 
 Gunakan:
 
-* Server Components untuk default rendering
-* Server Actions jika sesuai
-* Route Handlers untuk endpoint yang memang membutuhkan HTTP API
-* Server-side logic untuk operasi sensitif
+- Server Components untuk default rendering
+- Server Actions jika sesuai
+- Route Handlers untuk endpoint yang memang membutuhkan HTTP API
+- Server-side logic untuk operasi sensitif
 
 ## Database
 
-* Supabase
-* PostgreSQL
-* Supabase Row Level Security (RLS)
+- Supabase
+- PostgreSQL
+- Supabase Row Level Security (RLS)
 
 ## Validation
 
-* Zod
+- Zod
 
 ## Payment
 
-* Midtrans
+- Midtrans
 
 Payment harus mendukung metode pembayaran yang tersedia melalui konfigurasi Midtrans, termasuk:
 
-* QRIS
-* E-wallet
-* Virtual Account / bank transfer
-* metode lain yang tersedia pada environment Midtrans
+- QRIS
+- E-wallet
+- Virtual Account / bank transfer
+- metode lain yang tersedia pada environment Midtrans
 
 ## Authentication
 
 Authentication digunakan untuk:
 
-* Admin
-* Donatur
+- Admin
+- Donatur
 
 Gunakan authentication mechanism yang terintegrasi dengan Supabase atau solusi yang sudah dipilih project.
 
@@ -152,9 +152,9 @@ Gunakan authentication mechanism yang terintegrasi dengan Supabase atau solusi y
 
 Target deployment:
 
-* Vercel untuk application
-* Supabase untuk database
-* Midtrans untuk payment gateway
+- Vercel untuk application
+- Supabase untuk database
+- Midtrans untuk payment gateway
 
 ---
 
@@ -164,22 +164,22 @@ Target deployment:
 
 Public user dapat mengakses:
 
-* Home
-* Profil Pondok
-* Sejarah
-* Visi & Misi
-* Program Pendidikan
-* Fasilitas
-* Kegiatan
-* Berita
-* Agenda
-* Galeri
-* Program Donasi
-* Detail Program Donasi
-* Laporan Transparansi
-* Informasi Pendaftaran
-* Kontak
-* Lokasi
+- Home
+- Profil Pondok
+- Sejarah
+- Visi & Misi
+- Program Pendidikan
+- Fasilitas
+- Kegiatan
+- Berita
+- Agenda
+- Galeri
+- Program Donasi
+- Detail Program Donasi
+- Laporan Transparansi
+- Informasi Pendaftaran
+- Kontak
+- Lokasi
 
 ---
 
@@ -209,13 +209,13 @@ updated_at
 
 Contoh kategori:
 
-* Wakaf
-* Sedekah
-* Beasiswa
-* Pembangunan
-* Fasilitas
-* Kebutuhan Santri
-* Lainnya
+- Wakaf
+- Sedekah
+- Beasiswa
+- Pembangunan
+- Fasilitas
+- Kebutuhan Santri
+- Lainnya
 
 Status campaign:
 
@@ -274,25 +274,25 @@ cancelled
 
 Donation form harus mendukung:
 
-* Nama donatur
-* Anonymous donation
-* Email
-* Nominal donasi
-* Nominal custom
-* Pesan/doa
-* Campaign
-* Terms/confirmation
+- Nama donatur
+- Anonymous donation
+- Email
+- Nominal donasi
+- Nominal custom
+- Pesan/doa
+- Campaign
+- Terms/confirmation
 
 Validasi menggunakan Zod.
 
 Minimum validation:
 
-* campaign valid
-* amount > 0
-* amount memenuhi minimum yang ditentukan
-* email valid jika diberikan
-* input memiliki batas panjang
-* input tidak boleh mengandung data yang tidak diperlukan
+- campaign valid
+- amount > 0
+- amount memenuhi minimum yang ditentukan
+- email valid jika diberikan
+- input memiliki batas panjang
+- input tidak boleh mengandung data yang tidak diperlukan
 
 ---
 
@@ -304,10 +304,10 @@ Midtrans harus diimplementasikan secara server-side untuk credential dan operasi
 
 Jangan pernah expose:
 
-* Server Key
-* Secret Key
-* credential database
-* service-role credential
+- Server Key
+- Secret Key
+- credential database
+- service-role credential
 
 ke client/browser.
 
@@ -332,168 +332,67 @@ Webhook harus bersifat **idempotent**.
 
 # 9. Database Design
 
+Arsitektur database mengacu penuh pada `database.md` sebagai _source of truth_ dengan struktur 10 entitas:
+
 ## 9.1 profiles
 
-Menyimpan profile user.
+Menyimpan profil dan hak akses pengguna (terhubung ke `auth.users`).
 
-```text
-id
-user_id
-name
-email
-role
-created_at
-updated_at
-```
-
-Role:
-
-```text
-admin
-donor
-```
-
----
+- Kolom kunci: `id`, `user_id`, `name`, `email`, `role` (`admin` | `donor`), `created_at`, `updated_at`.
 
 ## 9.2 campaigns
 
-```text
-id
-title
-slug
-description
-category
-target_amount
-current_amount
-image_url
-status
-start_date
-end_date
-created_at
-updated_at
-```
+Menyimpan program penggalangan dana aktif dan historis.
 
-Public:
-
-* SELECT active campaigns
-
-Admin:
-
-* CREATE
-* READ
-* UPDATE
-* DELETE / archive
-
----
+- Kolom kunci: `id`, `title`, `slug`, `category`, `target_amount`, `current_amount`, `image_url`, `status` (`draft` | `active` | `completed` | `archived`), `start_date`, `end_date`.
 
 ## 9.3 donations
 
-```text
-id
-campaign_id
-user_id
-donor_name
-donor_email
-is_anonymous
-amount
-message
-status
-payment_provider
-payment_reference
-order_id
-paid_at
-created_at
-updated_at
-```
+Menyimpan data komitmen/niat donasi dari donatur.
 
-Rules:
+- Kolom kunci: `id`, `campaign_id`, `user_id` (opsional untuk donatur terdaftar), `donor_name`, `donor_email`, `is_anonymous`, `amount`, `message`, `status` (`pending` | `success` | `failed` | `expired` | `cancelled` | `refunded`), `payment_method`.
 
-* User tidak boleh mengubah donation yang sudah dibuat.
-* Payment status tidak boleh dipercaya dari client.
-* Status pembayaran hanya boleh diperbarui oleh trusted server-side logic setelah verifikasi payment provider.
+## 9.4 payments
 
----
+Menyimpan catatan teknis transaksi pembayaran dari penyedia (Midtrans atau manual transfer).
 
-## 9.4 posts
+- Kolom kunci: `id`, `donation_id`, `provider`, `order_id` (unique), `transaction_id`, `gross_amount`, `status`, `raw_status`, `settlement_at`, `expires_at`.
 
-Untuk berita/artikel.
+## 9.5 financial_transactions
 
-```text
-id
-title
-slug
-excerpt
-content
-thumbnail_url
-status
-published_at
-author_id
-created_at
-updated_at
-```
+Buku besar kas (ledger) pencatatan dana riil yang telah terverifikasi.
 
-Status:
+- Kolom kunci: `id`, `donation_id`, `campaign_id`, `type` (`income` | `expense` | `refund`), `amount`, `source`, `reference`, `transaction_date`, `verified_at`, `verified_by`.
 
-```text
-draft
-published
-archived
-```
+## 9.6 posts
 
----
+Menyimpan artikel dan publikasi berita pesantren.
 
-## 9.5 events
+- Kolom kunci: `id`, `title`, `slug`, `excerpt`, `content`, `thumbnail_url`, `status` (`draft` | `published` | `archived`), `author_id`.
 
-Untuk agenda/kegiatan.
+## 9.7 events
 
-```text
-id
-title
-slug
-description
-location
-start_at
-end_at
-image_url
-status
-created_at
-updated_at
-```
+Menyimpan jadwal agenda dan kegiatan santri/pondok.
 
----
+- Kolom kunci: `id`, `title`, `slug`, `description`, `location`, `start_at`, `end_at`, `image_url`, `status`.
 
-## 9.6 gallery
+## 9.8 gallery
 
-```text
-id
-title
-description
-image_url
-category
-created_at
-updated_at
-```
+Menyimpan arsip dokumentasi visual kegiatan dan pembangunan.
 
----
+- Kolom kunci: `id`, `title`, `description`, `image_url`, `category`.
 
-## 9.7 transparency_reports
+## 9.9 transparency_reports
 
-Untuk laporan transparansi.
+Menyimpan laporan pertanggungjawaban dana publik per periode (ringkasan angka dihitung dari `financial_transactions`).
 
-```text
-id
-title
-description
-period_start
-period_end
-income
-expense
-balance
-document_url
-published_at
-created_at
-updated_at
-```
+- Kolom kunci: `id`, `title`, `description`, `period_start`, `period_end`, `document_url`, `published_at`.
+
+## 9.10 audit_logs
+
+Menyimpan jejak aktivitas penting yang dilakukan oleh admin.
+
+- Kolom kunci: `id`, `user_id`, `action`, `entity_type`, `entity_id`, `metadata`, `created_at`.
 
 ---
 
@@ -505,27 +404,27 @@ RLS wajib digunakan di Supabase.
 
 Public user dapat membaca data yang memang ditujukan untuk publik:
 
-* active campaigns
-* published posts
-* published events
-* gallery
-* published transparency reports
-* public profile/content
+- active campaigns
+- published posts
+- published events
+- gallery
+- published transparency reports
+- public profile/content
 
 ## Authenticated Donor
 
 Donor dapat:
 
-* melihat profile sendiri;
-* melihat donation miliknya sendiri.
+- melihat profile sendiri;
+- melihat donation miliknya sendiri.
 
 Donor tidak boleh:
 
-* melihat donation user lain;
-* mengubah status payment;
-* mengubah campaign;
-* mengubah laporan;
-* mengakses admin data.
+- melihat donation user lain;
+- mengubah status payment;
+- mengubah campaign;
+- mengubah laporan;
+- mengakses admin data.
 
 ## Admin
 
@@ -545,13 +444,13 @@ Admin dashboard digunakan untuk mengelola platform.
 
 Menampilkan:
 
-* Total donasi
-* Total campaign aktif
-* Total donasi sukses
-* Total donasi pending
-* Campaign dengan performa terbaik
-* Recent donations
-* Recent activity
+- Total donasi
+- Total campaign aktif
+- Total donasi sukses
+- Total donasi pending
+- Campaign dengan performa terbaik
+- Recent donations
+- Recent activity
 
 ---
 
@@ -559,14 +458,14 @@ Menampilkan:
 
 Admin dapat:
 
-* Create campaign
-* Edit campaign
-* Publish campaign
-* Archive campaign
-* Upload campaign image
-* Set target amount
-* Set category
-* Set campaign period
+- Create campaign
+- Edit campaign
+- Publish campaign
+- Archive campaign
+- Upload campaign image
+- Set target amount
+- Set category
+- Set campaign period
 
 ---
 
@@ -574,12 +473,12 @@ Admin dapat:
 
 Admin dapat:
 
-* Melihat donation
-* Filter status
-* Filter campaign
-* Search donor
-* Melihat detail transaksi
-* Melihat payment reference
+- Melihat donation
+- Filter status
+- Filter campaign
+- Search donor
+- Melihat detail transaksi
+- Melihat payment reference
 
 Admin **tidak boleh mengubah status payment secara sembarangan**.
 
@@ -593,30 +492,30 @@ Admin dapat mengelola:
 
 ### Posts
 
-* Create
-* Edit
-* Publish
-* Archive
+- Create
+- Edit
+- Publish
+- Archive
 
 ### Events
 
-* Create
-* Edit
-* Publish
-* Archive
+- Create
+- Edit
+- Publish
+- Archive
 
 ### Gallery
 
-* Upload
-* Delete
-* Categorize
+- Upload
+- Delete
+- Categorize
 
 ### Transparency Reports
 
-* Create
-* Edit
-* Publish
-* Archive
+- Create
+- Edit
+- Publish
+- Archive
 
 ---
 
@@ -626,13 +525,13 @@ Donor portal adalah feature setelah MVP utama stabil.
 
 Fitur:
 
-* Login
-* Register
-* Profile
-* Donation history
-* Donation detail
-* Payment status
-* Digital donation receipt
+- Login
+- Register
+- Profile
+- Donation history
+- Donation detail
+- Payment status
+- Digital donation receipt
 
 Donor hanya boleh melihat data miliknya sendiri.
 
@@ -694,13 +593,13 @@ Jangan membuat route hanya karena tercantum di dokumen ini jika feature tersebut
 
 Design harus merepresentasikan:
 
-* Islamic
-* Modern
-* Trustworthy
-* Warm
-* Professional
-* Clean
-* Accessible
+- Islamic
+- Modern
+- Trustworthy
+- Warm
+- Professional
+- Clean
+- Accessible
 
 Prioritas UX:
 
@@ -755,15 +654,15 @@ Hero harus memiliki CTA yang jelas menuju program donasi atau informasi utama pe
 
 Setiap public page harus memiliki:
 
-* meaningful title
-* meta description
-* canonical URL jika diperlukan
-* Open Graph metadata
-* semantic HTML
-* descriptive image alt
-* clean URL
-* sitemap
-* robots configuration
+- meaningful title
+- meta description
+- canonical URL jika diperlukan
+- Open Graph metadata
+- semantic HTML
+- descriptive image alt
+- clean URL
+- sitemap
+- robots configuration
 
 Dynamic content seperti campaign dan article harus memiliki metadata yang sesuai.
 
@@ -773,15 +672,15 @@ Dynamic content seperti campaign dan article harus memiliki metadata yang sesuai
 
 Prioritas:
 
-* Server Components by default
-* Hindari unnecessary client components
-* Optimized images
-* Lazy loading jika relevan
-* Minimize JavaScript
-* Avoid unnecessary API calls
-* Pagination untuk dataset besar
-* Proper database indexes
-* Efficient queries
+- Server Components by default
+- Hindari unnecessary client components
+- Optimized images
+- Lazy loading jika relevan
+- Minimize JavaScript
+- Avoid unnecessary API calls
+- Pagination untuk dataset besar
+- Proper database indexes
+- Efficient queries
 
 Jangan melakukan premature optimization sebelum ada kebutuhan nyata.
 
@@ -833,12 +732,12 @@ Semua input dari user harus dianggap tidak terpercaya.
 
 Gunakan:
 
-* Zod validation
-* Server-side validation
-* Proper authorization
-* Output escaping
-* Database constraints
-* Rate limiting jika diperlukan
+- Zod validation
+- Server-side validation
+- Proper authorization
+- Output escaping
+- Database constraints
+- Rate limiting jika diperlukan
 
 Jangan mengandalkan client-side validation sebagai security boundary.
 
@@ -877,26 +776,26 @@ Project siap digunakan untuk development.
 
 Tasks:
 
-* [ ] Inspect existing repository
-* [ ] Confirm framework and dependencies
-* [ ] Confirm package manager
-* [ ] Confirm environment strategy
-* [ ] Configure TypeScript
-* [ ] Configure Tailwind
-* [ ] Configure shadcn/ui
-* [ ] Configure linting
-* [ ] Configure formatting
-* [ ] Configure `.gitignore`
-* [ ] Configure environment variables
-* [ ] Create project documentation
-* [ ] Establish reusable UI conventions
+- [ ] Inspect existing repository
+- [ ] Confirm framework and dependencies
+- [ ] Confirm package manager
+- [ ] Confirm environment strategy
+- [ ] Configure TypeScript
+- [ ] Configure Tailwind
+- [ ] Configure shadcn/ui
+- [ ] Configure linting
+- [ ] Configure formatting
+- [ ] Configure `.gitignore`
+- [ ] Configure environment variables
+- [ ] Create project documentation
+- [ ] Establish reusable UI conventions
 
 ### Definition of Done
 
-* Project runs locally.
-* No critical build errors.
-* Basic UI system works.
-* Environment strategy documented.
+- Project runs locally.
+- No critical build errors.
+- Basic UI system works.
+- Environment strategy documented.
 
 ---
 
@@ -908,24 +807,24 @@ Website resmi pesantren dapat digunakan oleh publik.
 
 Tasks:
 
-* [ ] Navbar
-* [ ] Footer
-* [ ] Homepage
-* [ ] Profil
-* [ ] Visi & Misi
-* [ ] Program Pendidikan
-* [ ] Fasilitas
-* [ ] Kegiatan
-* [ ] Kontak
-* [ ] Responsive layout
-* [ ] Basic SEO
+- [ ] Navbar
+- [ ] Footer
+- [ ] Homepage
+- [ ] Profil
+- [ ] Visi & Misi
+- [ ] Program Pendidikan
+- [ ] Fasilitas
+- [ ] Kegiatan
+- [ ] Kontak
+- [ ] Responsive layout
+- [ ] Basic SEO
 
 ### Definition of Done
 
-* All pages accessible.
-* Responsive on mobile/tablet/desktop.
-* No broken navigation.
-* Loading/error/empty states handled where applicable.
+- All pages accessible.
+- Responsive on mobile/tablet/desktop.
+- No broken navigation.
+- Loading/error/empty states handled where applicable.
 
 ---
 
@@ -937,15 +836,15 @@ Content tidak lagi hardcoded.
 
 Tasks:
 
-* [ ] Supabase connection
-* [ ] Database schema
-* [ ] RLS
-* [ ] Posts
-* [ ] Events
-* [ ] Gallery
-* [ ] Campaigns
-* [ ] Dynamic public pages
-* [ ] Image storage
+- [ ] Supabase connection
+- [ ] Database schema
+- [ ] RLS
+- [ ] Posts
+- [ ] Events
+- [ ] Gallery
+- [ ] Campaigns
+- [ ] Dynamic public pages
+- [ ] Image storage
 
 ### Definition of Done
 
@@ -961,19 +860,19 @@ User dapat melakukan donasi end-to-end.
 
 Tasks:
 
-* [ ] Campaign listing
-* [ ] Campaign detail
-* [ ] Donation form
-* [ ] Zod validation
-* [ ] Donation creation
-* [ ] Midtrans integration
-* [ ] Snap payment
-* [ ] Webhook
-* [ ] Payment verification
-* [ ] Donation status
-* [ ] Campaign amount update
-* [ ] Donation success page
-* [ ] Donation failure page
+- [ ] Campaign listing
+- [ ] Campaign detail
+- [ ] Donation form
+- [ ] Zod validation
+- [ ] Donation creation
+- [ ] Midtrans integration
+- [ ] Snap payment
+- [ ] Webhook
+- [ ] Payment verification
+- [ ] Donation status
+- [ ] Campaign amount update
+- [ ] Donation success page
+- [ ] Donation failure page
 
 ### Definition of Done
 
@@ -1001,15 +900,15 @@ Pengelolaan aplikasi dilakukan melalui dashboard.
 
 Tasks:
 
-* [ ] Admin authentication
-* [ ] Authorization
-* [ ] Dashboard
-* [ ] Campaign CRUD
-* [ ] Donation management
-* [ ] Post management
-* [ ] Event management
-* [ ] Gallery management
-* [ ] Transparency management
+- [ ] Admin authentication
+- [ ] Authorization
+- [ ] Dashboard
+- [ ] Campaign CRUD
+- [ ] Donation management
+- [ ] Post management
+- [ ] Event management
+- [ ] Gallery management
+- [ ] Transparency management
 
 ### Definition of Done
 
@@ -1025,13 +924,13 @@ Meningkatkan trust publik.
 
 Tasks:
 
-* [ ] Transparency page
-* [ ] Income data
-* [ ] Expense data
-* [ ] Balance
-* [ ] Reporting period
-* [ ] Supporting documents
-* [ ] Public report detail
+- [ ] Transparency page
+- [ ] Income data
+- [ ] Expense data
+- [ ] Balance
+- [ ] Reporting period
+- [ ] Supporting documents
+- [ ] Public report detail
 
 ### Definition of Done
 
@@ -1047,12 +946,12 @@ Memberikan pengalaman personal kepada donatur.
 
 Tasks:
 
-* [ ] Donor authentication
-* [ ] Profile
-* [ ] Donation history
-* [ ] Donation detail
-* [ ] Receipt
-* [ ] Digital donation certificate if required
+- [ ] Donor authentication
+- [ ] Profile
+- [ ] Donation history
+- [ ] Donation detail
+- [ ] Receipt
+- [ ] Digital donation certificate if required
 
 ### Definition of Done
 
@@ -1068,23 +967,23 @@ Project siap digunakan secara production.
 
 Tasks:
 
-* [ ] Security review
-* [ ] RLS review
-* [ ] Authentication review
-* [ ] Payment flow review
-* [ ] Webhook idempotency review
-* [ ] Input validation review
-* [ ] Rate limiting where required
-* [ ] Error handling
-* [ ] Logging
-* [ ] Monitoring
-* [ ] Performance review
-* [ ] SEO review
-* [ ] Accessibility review
-* [ ] Mobile testing
-* [ ] Production environment
-* [ ] Domain configuration
-* [ ] Backup strategy
+- [ ] Security review
+- [ ] RLS review
+- [ ] Authentication review
+- [ ] Payment flow review
+- [ ] Webhook idempotency review
+- [ ] Input validation review
+- [ ] Rate limiting where required
+- [ ] Error handling
+- [ ] Logging
+- [ ] Monitoring
+- [ ] Performance review
+- [ ] SEO review
+- [ ] Accessibility review
+- [ ] Mobile testing
+- [ ] Production environment
+- [ ] Domain configuration
+- [ ] Backup strategy
 
 ### Definition of Done
 
@@ -1100,20 +999,20 @@ Minimum testing layers:
 
 Test:
 
-* validation
-* formatting
-* utility functions
-* business logic
+- validation
+- formatting
+- utility functions
+- business logic
 
 ## Integration
 
 Test:
 
-* database operations
-* authentication
-* donation creation
-* Midtrans integration
-* webhook processing
+- database operations
+- authentication
+- donation creation
+- Midtrans integration
+- webhook processing
 
 ## End-to-End
 
@@ -1156,9 +1055,9 @@ Jika data kosong, tampilkan pesan yang jelas.
 
 Error harus:
 
-* understandable
-* actionable
-* tidak membocorkan sensitive information
+- understandable
+- actionable
+- tidak membocorkan sensitive information
 
 ### Success State
 
@@ -1204,14 +1103,14 @@ OpenCode harus bekerja dengan pola:
 
 Untuk setiap task, AI harus:
 
-* tidak mengubah unrelated files;
-* tidak menghapus functionality tanpa alasan;
-* menggunakan existing patterns;
-* menggunakan reusable components;
-* menjaga TypeScript types;
-* menjaga security boundary;
-* melakukan validation;
-* menjalankan lint/typecheck/test yang relevan.
+- tidak mengubah unrelated files;
+- tidak menghapus functionality tanpa alasan;
+- menggunakan existing patterns;
+- menggunakan reusable components;
+- menjaga TypeScript types;
+- menjaga security boundary;
+- melakukan validation;
+- menjalankan lint/typecheck/test yang relevan.
 
 ---
 
@@ -1219,20 +1118,20 @@ Untuk setiap task, AI harus:
 
 Sebuah feature dianggap selesai jika:
 
-* [ ] Requirement terpenuhi.
-* [ ] UI responsive.
-* [ ] TypeScript tidak menghasilkan error.
-* [ ] Lint tidak menghasilkan critical error.
-* [ ] Validation tersedia jika diperlukan.
-* [ ] Authorization tersedia jika diperlukan.
-* [ ] Loading state tersedia.
-* [ ] Error state tersedia.
-* [ ] Empty state tersedia jika diperlukan.
-* [ ] Tidak ada secret yang terekspos.
-* [ ] Tidak merusak feature existing.
-* [ ] Relevant tests berhasil.
-* [ ] Code menggunakan existing architecture.
-* [ ] Dokumentasi diperbarui jika diperlukan.
+- [ ] Requirement terpenuhi.
+- [ ] UI responsive.
+- [ ] TypeScript tidak menghasilkan error.
+- [ ] Lint tidak menghasilkan critical error.
+- [ ] Validation tersedia jika diperlukan.
+- [ ] Authorization tersedia jika diperlukan.
+- [ ] Loading state tersedia.
+- [ ] Error state tersedia.
+- [ ] Empty state tersedia jika diperlukan.
+- [ ] Tidak ada secret yang terekspos.
+- [ ] Tidak merusak feature existing.
+- [ ] Relevant tests berhasil.
+- [ ] Code menggunakan existing architecture.
+- [ ] Dokumentasi diperbarui jika diperlukan.
 
 ---
 
