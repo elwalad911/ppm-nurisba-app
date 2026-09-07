@@ -26,11 +26,9 @@ Jl. Bhayangkara Blok N 7 No. 10–12
 RT. 01/RW. 24, Soreang  
 Bandung 40911, Jawa Barat
 
-**Website:**  
-https://nurulikhlas.org
+## **Website:**
 
-**Email:**  
-nurulikh lassoreangbandung@gmail.com
+## **Email:**
 
 **Kontak / WhatsApp:**  
 082262893646
@@ -346,22 +344,22 @@ Terbilang:
 
 ## Pembagian Sumber Pembiayaan
 
-| Sumber | Persentase | Keterangan |
-|---|---:|---|
-| Donatur | 70% | Diharapkan dari partisipasi masyarakat/donatur |
-| Swadaya masyarakat/panitia | 30% | Menjadi tanggung jawab panitia |
+| Sumber                     | Persentase | Keterangan                                     |
+| -------------------------- | ---------: | ---------------------------------------------- |
+| Donatur                    |        70% | Diharapkan dari partisipasi masyarakat/donatur |
+| Swadaya masyarakat/panitia |        30% | Menjadi tanggung jawab panitia                 |
 
 ---
 
 # 15. RAB Porsi Swadaya Panitia
 
-| No | Uraian | Volume | Harga Satuan | Total |
-|---:|---|---:|---:|---:|
-| 1 | Swadaya tanggung jawab panitia | 264 m² | Rp1.500.000 | Rp396.000.000 |
-| 2 | Perluasan bangunan ruang kelas | 96 m² | Rp1.200.000 | Rp115.200.000 |
-| 3 | Pemagaran lokasi | 228 m | Rp900.000 | Rp205.200.000 |
-| 4 | Snack/konsumsi pekerja | 4.200 | Rp10.000 | Rp42.000.000 |
-| | **Total** | | | **Rp758.400.000** |
+|  No | Uraian                         | Volume | Harga Satuan |             Total |
+| --: | ------------------------------ | -----: | -----------: | ----------------: |
+|   1 | Swadaya tanggung jawab panitia | 264 m² |  Rp1.500.000 |     Rp396.000.000 |
+|   2 | Perluasan bangunan ruang kelas |  96 m² |  Rp1.200.000 |     Rp115.200.000 |
+|   3 | Pemagaran lokasi               |  228 m |    Rp900.000 |     Rp205.200.000 |
+|   4 | Snack/konsumsi pekerja         |  4.200 |     Rp10.000 |      Rp42.000.000 |
+|     | **Total**                      |        |              | **Rp758.400.000** |
 
 ### Catatan
 
@@ -968,7 +966,7 @@ Jika informasi tidak tersedia:
 
 Ketika proposal baru diterbitkan:
 
-1. Update `content.md`.
+1. Update `content-website.md`.
 2. Review campaign information.
 3. Review RAB.
 4. Review rekening.

@@ -266,6 +266,6 @@ PRD ini adalah lapisan "apa, urutan, dan batasan". Untuk detail lanjut:
 
 - `project-plan.md` — tech stack, skema database lengkap, struktur direktori, security rules, testing strategy, AI coding workflow.
 - `DESIGN.md` — design tokens, tipografi, komponen, page template per halaman, accessibility & QA checklist.
-- `content.md` — salinan konten aktual (copy campaign, profil organisasi, rekening resmi, microcopy).
+- `content-website.md` — salinan konten aktual (copy campaign, profil organisasi, rekening resmi, microcopy).
 
 **Aturan sinkronisasi:** setiap perubahan fitur/scope harus diperbarui di PRD ini terlebih dahulu, baru diturunkan ke `project-plan.md` (jika berdampak teknis) dan/atau `DESIGN.md` (jika berdampak visual/komponen). Jangan biarkan ketiga dokumen ini saling bertentangan seperti yang terjadi pada draft `PRD.md` sebelumnya.
