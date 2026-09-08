@@ -37,9 +37,17 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const serverKey = process.env.MIDTRANS_SERVER_KEY || "SB-Mid-server-xxxxxxxxxxxx";
+    // 1. HARDENED: NO FALLBACK SERVER KEY. Must be configured in environment.
+    const serverKey = process.env.MIDTRANS_SERVER_KEY;
+    if (!serverKey) {
+      console.error("CRITICAL SECURITY ERROR: MIDTRANS_SERVER_KEY is not defined in environment variables.");
+      return NextResponse.json(
+        { error: "Server configuration error" },
+        { status: 500 }
+      );
+    }
 
-    // 1. Verify Signature Key (SHA-512)
+    // 2. Verify Signature Key (SHA-512)
     const isValid = verifySignature(
       order_id,
       status_code,
@@ -57,7 +65,7 @@ export async function POST(req: NextRequest) {
 
     const supabase = getServiceRoleClient();
 
-    // 2. Check Idempotency via payments table
+    // 3. Check Idempotency via payments table
     const { data: payment, error: paymentQueryError } = await supabase
       .from("payments")
       .select("*, donations(*)")
@@ -71,20 +79,25 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // If payment is already in a final state and matches the same status, return 200 idempotent
     const newStatus = mapMidtransStatus(transaction_status, fraud_status);
+
+    // If payment is already in a final state and matches the same status, return 200 idempotent
     if (
       ["success", "expired", "failed"].includes(payment.status) &&
       payment.status === newStatus
     ) {
-      return NextResponse.json({ status: "ok", message: "Already processed (idempotent)" });
+      return NextResponse.json({
+        status: "ok",
+        message: "Already processed (idempotent)",
+      });
     }
 
     const donationId = payment.donation_id;
     const campaignId = payment.donations?.campaign_id;
 
-    // 3. Update Payment record
-    const settlementAt = newStatus === "success" ? new Date().toISOString() : null;
+    // 4. Update Payment record
+    const settlementAt =
+      newStatus === "success" ? new Date().toISOString() : null;
     await supabase
       .from("payments")
       .update({
@@ -98,7 +111,7 @@ export async function POST(req: NextRequest) {
       })
       .eq("id", payment.id);
 
-    // 4. Update Donation record
+    // 5. Update Donation record
     await supabase
       .from("donations")
       .update({
@@ -107,38 +120,52 @@ export async function POST(req: NextRequest) {
       })
       .eq("id", donationId);
 
-    // 5. If successful and wasn't success before, record ledger and update campaign current_amount
-    if (newStatus === "success" && payment.status !== "success") {
+    // 6. Strict Idempotency & Double-Count Prevention for Financial Ledger
+    if (newStatus === "success") {
       const amount = Number(gross_amount);
 
-      // Insert financial transaction ledger
       if (campaignId) {
-        await supabase.from("financial_transactions").insert({
-          donation_id: donationId,
-          campaign_id: campaignId,
-          type: "income",
-          amount: amount,
-          source: "midtrans",
-          reference: order_id,
-          description: `Donasi sukses via Midtrans (Order ID: ${order_id})`,
-        });
+        // Check if financial transaction ledger entry already exists for this donation/order_id
+        const { data: existingLedger } = await supabase
+          .from("financial_transactions")
+          .select("id")
+          .eq("donation_id", donationId)
+          .eq("type", "income")
+          .maybeSingle();
 
-        // Fetch current campaign amount and increment
-        const { data: campaign } = await supabase
-          .from("campaigns")
-          .select("current_amount")
-          .eq("id", campaignId)
-          .single();
+        // Only insert ledger and increment campaign amount if NOT already recorded
+        if (!existingLedger) {
+          const { error: ledgerError } = await supabase
+            .from("financial_transactions")
+            .insert({
+              donation_id: donationId,
+              campaign_id: campaignId,
+              type: "income",
+              amount: amount,
+              source: "midtrans",
+              reference: order_id,
+              description: `Donasi sukses via Midtrans (Order ID: ${order_id})`,
+            });
 
-        if (campaign) {
-          const updatedAmount = Number(campaign.current_amount) + amount;
-          await supabase
-            .from("campaigns")
-            .update({
-              current_amount: updatedAmount,
-              updated_at: new Date().toISOString(),
-            })
-            .eq("id", campaignId);
+          if (!ledgerError) {
+            // Fetch current campaign amount and increment atomically / safely
+            const { data: campaign } = await supabase
+              .from("campaigns")
+              .select("current_amount")
+              .eq("id", campaignId)
+              .single();
+
+            if (campaign) {
+              const updatedAmount = Number(campaign.current_amount) + amount;
+              await supabase
+                .from("campaigns")
+                .update({
+                  current_amount: updatedAmount,
+                  updated_at: new Date().toISOString(),
+                })
+                .eq("id", campaignId);
+            }
+          }
         }
       }
     }
