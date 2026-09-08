@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { DataTable } from "@/components/admin/data-table";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 
@@ -29,58 +28,6 @@ export default async function AdminPostsPage() {
 
   const postList = (posts || []) as PostItem[];
 
-  const columns = [
-    {
-      header: "Judul Berita",
-      accessorKey: (item: PostItem) => (
-        <div>
-          <Link
-            href={`/admin/posts/${item.id}`}
-            className="font-bold text-text-primary hover:text-primary transition-colors"
-          >
-            {item.title}
-          </Link>
-          <p className="text-xs text-text-muted">Slug: {item.slug}</p>
-        </div>
-      ),
-    },
-    {
-      header: "Status",
-      accessorKey: (item: PostItem) => (
-        <span
-          className={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${
-            item.status === "published"
-              ? "bg-success-soft text-success"
-              : item.status === "draft"
-              ? "bg-warning-soft text-warning"
-              : "bg-border text-text-secondary"
-          }`}
-        >
-          {item.status}
-        </span>
-      ),
-    },
-    {
-      header: "Tanggal Publikasi",
-      accessorKey: (item: PostItem) =>
-        item.published_at
-          ? new Date(item.published_at).toLocaleDateString("id-ID", {
-              day: "numeric",
-              month: "short",
-              year: "numeric",
-            })
-          : "-",
-    },
-    {
-      header: "Aksi",
-      accessorKey: (item: PostItem) => (
-        <Button asChild size="sm" variant="outline">
-          <Link href={`/admin/posts/${item.id}`}>Edit</Link>
-        </Button>
-      ),
-    },
-  ];
-
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -100,13 +47,68 @@ export default async function AdminPostsPage() {
         </Button>
       </div>
 
-      <DataTable
-        data={postList}
-        columns={columns}
-        searchKey="title"
-        searchPlaceholder="Cari judul berita..."
-        emptyMessage="Belum ada berita yang dibuat."
-      />
+      <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
+        <table className="w-full text-left text-sm">
+          <thead className="bg-primary-soft/50 text-xs font-semibold uppercase text-text-secondary">
+            <tr>
+              <th className="px-6 py-4">Judul Berita</th>
+              <th className="px-6 py-4">Status</th>
+              <th className="px-6 py-4">Tanggal Publikasi</th>
+              <th className="px-6 py-4 text-right">Aksi</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border-light text-text-primary">
+            {postList.length === 0 ? (
+              <tr>
+                <td colSpan={4} className="px-6 py-12 text-center text-text-muted">
+                  Belum ada berita yang dibuat.
+                </td>
+              </tr>
+            ) : (
+              postList.map((item) => (
+                <tr key={item.id} className="hover:bg-background/50">
+                  <td className="px-6 py-4">
+                    <Link
+                      href={`/admin/posts/${item.id}`}
+                      className="font-bold text-text-primary hover:text-primary transition-colors"
+                    >
+                      {item.title}
+                    </Link>
+                    <p className="text-xs text-text-muted">Slug: {item.slug}</p>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span
+                      className={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${
+                        item.status === "published"
+                          ? "bg-success-soft text-success"
+                          : item.status === "draft"
+                          ? "bg-warning-soft text-warning"
+                          : "bg-border text-text-secondary"
+                      }`}
+                    >
+                      {item.status}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-text-secondary">
+                    {item.published_at
+                      ? new Date(item.published_at).toLocaleDateString("id-ID", {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        })
+                      : "-"}
+                  </td>
+                  <td className="px-6 py-4 text-right">
+                    <Button asChild size="sm" variant="outline">
+                      <Link href={`/admin/posts/${item.id}`}>Edit</Link>
+                    </Button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
-import { DataTable } from "@/components/admin/data-table";
 import { formatRupiah } from "@/lib/utils";
 import { ShieldAlert } from "lucide-react";
 
@@ -32,65 +31,6 @@ export default async function AdminDonationsPage() {
 
   const donationList = (donations || []) as unknown as DonationItem[];
 
-  const columns = [
-    {
-      header: "Donatur",
-      accessorKey: (item: DonationItem) => (
-        <div>
-          <p className="font-bold text-text-primary">{item.donor_name}</p>
-          <p className="text-xs text-text-muted">
-            {item.donor_email || "Tanpa email"} {item.is_anonymous && "(Anonim)"}
-          </p>
-        </div>
-      ),
-    },
-    {
-      header: "Campaign",
-      accessorKey: (item: DonationItem) => (
-        <span className="text-sm font-medium text-text-secondary">
-          {item.campaigns?.title || "Campaign"}
-        </span>
-      ),
-    },
-    {
-      header: "Nominal",
-      accessorKey: (item: DonationItem) => (
-        <span className="font-bold text-primary tabular-nums">
-          {formatRupiah(item.amount)}
-        </span>
-      ),
-    },
-    {
-      header: "Order ID / Metode",
-      accessorKey: (item: DonationItem) => (
-        <div>
-          <p className="font-mono text-xs text-text-primary">
-            {item.payments?.[0]?.order_id || "-"}
-          </p>
-          <p className="text-xs text-text-muted uppercase">
-            {item.payments?.[0]?.payment_type || item.payment_method}
-          </p>
-        </div>
-      ),
-    },
-    {
-      header: "Status",
-      accessorKey: (item: DonationItem) => (
-        <span
-          className={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${
-            item.status === "success"
-              ? "bg-success-soft text-success"
-              : item.status === "pending"
-              ? "bg-warning-soft text-warning"
-              : "bg-danger-soft text-danger"
-          }`}
-        >
-          {item.status}
-        </span>
-      ),
-    },
-  ];
-
   return (
     <div className="space-y-6">
       <div>
@@ -114,13 +54,66 @@ export default async function AdminDonationsPage() {
         </div>
       </div>
 
-      <DataTable
-        data={donationList}
-        columns={columns}
-        searchKey="donor_name"
-        searchPlaceholder="Cari nama donatur..."
-        emptyMessage="Belum ada transaksi donasi."
-      />
+      <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
+        <table className="w-full text-left text-sm">
+          <thead className="bg-primary-soft/50 text-xs font-semibold uppercase text-text-secondary">
+            <tr>
+              <th className="px-6 py-4">Donatur</th>
+              <th className="px-6 py-4">Campaign</th>
+              <th className="px-6 py-4">Nominal</th>
+              <th className="px-6 py-4">Order ID / Metode</th>
+              <th className="px-6 py-4">Status</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border-light text-text-primary">
+            {donationList.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="px-6 py-12 text-center text-text-muted">
+                  Belum ada transaksi donasi.
+                </td>
+              </tr>
+            ) : (
+              donationList.map((item) => (
+                <tr key={item.id} className="hover:bg-background/50">
+                  <td className="px-6 py-4">
+                    <p className="font-bold text-text-primary">{item.donor_name}</p>
+                    <p className="text-xs text-text-muted">
+                      {item.donor_email || "Tanpa email"} {item.is_anonymous && "(Anonim)"}
+                    </p>
+                  </td>
+                  <td className="px-6 py-4 text-sm font-medium text-text-secondary">
+                    {item.campaigns?.title || "Campaign"}
+                  </td>
+                  <td className="px-6 py-4 font-bold text-primary tabular-nums">
+                    {formatRupiah(item.amount)}
+                  </td>
+                  <td className="px-6 py-4">
+                    <p className="font-mono text-xs text-text-primary">
+                      {item.payments?.[0]?.order_id || "-"}
+                    </p>
+                    <p className="text-xs text-text-muted uppercase">
+                      {item.payments?.[0]?.payment_type || item.payment_method}
+                    </p>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span
+                      className={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${
+                        item.status === "success"
+                          ? "bg-success-soft text-success"
+                          : item.status === "pending"
+                          ? "bg-warning-soft text-warning"
+                          : "bg-danger-soft text-danger"
+                      }`}
+                    >
+                      {item.status}
+                    </span>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

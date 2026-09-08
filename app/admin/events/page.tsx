@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { DataTable } from "@/components/admin/data-table";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 
@@ -29,55 +28,6 @@ export default async function AdminEventsPage() {
 
   const eventList = (events || []) as EventItem[];
 
-  const columns = [
-    {
-      header: "Judul Agenda",
-      accessorKey: (item: EventItem) => (
-        <div>
-          <Link
-            href={`/admin/events/${item.id}`}
-            className="font-bold text-text-primary hover:text-primary transition-colors"
-          >
-            {item.title}
-          </Link>
-          <p className="text-xs text-text-muted">{item.location || "Lokasi tidak diset"}</p>
-        </div>
-      ),
-    },
-    {
-      header: "Waktu Mulai",
-      accessorKey: (item: EventItem) =>
-        new Date(item.start_at).toLocaleString("id-ID", {
-          dateStyle: "medium",
-          timeStyle: "short",
-        }),
-    },
-    {
-      header: "Status",
-      accessorKey: (item: EventItem) => (
-        <span
-          className={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${
-            item.status === "published"
-              ? "bg-success-soft text-success"
-              : item.status === "draft"
-              ? "bg-warning-soft text-warning"
-              : "bg-border text-text-secondary"
-          }`}
-        >
-          {item.status}
-        </span>
-      ),
-    },
-    {
-      header: "Aksi",
-      accessorKey: (item: EventItem) => (
-        <Button asChild size="sm" variant="outline">
-          <Link href={`/admin/events/${item.id}`}>Edit</Link>
-        </Button>
-      ),
-    },
-  ];
-
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -97,13 +47,65 @@ export default async function AdminEventsPage() {
         </Button>
       </div>
 
-      <DataTable
-        data={eventList}
-        columns={columns}
-        searchKey="title"
-        searchPlaceholder="Cari judul agenda..."
-        emptyMessage="Belum ada agenda yang dijadwalkan."
-      />
+      <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
+        <table className="w-full text-left text-sm">
+          <thead className="bg-primary-soft/50 text-xs font-semibold uppercase text-text-secondary">
+            <tr>
+              <th className="px-6 py-4">Judul Agenda</th>
+              <th className="px-6 py-4">Waktu Mulai</th>
+              <th className="px-6 py-4">Status</th>
+              <th className="px-6 py-4 text-right">Aksi</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border-light text-text-primary">
+            {eventList.length === 0 ? (
+              <tr>
+                <td colSpan={4} className="px-6 py-12 text-center text-text-muted">
+                  Belum ada agenda yang dijadwalkan.
+                </td>
+              </tr>
+            ) : (
+              eventList.map((item) => (
+                <tr key={item.id} className="hover:bg-background/50">
+                  <td className="px-6 py-4">
+                    <Link
+                      href={`/admin/events/${item.id}`}
+                      className="font-bold text-text-primary hover:text-primary transition-colors"
+                    >
+                      {item.title}
+                    </Link>
+                    <p className="text-xs text-text-muted">{item.location || "Lokasi tidak diset"}</p>
+                  </td>
+                  <td className="px-6 py-4 text-text-secondary">
+                    {new Date(item.start_at).toLocaleString("id-ID", {
+                      dateStyle: "medium",
+                      timeStyle: "short",
+                    })}
+                  </td>
+                  <td className="px-6 py-4">
+                    <span
+                      className={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${
+                        item.status === "published"
+                          ? "bg-success-soft text-success"
+                          : item.status === "draft"
+                          ? "bg-warning-soft text-warning"
+                          : "bg-border text-text-secondary"
+                      }`}
+                    >
+                      {item.status}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-right">
+                    <Button asChild size="sm" variant="outline">
+                      <Link href={`/admin/events/${item.id}`}>Edit</Link>
+                    </Button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
