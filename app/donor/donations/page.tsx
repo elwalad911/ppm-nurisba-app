@@ -3,7 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { formatRupiah } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { History, Eye } from "lucide-react";
+import { Eye } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Riwayat Donasi — Portal Donatur",

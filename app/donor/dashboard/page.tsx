@@ -3,7 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { formatRupiah } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Heart, History, User, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Heart, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Dashboard Donatur — PPM Nurisba",

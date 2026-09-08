@@ -4,7 +4,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { formatRupiah } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, CheckCircle2, FileText, Printer } from "lucide-react";
+import { ArrowLeft, CheckCircle2 } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ id: string }>;
