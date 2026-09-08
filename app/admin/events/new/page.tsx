@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { createEvent } from "../actions";
 import { Button } from "@/components/ui/button";
+import { ImageUpload } from "@/components/admin/image-upload";
 import { ArrowLeft, Save } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -90,17 +91,11 @@ export default function NewEventPage() {
               <option value="archived">Archived</option>
             </select>
           </div>
-          <div>
-            <label className="block text-sm font-semibold text-text-primary mb-1.5">
-              URL Gambar
-            </label>
-            <input
-              type="url"
-              name="image_url"
-              placeholder="https://..."
-              className="flex h-11 w-full rounded-xl border border-border bg-background px-4 text-sm text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            />
-          </div>
+          <ImageUpload
+            name="image_url"
+            folder="events"
+            label="URL Gambar"
+          />
         </div>
 
         <div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { updateCampaign, deleteCampaign } from "../actions";
 import { Button } from "@/components/ui/button";
+import { ImageUpload } from "@/components/admin/image-upload";
 import { ArrowLeft, Save, Trash2 } from "lucide-react";
 
 interface PageProps {
@@ -138,17 +139,12 @@ export default async function EditCampaignPage({ params }: PageProps) {
               <option value="archived">Archived</option>
             </select>
           </div>
-          <div>
-            <label className="block text-sm font-semibold text-text-primary mb-1.5">
-              URL Gambar (Thumbnail)
-            </label>
-            <input
-              type="url"
-              name="image_url"
-              defaultValue={campaign.image_url || ""}
-              className="flex h-11 w-full rounded-xl border border-border bg-background px-4 text-sm text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            />
-          </div>
+          <ImageUpload
+            name="image_url"
+            folder="campaigns"
+            label="URL Gambar (Thumbnail)"
+            defaultValue={campaign.image_url || ""}
+          />
         </div>
 
         <div>

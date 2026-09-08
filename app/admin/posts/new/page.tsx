@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { createPost } from "../actions";
 import { Button } from "@/components/ui/button";
+import { ImageUpload } from "@/components/admin/image-upload";
 import { ArrowLeft, Save } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -65,17 +66,11 @@ export default function NewPostPage() {
               <option value="archived">Archived</option>
             </select>
           </div>
-          <div>
-            <label className="block text-sm font-semibold text-text-primary mb-1.5">
-              URL Thumbnail
-            </label>
-            <input
-              type="url"
-              name="thumbnail_url"
-              placeholder="https://..."
-              className="flex h-11 w-full rounded-xl border border-border bg-background px-4 text-sm text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            />
-          </div>
+          <ImageUpload
+            name="thumbnail_url"
+            folder="posts"
+            label="URL Thumbnail"
+          />
         </div>
 
         <div>
