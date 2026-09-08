@@ -25,7 +25,7 @@ export async function createEvent(formData: FormData): Promise<void> {
     description: formData.get("description"),
     location: formData.get("location"),
     start_at: formData.get("start_at"),
-    end_at: formData.get("end_at") || null,
+    end_at: formData.get("end_at") || undefined,
     image_url: formData.get("image_url"),
     status: formData.get("status"),
   };
@@ -58,7 +58,7 @@ export async function updateEvent(id: string, formData: FormData): Promise<void>
     description: formData.get("description"),
     location: formData.get("location"),
     start_at: formData.get("start_at"),
-    end_at: formData.get("end_at") || null,
+    end_at: formData.get("end_at") || undefined,
     image_url: formData.get("image_url"),
     status: formData.get("status"),
   };

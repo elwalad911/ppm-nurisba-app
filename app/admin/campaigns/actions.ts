@@ -29,7 +29,7 @@ export async function createCampaign(formData: FormData): Promise<void> {
     image_url: formData.get("image_url"),
     status: formData.get("status"),
     start_date: formData.get("start_date") || undefined,
-    end_date: formData.get("end_date") || null,
+    end_date: formData.get("end_date") || undefined,
   };
 
   const result = campaignSchema.safeParse(rawData);
@@ -62,7 +62,7 @@ export async function updateCampaign(id: string, formData: FormData): Promise<vo
     image_url: formData.get("image_url"),
     status: formData.get("status"),
     start_date: formData.get("start_date") || undefined,
-    end_date: formData.get("end_date") || null,
+    end_date: formData.get("end_date") || undefined,
   };
 
   const result = campaignSchema.safeParse(rawData);

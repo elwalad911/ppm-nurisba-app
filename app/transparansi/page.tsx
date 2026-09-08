@@ -73,7 +73,7 @@ export default async function TransparencyPage() {
                   <ArrowUpRight className="h-5 w-5" />
                 </div>
               </div>
-              <p className="mt-4 text-2xl font-bold tabular-nums text-success sm:text-3xl">
+              <p className="mt-4 text-xl font-bold tabular-nums text-success sm:text-2xl md:text-3xl break-all">
                 {formatRupiah(totalIncome)}
               </p>
               <p className="mt-1 text-xs text-text-muted">
@@ -90,7 +90,7 @@ export default async function TransparencyPage() {
                   <ArrowDownRight className="h-5 w-5" />
                 </div>
               </div>
-              <p className="mt-4 text-2xl font-bold tabular-nums text-danger sm:text-3xl">
+              <p className="mt-4 text-xl font-bold tabular-nums text-danger sm:text-2xl md:text-3xl break-all">
                 {formatRupiah(totalExpense)}
               </p>
               <p className="mt-1 text-xs text-text-muted">
@@ -107,7 +107,7 @@ export default async function TransparencyPage() {
                   <Wallet className="h-5 w-5" />
                 </div>
               </div>
-              <p className="mt-4 text-2xl font-bold tabular-nums text-primary sm:text-3xl">
+              <p className="mt-4 text-xl font-bold tabular-nums text-primary sm:text-2xl md:text-3xl break-all">
                 {formatRupiah(balance)}
               </p>
               <p className="mt-1 text-xs text-text-muted">
