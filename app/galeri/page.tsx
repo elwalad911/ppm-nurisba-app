@@ -29,13 +29,14 @@ export default async function GaleriPage() {
     <>
       <Navbar />
 
-      <PageHeader
-        title="Galeri Foto"
-        description="Dokumentasi visual kegiatan, fasilitas, dan suasana di Pondok Pesantren Modern Nurul Ikhlas."
-      />
+      <main className="flex-1 w-full max-w-[1280px] mx-auto px-4 md:px-8 pt-[72px] pb-12 md:py-24 space-y-12 md:space-y-24">
+        <PageHeader
+          title="Galeri Foto"
+          description="Dokumentasi visual kegiatan, fasilitas, dan suasana di Pondok Pesantren Modern Nurul Ikhlas."
+        />
 
-      <section className="py-16 sm:py-20 lg:py-24">
-        <Container>
+        <section>
+          <Container>
           {items.length === 0 ? (
             <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-surface py-16 text-center">
               <ImageIcon className="h-12 w-12 text-text-muted" />
@@ -83,6 +84,7 @@ export default async function GaleriPage() {
           )}
         </Container>
       </section>
+      </main>
 
       <Footer />
     </>

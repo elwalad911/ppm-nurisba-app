@@ -70,13 +70,14 @@ export default function ProgramPage() {
     <>
       <Navbar />
 
-      <PageHeader
-        title="Program Pendidikan"
-        description="PPM Nurisba memadukan dua pendekatan pendidikan — salafiyah dan khalafiyah — untuk membentuk generasi yang beriman, berilmu, dan berakhlak."
-      />
+      <main className="flex-1 w-full max-w-[1280px] mx-auto px-4 md:px-8 pt-[72px] pb-12 md:py-24 space-y-12 md:space-y-24">
+        <PageHeader
+          title="Program Pendidikan"
+          description="PPM Nurisba memadukan dua pendekatan pendidikan — salafiyah dan khalafiyah — untuk membentuk generasi yang beriman, berilmu, dan berakhlak."
+        />
 
-      {/* Program Cards */}
-      <section className="py-16 sm:py-20 lg:py-24">
+        {/* Program Cards */}
+        <section>
         <Container>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
             {programs.map((program) => (
@@ -160,6 +161,7 @@ export default function ProgramPage() {
           </div>
         </Container>
       </section>
+      </main>
 
       <Footer />
     </>

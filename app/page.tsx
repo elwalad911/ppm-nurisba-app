@@ -51,7 +51,7 @@ export default async function HomePage() {
       <Navbar />
 
       {/* ===== HERO ===== */}
-      <section className="relative bg-gradient-to-br from-primary-soft via-white to-cta-soft pt-24 pb-16 sm:pt-32 sm:pb-24 lg:pt-40 lg:pb-32">
+      <section className="relative bg-gradient-to-br from-primary-soft via-white to-cta-soft pt-[72px] pb-16 sm:pb-24 lg:pb-32">
         <Container>
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-wider text-primary">

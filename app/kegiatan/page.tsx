@@ -17,13 +17,14 @@ export default function KegiatanPage() {
     <>
       <Navbar />
 
-      <PageHeader
-        title="Kegiatan"
-        description="Program kegiatan santri di PPM Nurisba yang mendukung pengembangan potensi dan akhlak."
-      />
+      <main className="flex-1 w-full max-w-[1280px] mx-auto px-4 md:px-8 pt-[72px] pb-12 md:py-24 space-y-12 md:space-y-24">
+        <PageHeader
+          title="Kegiatan"
+          description="Program kegiatan santri di PPM Nurisba yang mendukung pengembangan potensi dan akhlak."
+        />
 
-      {/* Kegiatan Description */}
-      <section className="py-16 sm:py-20 lg:py-24">
+        {/* Kegiatan Description */}
+        <section>
         <Container>
           <div className="mx-auto max-w-3xl">
             <SectionHeader
@@ -89,6 +90,7 @@ export default function KegiatanPage() {
           </div>
         </Container>
       </section>
+      </main>
 
       <Footer />
     </>

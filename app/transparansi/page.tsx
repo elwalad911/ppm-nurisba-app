@@ -54,12 +54,13 @@ export default async function TransparencyPage() {
     <>
       <Navbar />
 
-      <PageHeader
-        title="Transparansi Pembangunan"
-        description="Kami berkomitmen menyampaikan informasi pembangunan secara terbuka agar masyarakat dan para donatur dapat mengetahui kebutuhan, penggunaan, serta perkembangan program pembangunan."
-      />
+      <main className="flex-1 w-full max-w-[1280px] mx-auto px-4 md:px-8 pt-[72px] pb-12 md:py-24 space-y-12 md:space-y-24">
+        <PageHeader
+          title="Transparansi Pembangunan"
+          description="Kami berkomitmen menyampaikan informasi pembangunan secara terbuka agar masyarakat dan para donatur dapat mengetahui kebutuhan, penggunaan, serta perkembangan program pembangunan."
+        />
 
-      <section className="py-16 sm:py-20 lg:py-24">
+        <section>
         <Container>
           {/* Summary Metrics */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 mb-16">
@@ -264,6 +265,7 @@ export default async function TransparencyPage() {
           </div>
         </Container>
       </section>
+      </main>
 
       <Footer />
     </>

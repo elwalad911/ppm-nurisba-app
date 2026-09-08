@@ -1,107 +1,102 @@
 import Link from "next/link";
 import { Container } from "@/components/container";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 const quickLinks = [
-  { href: "/profil", label: "Profil" },
+  { href: "/profil", label: "Tentang Kami" },
   { href: "/program", label: "Program" },
-  { href: "/kegiatan", label: "Kegiatan" },
-  { href: "/kontak", label: "Kontak" },
+  { href: "/berita", label: "Berita & Artikel" },
+  { href: "/transparansi", label: "Transparansi Donasi" },
+];
+
+const helpLinks = [
+  { href: "/kontak", label: "Hubungi Kami" },
+  { href: "#", label: "Kebijakan Privasi" },
+  { href: "#", label: "Syarat & Ketentuan" },
+  { href: "#", label: "FAQ" },
 ];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary-strong text-white">
+    <footer className="w-full pt-12 pb-10 bg-surface-container-highest mt-auto">
       <Container>
-        <div className="grid grid-cols-1 gap-10 py-12 sm:py-16 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {/* Brand */}
-          <div className="md:col-span-2 lg:col-span-1">
-            <h3 className="text-lg font-bold">PPM Nurisba</h3>
-            <p className="mt-3 text-sm text-white/70 leading-relaxed">
-              Pondok Pesantren Modern Nurul Ikhlas Soreang Bandung.
-              <br />
-              Bagian dari Yayasan Nurul Ikhlas Soreang Bandung.
+          <div className="space-y-4">
+            <span className="text-base font-bold text-primary tracking-tight">
+              PPM Nurisba
+            </span>
+            <p className="text-sm text-on-surface-variant max-w-xs leading-relaxed">
+              Pusat Pendidikan dan Manajemen Nurul Ikhlas Soreang Bandung.
+              Berkomitmen pada pendidikan dan transparansi.
             </p>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/50">
-              Tautan
+          <div className="space-y-2 flex flex-col">
+            <h4 className="text-sm font-semibold text-on-surface mb-2">
+              Tautan Cepat
             </h4>
-            <ul className="mt-4 space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/70 transition-colors hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {quickLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm text-on-surface-variant hover:text-cta transition-colors underline-offset-4 hover:underline"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
-          {/* Donation Info */}
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/50">
-              Program Wakaf
+          {/* Help Links */}
+          <div className="space-y-2 flex flex-col">
+            <h4 className="text-sm font-semibold text-on-surface mb-2">
+              Bantuan
             </h4>
-            <p className="mt-4 text-sm text-white/70">
-              Pembangunan Masjid dan Ruang Kelas/Asrama PPM Nurisba.
-            </p>
-            <p className="mt-2 text-sm font-semibold text-cta">
-              Target: Rp1.203.800.000
-            </p>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/50">
-              Kontak
-            </h4>
-            <ul className="mt-4 space-y-2 text-sm text-white/70">
-              <li>
-                WhatsApp:{" "}
-                <a
-                  href="https://wa.me/6282262893646"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white transition-colors hover:underline"
-                >
-                  082262893646
-                </a>
-              </li>
-              <li>
-                Email:{" "}
-                <a
-                  href="mailto:nurulikhlassoreangbandung@gmail.com"
-                  className="text-white transition-colors hover:underline"
-                >
-                  nurulikhlassoreangbandung@gmail.com
-                </a>
-              </li>
-              <li className="leading-relaxed">
-                Perum Bumi Parahyangan Kencana
-                <br />
-                Jl. Bhayangkara Blok N 7 No. 10–12
-                <br />
-                RT. 01/RW. 24, Soreang
-                <br />
-                Bandung 40911, Jawa Barat
-              </li>
-            </ul>
+            {helpLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-sm text-on-surface-variant hover:text-cta transition-colors underline-offset-4 hover:underline"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 py-6 text-center text-xs text-white/50">
-          <p>
-            &copy; {currentYear} Pondok Pesantren Modern Nurul Ikhlas Soreang
-            Bandung. Hak cipta dilindungi.
+        <div className="mt-8 border-t border-outline-variant/50 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-on-surface-variant text-center md:text-left">
+            &copy; {currentYear} PPM Nurisba. Amanah &amp; Transparan.
           </p>
+          <div className="flex gap-4">
+            <a
+              href="mailto:nurulikhlassoreangbandung@gmail.com"
+              className="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center shadow-sm hover:bg-primary-soft transition-colors"
+              aria-label="Email"
+            >
+              <Mail className="h-4 w-4" />
+            </a>
+            <a
+              href="https://wa.me/6282262893646"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center shadow-sm hover:bg-primary-soft transition-colors"
+              aria-label="WhatsApp"
+            >
+              <Phone className="h-4 w-4" />
+            </a>
+            <a
+              href="#"
+              className="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center shadow-sm hover:bg-primary-soft transition-colors"
+              aria-label="Lokasi"
+            >
+              <MapPin className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </Container>
     </footer>

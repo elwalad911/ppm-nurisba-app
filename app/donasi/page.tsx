@@ -33,12 +33,13 @@ export default async function DonasiPage() {
     <>
       <Navbar />
 
-      <PageHeader
-        title="Program Donasi & Wakaf"
-        description="Mari ambil bagian dalam pembangunan fasilitas ibadah dan pendidikan umat."
-      />
+      <main className="flex-1 w-full max-w-[1280px] mx-auto px-4 md:px-8 pt-[72px] pb-12 md:py-24 space-y-12 md:space-y-24">
+        <PageHeader
+          title="Program Donasi & Wakaf"
+          description="Mari ambil bagian dalam pembangunan fasilitas ibadah dan pendidikan umat."
+        />
 
-      <section className="py-16 sm:py-20 lg:py-24">
+        <section>
         <Container>
           {campaignList.length === 0 ? (
             <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-surface py-16 text-center">
@@ -140,6 +141,7 @@ export default async function DonasiPage() {
           )}
         </Container>
       </section>
+      </main>
 
       <Footer />
     </>

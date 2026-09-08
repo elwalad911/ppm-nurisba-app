@@ -1,50 +1,61 @@
 @import "tailwindcss";
 
 /* ==========================================
-   DESIGN TOKENS — PPM Nurisba App
-   Source: DESIGN.md §3 Color System
+   DESIGN TOKENS — Stitch Islamic Center Modernist
+   Source: Stitch MCP tailwind.config (exact values)
    ========================================== */
 
 :root {
-  /* Brand colors */
-  --primary: #0d9488;
+  /* Brand — exact from Stitch */
+  --primary: #00685f;
   --primary-strong: #115e59;
   --primary-soft: #f0fdfa;
-  --cta: #fb923c;
-  --cta-strong: #ea580c;
+  --primary-container: #008378;
+  --cta: #fd761a;
+  --cta-strong: #9d4300;
   --cta-soft: #fff7ed;
 
-  /* Semantic status colors */
+  /* Semantic status */
   --success: #059669;
   --success-soft: #ecfdf5;
   --warning: #f59e0b;
   --warning-soft: #fffbeb;
   --danger: #ef4444;
-  --danger-soft: #fef2f2;
+  --danger-soft: #ffdad6;
 
-  /* Surface & background */
-  --background: #fbfcfc;
-  --surface: #ffffff;
+  /* Surface & background — exact from Stitch */
+  --background: #f8f9f9;
+  --surface: #f8f9f9;
+  --surface-container: #edeeee;
+  --surface-container-low: #f3f4f4;
+  --surface-container-highest: #e1e3e3;
+  --surface-container-lowest: #ffffff;
 
-  /* Text */
+  /* Text — exact from Stitch */
   --text-primary: #1f2937;
   --text-secondary: #4b5563;
-  --text-muted: #9ca3af;
+  --text-muted: #6d7a77;
+  --on-surface: #191c1c;
+  --on-surface-variant: #3d4947;
 
-  /* Border */
-  --border: #e5e7eb;
-  --border-light: #f3f4f6;
+  /* Border — exact from Stitch */
+  --border: #e2e8f0;
+  --outline-variant: #bcc9c6;
 }
 
 @theme inline {
-  /* CSS variable to Tailwind color mapping */
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-container-lowest: var(--surface-container-lowest);
 
   /* Brand */
   --color-primary: var(--primary);
   --color-primary-strong: var(--primary-strong);
   --color-primary-soft: var(--primary-soft);
+  --color-primary-container: var(--primary-container);
   --color-cta: var(--cta);
   --color-cta-strong: var(--cta-strong);
   --color-cta-soft: var(--cta-soft);
@@ -61,10 +72,12 @@
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
 
   /* Border */
   --color-border: var(--border);
-  --color-border-light: var(--border-light);
+  --color-outline-variant: var(--outline-variant);
 
   /* Font */
   --font-sans: var(--font-geist-sans);
@@ -77,22 +90,21 @@
 
 body {
   background-color: var(--background);
-  color: var(--text-primary);
+  color: var(--on-surface);
   font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth scroll for navigation */
 html {
   scroll-behavior: smooth;
 }
 
-/* Focus visible ring for keyboard navigation */
 *:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
-/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
