@@ -34,9 +34,10 @@ export async function createPendingDonation(input: DonationInput) {
     .single();
 
   if (error || !donation) {
+    console.error("Donation insert error details:", error);
     return {
       success: false,
-      error: "Gagal memproses donasi. Silakan coba kembali.",
+      error: `Gagal memproses donasi: ${error?.message || "Database error"}`,
     };
   }
 
@@ -52,9 +53,10 @@ export async function createPendingDonation(input: DonationInput) {
   });
 
   if (paymentError) {
+    console.error("Payment insert error details:", paymentError);
     return {
       success: false,
-      error: "Gagal membuat transaksi pembayaran.",
+      error: `Gagal membuat transaksi pembayaran: ${paymentError.message}`,
     };
   }
 
