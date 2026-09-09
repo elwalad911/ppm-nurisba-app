@@ -1,0 +1,278 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Galeri - PPM Nurisba</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config injected from Style Guidance -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdbca",
+                        "inverse-on-surface": "#f0f1f1",
+                        "border": "#e2e8f0",
+                        "on-primary-fixed-variant": "#005049",
+                        "surface-dim": "#d9dada",
+                        "surface": "#f8f9f9",
+                        "warning": "#f59e0b",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#fd761a",
+                        "on-error-container": "#93000a",
+                        "background": "#f8f9f9",
+                        "on-surface-variant": "#3d4947",
+                        "tertiary-fixed": "#85f8c4",
+                        "tertiary": "#006948",
+                        "on-secondary": "#ffffff",
+                        "primary-soft": "#f0fdfa",
+                        "primary": "#00685f",
+                        "primary-fixed": "#89f5e7",
+                        "on-background": "#191c1c",
+                        "surface-container-low": "#f3f4f4",
+                        "primary-fixed-dim": "#6bd8cb",
+                        "on-primary-container": "#f4fffc",
+                        "surface-container-highest": "#e1e3e3",
+                        "outline": "#6d7a77",
+                        "outline-variant": "#bcc9c6",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2e3131",
+                        "on-tertiary-fixed": "#002114",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "secondary-fixed-dim": "#ffb690",
+                        "secondary": "#9d4300",
+                        "on-secondary-container": "#5c2400",
+                        "tertiary-container": "#00855d",
+                        "surface-tint": "#006a61",
+                        "surface-container-high": "#e7e8e8",
+                        "on-tertiary-container": "#f5fff7",
+                        "text-secondary": "#4b5563",
+                        "danger": "#ef4444",
+                        "on-surface": "#191c1c",
+                        "on-primary-fixed": "#00201d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "surface-bright": "#f8f9f9",
+                        "primary-container": "#008378",
+                        "surface-variant": "#e1e3e3",
+                        "primary-strong": "#115e59",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#edeeee",
+                        "on-secondary-fixed-variant": "#783200",
+                        "text-primary": "#1f2937",
+                        "inverse-primary": "#6bd8cb",
+                        "on-secondary-fixed": "#341100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap-lg": "6rem",
+                        "section-gap-sm": "3rem",
+                        "gutter": "1.5rem",
+                        "touch-target": "44px",
+                        "margin-mobile": "1rem",
+                        "margin-desktop": "2rem",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Geist"],
+                        "number-xl": ["Geist"],
+                        "display-lg-mobile": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "body-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "label-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "number-xl": ["32px", { "lineHeight": "1", "fontWeight": "800" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "caption": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9f9; color: #191c1c; }
+        .geist-font { font-family: 'Geist', sans-serif; }
+        /* Custom scrollbar for horizontal filter list */
+        .filter-scroll::-webkit-scrollbar { display: none; }
+        .filter-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pt-[72px]">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full h-[72px] z-50 bg-white/80 dark:bg-inverse-surface/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center h-full px-margin-desktop max-w-container-max mx-auto">
+<a class="text-headline-sm font-headline-sm font-bold text-primary dark:text-inverse-primary geist-font" href="#">
+                PPM Nurisba
+            </a>
+<!-- Desktop Nav -->
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Profil</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Program</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Kegiatan</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Berita</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Agenda</a>
+<!-- Active State -->
+<a class="font-label-md text-label-md text-primary dark:text-inverse-primary border-b-2 border-primary pb-1 scale-95 transition-transform duration-200" href="#">Galeri</a>
+</div>
+<!-- Actions -->
+<div class="hidden md:flex items-center gap-4">
+<button class="font-label-md text-label-md px-4 py-2 rounded-xl text-primary border border-primary hover:bg-primary-soft transition-colors h-touch-target flex items-center justify-center">Transparansi</button>
+<button class="font-label-md text-label-md px-6 py-2 rounded-xl bg-secondary-container text-white hover:bg-secondary transition-colors shadow-sm h-touch-target flex items-center justify-center">Donasi Sekarang</button>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-surface p-2 h-touch-target w-touch-target flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow">
+<!-- Header Section -->
+<section class="py-section-gap-sm px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Galeri Kami</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Dokumentasi otentik kehidupan dan aktivitas di lingkungan pesantren PPM Nurisba, menangkap momen kebersamaan, belajar, dan fasilitas yang mendukung proses pendidikan.</p>
+</section>
+<!-- Filter Navigation -->
+<section class="mb-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex overflow-x-auto filter-scroll gap-4 pb-2 md:justify-center">
+<button class="whitespace-nowrap px-6 py-2 rounded-full font-label-md text-label-md bg-primary text-white shadow-sm transition-all h-touch-target flex items-center">Semua</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full font-label-md text-label-md bg-white text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all border border-border h-touch-target flex items-center">Pendidikan</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full font-label-md text-label-md bg-white text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all border border-border h-touch-target flex items-center">Kegiatan Santri</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full font-label-md text-label-md bg-white text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all border border-border h-touch-target flex items-center">Fasilitas</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full font-label-md text-label-md bg-white text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all border border-border h-touch-target flex items-center">Acara Besar</button>
+</div>
+</section>
+<!-- Gallery Grid -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-section-gap-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Gallery Item 1 (Aspect Ratio 4:3) -->
+<div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 bg-white aspect-[4/3] cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A warm, authentic daytime photograph of students studying collaboratively in a well-lit, modern Islamic classroom setting. The students wear neat uniforms, engaging in discussion over books and tablets. Gentle natural light streams through large windows, creating a soft, optimistic mood. The aesthetic is clean, professional, and hopeful, utilizing a palette of soft whites, warm wood tones, and subtle teal accents reflecting modern institutional trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIpBUGdKPWGOspPYFlxc496DubpKcnCaHz5FwEuJ0-belmo_JaMKCSJqk7W9U9vHH_jR8Xtp_2PoQaf3WXhw3WC_v8k4kgj1hVLT3a0A59xWJ7dOJUvkXCc9uwowO-3ub-fjypwJTJq0eRYS1vq7khav7y1CY1XLOmgTr7kSNXPLk7427yQpUqT1oN3SoCYJsYOQ7XhlAyj1EJUuPEsBOF99cWCXSShgS0yCjhnvAgCbaL9bFCUaiB">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div class="text-white w-full">
+<span class="font-caption text-caption uppercase tracking-wider text-primary-fixed-dim mb-1 block">Pendidikan</span>
+<h3 class="font-headline-sm text-headline-sm text-white flex justify-between items-center">Kajian Kitab Pagi
+                                <span class="material-symbols-outlined text-white" data-icon="open_in_full">open_in_full</span>
+</h3>
+</div>
+</div>
+</div>
+<!-- Gallery Item 2 -->
+<div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 bg-white aspect-[4/3] cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A vibrant, documentary-style photo of a large community gathering in a spacious, modern mosque interior during Friday prayers. Rows of worshippers sit peacefully, bathed in soft, diffused light filtering through geometric architectural screens. The mood is serene and deeply spiritual, with a color palette emphasizing pristine whites, deep architectural shadows, and the warm glow of community devotion." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXei9RpBAlPLeu0g3KzIwUn3pwhZmazrg4MARYidaJyyy1sXrFPGnAnKbC456w_FbJVxlEqQZCEeRApJfkY-TJmis7GB6QBvz3Ps1kZMhmqpNp6jbd9OGgUxTAVEE_k8mSTug9LjAPK3kD3EHbyJUdm4hcvrkLIsKmHC8UpoKzLF7YonKWOhEE_uufqjTdid0eGYXs-gnE2Sb9eSIkCKZs3i6Qe5HNTs05HsDCGDMk6a_qglI529lB">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div class="text-white w-full">
+<span class="font-caption text-caption uppercase tracking-wider text-primary-fixed-dim mb-1 block">Acara Besar</span>
+<h3 class="font-headline-sm text-headline-sm text-white flex justify-between items-center">Tabligh Akbar
+                                <span class="material-symbols-outlined text-white" data-icon="open_in_full">open_in_full</span>
+</h3>
+</div>
+</div>
+</div>
+<!-- Gallery Item 3 -->
+<div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 bg-white aspect-[4/3] cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A crisp, wide-angle architectural photograph of a newly built, modern pesantren dormitory building on a sunny day. The facade is clean and minimalist with large windows, surrounded by well-maintained green landscaping and a small paved courtyard. The clear blue sky and bright sunlight evoke growth and transparency. The color palette features stark white concrete, lush green foliage, and warm, inviting shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAshadQPIvq4iLWURmrWlrZkoe7h8kr1LRbsbQn_Eej4CapCsZ-ehzJN8Oc9FKk7bqkRO8YS0awO8p96c9rL8gSgPlyh02OtNE32n3YP4qSflEw-e8FWclp2MTEiOwi6ogG-nf81vi4AuycpjC9NNaoJWIrp9LtiF5r-DCImhDWhokaUoWG41bBjL-E9DJByRJkOs_zlFSjCTNcZJWFuIXmuYpsHNgc9EIjr8zHOg5SRAZN5mnVutq1">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div class="text-white w-full">
+<span class="font-caption text-caption uppercase tracking-wider text-primary-fixed-dim mb-1 block">Fasilitas</span>
+<h3 class="font-headline-sm text-headline-sm text-white flex justify-between items-center">Asrama Putra Baru
+                                <span class="material-symbols-outlined text-white" data-icon="open_in_full">open_in_full</span>
+</h3>
+</div>
+</div>
+</div>
+<!-- Gallery Item 4 -->
+<div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 bg-white aspect-[4/3] cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="An energetic, candid outdoor photo of students playing sports on a well-kept field during golden hour. The late afternoon sun casts long, warm shadows and highlights the joy and movement of the activity. The atmosphere is vibrant, communal, and healthy. The color palette focuses on the bright green of the field, the warm golden orange light, and the casual, active attire of the students." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRV6zckVsEmGJ84Fvzue5hTRjTM4XQlRdaIxnxdNkzClHQSRF1ijbPCIPKz5Zdk8NnP03cP8pTK2amyQfIBtuCFg1T6HzJqA5xs06lmPN3cx5tAOuY3bc4XVRol624ghz1aP7uuzGDsyMyZnS8QYXkmvosyswaFtMwei1lpOCwHyWLvh243ZGMQAxMsZFd4WPu9woqdgRfh49Poc2n3BVqoUmE3wOvEnIYEglgRHdFuuvmNVHqUJTd">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div class="text-white w-full">
+<span class="font-caption text-caption uppercase tracking-wider text-primary-fixed-dim mb-1 block">Kegiatan Santri</span>
+<h3 class="font-headline-sm text-headline-sm text-white flex justify-between items-center">Pekan Olahraga
+                                <span class="material-symbols-outlined text-white" data-icon="open_in_full">open_in_full</span>
+</h3>
+</div>
+</div>
+</div>
+<!-- Gallery Item 5 -->
+<div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 bg-white aspect-[4/3] cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A focused, close-up photograph of a student reading the Quran in a quiet library setting. Soft, natural light illuminates the pages and the student's face, highlighting a moment of deep concentration and reverence. The background is slightly blurred (bokeh), showing shelves of books. The mood is introspective and scholarly, with a palette of warm, soft tones and crisp white pages." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWJD5sL4hNPMder-qr8xUPACs0g4z3lD6dv50alKWzNPvj-XjdGaDJ6fet8nhroEuWYWyBVBUPfInx5CCr6UT0iGflcbIy81z-_u7ywwKZOaOELol4NMMNpMRSxw6D8ZQGBh7LrjaihPLwXJDZltZ9AJ0wvUFYmqXcDoBC3gtmwbBNfQxQBqM7dvZ8pZtMhpsprilyFlrTyDaH_Yb8jWCncYja30dF9NTfJpqjYV-lIhTP_Mto6KHJ">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div class="text-white w-full">
+<span class="font-caption text-caption uppercase tracking-wider text-primary-fixed-dim mb-1 block">Pendidikan</span>
+<h3 class="font-headline-sm text-headline-sm text-white flex justify-between items-center">Tahfidz Quran
+                                <span class="material-symbols-outlined text-white" data-icon="open_in_full">open_in_full</span>
+</h3>
+</div>
+</div>
+</div>
+<!-- Gallery Item 6 -->
+<div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 bg-white aspect-[4/3] cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A clean, bright photo of a modern computer laboratory inside a school. Rows of sleek desktop computers sit on tidy desks, ready for use. The room is well-lit with cool, professional lighting, emphasizing technology and modern education. The aesthetic is orderly and forward-thinking, using a palette of clinical whites, cool grays, and subtle glowing screen blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo2HtDTH3nVBl3W2_2qpzR2Yb3jY-B5Dlcy0leGtl7ZMutLePBxL5dMMT21oX2kgL3zLEgxbck4n0Gl0bHCN1FirKrqToPVkq6ozfQ5S8EerabI9ml51nYzj16gyizdt-aJqbaONVLm_Bj7I_RrMEiDuL2D1vslAWoOxoOrdemCFkZMoFel1r6FVkDLfjD9TMmMIs1GEOzaRPJEsY6ay7kFhDYQAVHYHDCkoL48r0a4ppxhB_WyijG">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div class="text-white w-full">
+<span class="font-caption text-caption uppercase tracking-wider text-primary-fixed-dim mb-1 block">Fasilitas</span>
+<h3 class="font-headline-sm text-headline-sm text-white flex justify-between items-center">Laboratorium Komputer
+                                <span class="material-symbols-outlined text-white" data-icon="open_in_full">open_in_full</span>
+</h3>
+</div>
+</div>
+</div>
+</div>
+<!-- Load More Button -->
+<div class="mt-12 flex justify-center">
+<button class="font-label-md text-label-md px-8 py-3 rounded-xl border-2 border-primary text-primary hover:bg-primary-soft transition-colors h-touch-target flex items-center justify-center gap-2">
+                    Muat Lebih Banyak
+                    <span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap-sm bg-surface-container-lowest dark:bg-inverse-surface mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<span class="text-headline-md font-headline-md font-extrabold text-primary dark:text-inverse-primary">PPM Nurisba</span>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">Membangun generasi cerdas, berakhlak mulia, dan berwawasan global melalui pendidikan Islami yang berkualitas.</p>
+</div>
+<div class="flex flex-col gap-4 md:items-center">
+<div class="flex flex-col gap-3">
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-2">Tautan</h4>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Hubungi Kami</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Kebijakan Privasi</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Syarat &amp; Ketentuan</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Peta Situs</a>
+</div>
+</div>
+<div class="flex flex-col gap-4 md:items-end justify-between">
+<button class="font-label-md text-label-md px-6 py-2 rounded-xl bg-secondary-container text-white hover:bg-secondary transition-colors shadow-sm h-touch-target w-fit flex items-center justify-center">
+                    Beri Dukungan
+                </button>
+<span class="font-body-md text-body-md text-on-surface-variant mt-4 md:mt-0 text-left md:text-right">
+                    © 2024 PPM Nurisba. Hak Cipta Dilindungi.
+                </span>
+</div>
+</div>
+</footer>
+</body></html>

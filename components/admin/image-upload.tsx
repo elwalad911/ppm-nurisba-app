@@ -98,6 +98,8 @@ export function ImageUpload({
         setMode("upload");
       } catch (err) {
         setError(err instanceof Error ? err.message : "Gagal mengupload gambar.");
+        setImageUrl("");
+        setPreview(null);
       } finally {
         setUploading(false);
       }

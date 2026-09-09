@@ -1,0 +1,317 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PPM Nurisba - Detail Berita</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#ffdbca",
+                      "inverse-on-surface": "#f0f1f1",
+                      "border": "#e2e8f0",
+                      "on-primary-fixed-variant": "#005049",
+                      "surface-dim": "#d9dada",
+                      "surface": "#f8f9f9",
+                      "warning": "#f59e0b",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "secondary-container": "#fd761a",
+                      "on-error-container": "#93000a",
+                      "background": "#f8f9f9",
+                      "on-surface-variant": "#3d4947",
+                      "tertiary-fixed": "#85f8c4",
+                      "tertiary": "#006948",
+                      "on-secondary": "#ffffff",
+                      "primary-soft": "#f0fdfa",
+                      "primary": "#00685f",
+                      "primary-fixed": "#89f5e7",
+                      "on-background": "#191c1c",
+                      "surface-container-low": "#f3f4f4",
+                      "primary-fixed-dim": "#6bd8cb",
+                      "on-primary-container": "#f4fffc",
+                      "surface-container-highest": "#e1e3e3",
+                      "outline": "#6d7a77",
+                      "outline-variant": "#bcc9c6",
+                      "error-container": "#ffdad6",
+                      "inverse-surface": "#2e3131",
+                      "on-tertiary-fixed": "#002114",
+                      "tertiary-fixed-dim": "#68dba9",
+                      "secondary-fixed-dim": "#ffb690",
+                      "secondary": "#9d4300",
+                      "on-secondary-container": "#5c2400",
+                      "tertiary-container": "#00855d",
+                      "surface-tint": "#006a61",
+                      "surface-container-high": "#e7e8e8",
+                      "on-tertiary-container": "#f5fff7",
+                      "text-secondary": "#4b5563",
+                      "danger": "#ef4444",
+                      "on-surface": "#191c1c",
+                      "on-primary-fixed": "#00201d",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#005137",
+                      "surface-bright": "#f8f9f9",
+                      "primary-container": "#008378",
+                      "surface-variant": "#e1e3e3",
+                      "primary-strong": "#115e59",
+                      "on-primary": "#ffffff",
+                      "surface-container": "#edeeee",
+                      "on-secondary-fixed-variant": "#783200",
+                      "text-primary": "#1f2937",
+                      "inverse-primary": "#6bd8cb",
+                      "on-secondary-fixed": "#341100"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap-lg": "6rem",
+                      "section-gap-sm": "3rem",
+                      "gutter": "1.5rem",
+                      "touch-target": "44px",
+                      "margin-mobile": "1rem",
+                      "margin-desktop": "2rem",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "headline-sm": ["Geist", "sans-serif"],
+                      "number-xl": ["Geist", "sans-serif"],
+                      "display-lg-mobile": ["Geist", "sans-serif"],
+                      "body-lg": ["Inter", "sans-serif"],
+                      "display-lg": ["Geist", "sans-serif"],
+                      "headline-md": ["Geist", "sans-serif"],
+                      "body-md": ["Inter", "sans-serif"],
+                      "caption": ["Inter", "sans-serif"],
+                      "label-md": ["Geist", "sans-serif"]
+              },
+              "fontSize": {
+                      "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "number-xl": ["32px", {"lineHeight": "1", "fontWeight": "800"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .prose p { margin-bottom: 1.5em; line-height: 1.8; color: theme('colors.on-surface-variant'); }
+        .prose h2 { font-family: 'Geist', sans-serif; font-size: 24px; font-weight: 700; color: theme('colors.on-surface'); margin-top: 2em; margin-bottom: 1em; }
+        .prose h3 { font-family: 'Geist', sans-serif; font-size: 20px; font-weight: 600; color: theme('colors.on-surface'); margin-top: 1.5em; margin-bottom: 0.75em; }
+        .prose ul { list-style-type: disc; margin-left: 1.5em; margin-bottom: 1.5em; color: theme('colors.on-surface-variant'); }
+        .prose li { margin-bottom: 0.5em; }
+        .prose img { border-radius: theme('borderRadius.xl'); margin-bottom: 2em; margin-top: 2em; width: 100%; object-fit: cover; }
+        .prose blockquote { border-left: 4px solid theme('colors.primary'); padding-left: 1em; font-style: italic; color: theme('colors.on-surface'); margin-bottom: 1.5em; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased pt-[72px]">
+<!-- Navigation Shell -->
+<nav class="fixed top-0 w-full h-[72px] z-50 bg-white/80 dark:bg-inverse-surface/80 backdrop-blur-md shadow-sm transition-transform duration-200" id="topNav">
+<div class="flex justify-between items-center h-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-2 text-headline-sm font-headline-sm font-bold text-primary">
+                PPM Nurisba
+            </div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Profil</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Program</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Kegiatan</a>
+<a class="text-primary font-label-md text-label-md border-b-2 border-primary pb-1" href="#">Berita</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Agenda</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Galeri</a>
+</div>
+<div class="hidden md:flex items-center gap-4">
+<button class="font-label-md text-label-md text-primary hover:text-primary-strong transition-colors bg-transparent px-4 py-2 rounded-xl border border-primary">
+                    Transparansi
+                </button>
+<button class="font-label-md text-label-md bg-secondary-container text-white px-6 py-2 rounded-xl hover:bg-secondary transition-colors shadow-sm">
+                    Donasi Sekarang
+                </button>
+</div>
+<button class="md:hidden p-2 text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="w-full">
+<!-- Breadcrumb & Metadata -->
+<div class="max-w-[750px] mx-auto px-margin-mobile md:px-0 pt-12 pb-6">
+<nav aria-label="Breadcrumb" class="flex text-caption font-caption text-outline mb-6">
+<ol class="inline-flex items-center space-x-1 md:space-x-2">
+<li class="inline-flex items-center">
+<a class="hover:text-primary transition-colors" href="#">Beranda</a>
+</li>
+<li>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[16px] mx-1">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Berita</a>
+</div>
+</li>
+<li>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[16px] mx-1">chevron_right</span>
+<span class="text-on-surface-variant">Edukasi</span>
+</div>
+</li>
+</ol>
+</nav>
+<span class="inline-block px-3 py-1 rounded-full bg-primary-soft text-primary-strong font-label-md text-label-md mb-4">
+                Program Edukasi
+            </span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6">
+                Membangun Generasi Cerdas: Program Bimbingan Belajar Gratis untuk Anak Yatim
+            </h1>
+<div class="flex items-center justify-between border-y border-surface-variant py-4 mb-8">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A portrait of a smiling Indonesian male teacher in a professional, modern classroom setting, well-lit with soft natural light, conveying trust and warmth, corporate minimalism style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMutiDqHnQHS8mgJ0YHhq7jq79ZYoodk5FjmDUD5QcEayMO6mOOKfoUYQuOpxyzzHU7iaew3ZEOq4fEKcnr2917iFlgT2wlLZUkSFHc13iSyGGblgpprfz6CZBoNt1jifudcZiazIrwg4QS5HlKyniyxW1D2tqmCkEgi3MV4UrX4pBYcMheIQmkpRgmBANUeH3Fgp8LQppoSTuawsn3N1UwxY241JcdmYwzRzXYPvJqQ6ZHIa5fPoS">
+<div>
+<p class="font-label-md text-label-md text-on-surface">Ust. Ahmad Hidayat</p>
+<p class="font-caption text-caption text-outline">12 Oktober 2024 • 5 mnt baca</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center hover:bg-surface-variant transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center hover:bg-surface-variant transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Hero Image -->
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-12">
+<div class="w-full h-[300px] md:h-[500px] rounded-2xl overflow-hidden relative shadow-md">
+<img class="w-full h-full object-cover" data-alt="A bright, inspiring wide shot of children studying together at modern wooden desks in a well-lit community center. Sunlight streams through large windows. The children are focused on their books, expressing joy and determination. A modern Islamic institutional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb6UZMRgJiADU1OGQW6evlssSVjuvoPrBpQUz7oUo-Ck_MpwSEmZ_wHjetlZ9-bmHbaG8nDV4GK6UnjjvL069hei9Qr4i-N7a1IXtgeQLUgg5R2NMPcDmdV3AfBwxZCAeb6auYXUjV5Q7kzsHZR3LsFAYVRbw1y2qQlXQbt_xAEbhFH9vkyYJTtHbMO7NSX4LwszpSOIu4zNw_1gGR7V6MKZ_zEve16xErm4RK6luZN7uOWSwjm8n7">
+</div>
+<p class="font-caption text-caption text-center text-outline mt-3">Kegiatan belajar mengajar di aula utama PPM Nurisba, diikuti oleh lebih dari 50 anak panti asuhan.</p>
+</div>
+<!-- Article Content -->
+<article class="max-w-[750px] mx-auto px-margin-mobile md:px-0 font-body-lg text-body-lg text-on-surface-variant prose pb-section-gap-sm">
+<p>Pendidikan adalah kunci untuk memutus mata rantai kemiskinan. Menyadari hal ini, Panti Asuhan Nurisba kembali meluncurkan program bimbingan belajar intensif bagi anak-anak asuh yang sedang mempersiapkan diri menghadapi ujian sekolah.</p>
+<p>Program yang dimulai sejak awal bulan ini tidak hanya berfokus pada mata pelajaran inti seperti Matematika dan Bahasa Inggris, tetapi juga menyertakan pendidikan karakter dan penguatan nilai-nilai keislaman.</p>
+<h2>Kolaborasi dengan Relawan Mahasiswa</h2>
+<p>Tahun ini, PPM Nurisba berkolaborasi dengan mahasiswa dari berbagai universitas negeri terkemuka di kota ini. Mereka tergabung dalam program "Kakak Asuh Edukasi", sebuah inisiatif kerelawanan yang mendedikasikan waktu mereka di akhir pekan.</p>
+<blockquote>
+                "Melihat antusiasme adik-adik di sini belajar membuat kami semakin semangat. Mereka punya potensi yang luar biasa jika diberikan fasilitas dan bimbingan yang tepat," ujar Sarah, salah satu relawan pengajar.
+            </blockquote>
+<h3>Fasilitas yang Disediakan</h3>
+<ul>
+<li>Modul belajar komprehensif sesuai kurikulum nasional terbaru.</li>
+<li>Akses ke perpustakaan mini dengan ratusan koleksi buku baru.</li>
+<li>Latihan try out rutin setiap bulan untuk evaluasi progres.</li>
+<li>Konseling pendidikan untuk pemilihan jurusan ke jenjang yang lebih tinggi.</li>
+</ul>
+<img alt="Fasilitas Belajar" data-alt="Close up of a student's hands writing notes diligently in a notebook. A small stack of colorful textbooks rests on the desk. Soft, warm natural light creates an atmosphere of hope and academic pursuit. Corporate minimalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI11B970hHrK2fkGhjMQz7eanRNzkPeRlAoCW9vWTO7NScZLwn0UXtYBVmCEQxJO0TB9Vdiw75rAfKmw-5oPQ0T_X5tnA_1H5KejHhJx6Nl4lu_J4vnZu9YvFAnpcg89i5RBaU2uZ_gu9WrCTMbDyTGwfw1xvzuZgqCEQbRiHB9QsPeW7biYzo-UFOqzVZlZN6IeG5j7vclCQKppQ6GlDCm1OSc_uVo_bA7Yj5OSK9H6SiwvoLw9zB">
+<h2>Harapan Kedepan</h2>
+<p>Ketua Yayasan Nurisba menyampaikan harapannya agar program ini dapat berjalan berkelanjutan. "Kami menargetkan setidaknya 80% dari anak asuh tingkat SMA dapat melanjutkan ke perguruan tinggi negeri tahun depan. Ini adalah investasi jangka panjang untuk masa depan umat," tegasnya.</p>
+<p>Bagi donatur yang ingin berkontribusi dalam program pendidikan ini, dapat menyalurkan sedekah jariyahnya melalui program 'Beasiswa Pendidikan Nurisba'. Setiap donasi Anda akan langsung disalurkan untuk kebutuhan operasional belajar mengajar dan penyediaan alat tulis bagi anak-anak.</p>
+<div class="mt-12 bg-primary-soft p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary-strong !mt-0 !mb-2">Dukung Pendidikan Mereka</h3>
+<p class="font-body-md text-body-md text-on-surface-variant !mb-0">Bantu kami menyediakan fasilitas belajar yang lebih baik untuk anak-anak asuh.</p>
+</div>
+<button class="w-full md:w-auto whitespace-nowrap font-label-md text-label-md bg-secondary-container text-white px-8 py-3 rounded-xl hover:bg-secondary transition-colors shadow-sm">
+                    Donasi Pendidikan
+                </button>
+</div>
+</article>
+<!-- Related Articles -->
+<section class="bg-surface-container-low py-section-gap-sm">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Berita Terkait</h2>
+<a class="font-label-md text-label-md text-primary flex items-center hover:text-primary-strong transition-colors" href="#">
+                        Lihat Semua <span class="material-symbols-outlined ml-1">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<a class="group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1" href="#">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A medium shot of an outdoor community event where volunteers are distributing food packages to local residents. The setting is bright and cheerful, reflecting Islamic values of charity and community. Modern institutional photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfzaXJc2X0e2hzGsjELOzKu7tp4XgxSM1ewnEzZvL9V1SXAZ4XsN8MykfywpaAiq-908Yx5nW7f-DsvRVIj1hhLq9AJVzEK0DpDk7pXCj9wqMidyQChETKvmOJ30vu759zklNXPy1R07tpTUswKWUlDpO2sC-F75_RDXjUn51YHPsp3jHNUGDRloZV6YRwD3_K87R6C-yFmzT637r8_8eeYxp8glvg2LqjKGx1X7vdEZ-0A1htQHWQ">
+</div>
+<div class="p-5">
+<span class="inline-block px-2 py-1 rounded bg-surface-container text-on-surface-variant font-caption text-caption mb-3">Sosial</span>
+<h3 class="font-headline-sm text-[18px] leading-snug text-on-surface font-bold mb-2 group-hover:text-primary transition-colors">Penyaluran Bantuan Sembako untuk Warga Sekitar Panti</h3>
+<p class="font-caption text-caption text-outline">05 Oktober 2024</p>
+</div>
+</a>
+<!-- Card 2 -->
+<a class="group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1" href="#">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean, modern medical clinic setting where a child is receiving a health checkup from a smiling nurse. Bright, sterile but warm lighting. Highlighting health and well-being in a corporate minimalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAehecxeu55m55ClLeMogb7UZtlxfYGwM0Tltpr8KuI2XRdyRykjmTnik1ccCSGwyFMznBw72jmPK9jHbFNWIw4Nh5mQ8SKiYh6fxlYr906p9aIfBBeeGr_RA-MTZmyZac6EBHA40qjorbm-dREx83gcBrEMydITj9h0MSfeWrLWlWcwtcLZ-1cm8G9DSGLG34rg_jmQd4JxQqJ1gaDbJtbU1Ti1sKZSB03LGHWuYZ0OEqY3VK-PbyJ">
+</div>
+<div class="p-5">
+<span class="inline-block px-2 py-1 rounded bg-surface-container text-on-surface-variant font-caption text-caption mb-3">Kesehatan</span>
+<h3 class="font-headline-sm text-[18px] leading-snug text-on-surface font-bold mb-2 group-hover:text-primary transition-colors">Cek Kesehatan Rutin Anak Asuh Bersama Klinik Amanah</h3>
+<p class="font-caption text-caption text-outline">28 September 2024</p>
+</div>
+</a>
+<!-- Card 3 -->
+<a class="group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1" href="#">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A group of teenagers engaged in a collaborative workshop, using laptops and discussing projects at a large wooden table. Modern co-working space aesthetic, bright and inspiring. Focus on youth empowerment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIWemZXQPFr1slHGJIN-hf6wScdacGR7S4QN6gaqwiXxI0jT8xI62ddgorb1hO8aPtuJqVgC-2TnGlqegHr_tkrZxN_EK8Od4hq-lLTBZ2JAghk68izihJ3s0ZJyvqz5W5TdvL_jpAFBDmhfC6E_K6YSEvsIpK6OP9E6LcsIDc864kzpQZ1gXzNLuuveVCpbbBeSzNammP0R14DS7N08NRzVeNdrIiMniHHDloqyCRp8SYWI-fgBKy">
+</div>
+<div class="p-5">
+<span class="inline-block px-2 py-1 rounded bg-surface-container text-on-surface-variant font-caption text-caption mb-3">Edukasi</span>
+<h3 class="font-headline-sm text-[18px] leading-snug text-on-surface font-bold mb-2 group-hover:text-primary transition-colors">Pelatihan Keterampilan Digital Dasar bagi Remaja Panti</h3>
+<p class="font-caption text-caption text-outline">15 September 2024</p>
+</div>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap-sm bg-surface-container-lowest dark:bg-inverse-surface border-t border-surface-container-low">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<span class="text-headline-md font-headline-md font-extrabold text-primary dark:text-inverse-primary">
+                    PPM Nurisba
+                </span>
+<p class="font-body-md text-body-md text-on-surface-variant">Membangun generasi unggul yang berakhlak mulia melalui pendidikan dan kepedulian sosial.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-headline-sm text-headline-sm text-primary">Tautan Cepat</h4>
+<div class="flex flex-col gap-2">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Hubungi Kami</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Kebijakan Privasi</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Syarat &amp; Ketentuan</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Peta Situs</a>
+</div>
+</div>
+<div class="flex flex-col gap-4 justify-end md:items-end">
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 PPM Nurisba. Hak Cipta Dilindungi.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Simple script for nav bar shrink effect on scroll
+        const topNav = document.getElementById('topNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                topNav.classList.add('shadow-md', 'bg-white/95');
+                topNav.classList.remove('bg-white/80', 'shadow-sm');
+            } else {
+                topNav.classList.remove('shadow-md', 'bg-white/95');
+                topNav.classList.add('bg-white/80', 'shadow-sm');
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Agenda - PPM Nurisba</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#ffdbca",
+                      "inverse-on-surface": "#f0f1f1",
+                      "border": "#e2e8f0",
+                      "on-primary-fixed-variant": "#005049",
+                      "surface-dim": "#d9dada",
+                      "surface": "#f8f9f9",
+                      "warning": "#f59e0b",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "secondary-container": "#fd761a",
+                      "on-error-container": "#93000a",
+                      "background": "#f8f9f9",
+                      "on-surface-variant": "#3d4947",
+                      "tertiary-fixed": "#85f8c4",
+                      "tertiary": "#006948",
+                      "on-secondary": "#ffffff",
+                      "primary-soft": "#f0fdfa",
+                      "primary": "#00685f",
+                      "primary-fixed": "#89f5e7",
+                      "on-background": "#191c1c",
+                      "surface-container-low": "#f3f4f4",
+                      "primary-fixed-dim": "#6bd8cb",
+                      "on-primary-container": "#f4fffc",
+                      "surface-container-highest": "#e1e3e3",
+                      "outline": "#6d7a77",
+                      "outline-variant": "#bcc9c6",
+                      "error-container": "#ffdad6",
+                      "inverse-surface": "#2e3131",
+                      "on-tertiary-fixed": "#002114",
+                      "tertiary-fixed-dim": "#68dba9",
+                      "secondary-fixed-dim": "#ffb690",
+                      "secondary": "#9d4300",
+                      "on-secondary-container": "#5c2400",
+                      "tertiary-container": "#00855d",
+                      "surface-tint": "#006a61",
+                      "surface-container-high": "#e7e8e8",
+                      "on-tertiary-container": "#f5fff7",
+                      "text-secondary": "#4b5563",
+                      "danger": "#ef4444",
+                      "on-surface": "#191c1c",
+                      "on-primary-fixed": "#00201d",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#005137",
+                      "surface-bright": "#f8f9f9",
+                      "primary-container": "#008378",
+                      "surface-variant": "#e1e3e3",
+                      "primary-strong": "#115e59",
+                      "on-primary": "#ffffff",
+                      "surface-container": "#edeeee",
+                      "on-secondary-fixed-variant": "#783200",
+                      "text-primary": "#1f2937",
+                      "inverse-primary": "#6bd8cb",
+                      "on-secondary-fixed": "#341100"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap-lg": "6rem",
+                      "section-gap-sm": "3rem",
+                      "gutter": "1.5rem",
+                      "touch-target": "44px",
+                      "margin-mobile": "1rem",
+                      "margin-desktop": "2rem",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "headline-sm": [
+                              "Geist"
+                      ],
+                      "number-xl": [
+                              "Geist"
+                      ],
+                      "display-lg-mobile": [
+                              "Geist"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Geist"
+                      ],
+                      "headline-md": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "caption": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "number-xl": [
+                              "32px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full h-[72px] z-50 bg-white/80 dark:bg-inverse-surface/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center h-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="font-headline-sm text-headline-sm font-bold text-primary dark:text-inverse-primary">
+                PPM Nurisba
+            </div>
+<!-- Mobile Menu Button -->
+<button aria-label="Menu" class="md:hidden p-2 text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Desktop Nav (Hidden on Mobile) -->
+<nav class="hidden md:flex items-center gap-gutter">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Profil</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Program</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Kegiatan</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Berita</a>
+<a class="font-label-md text-label-md text-primary dark:text-inverse-primary border-b-2 border-primary pb-1 active:scale-95 transition-transform duration-200 hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Agenda</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Galeri</a>
+<div class="flex gap-4 ml-4">
+<button class="font-label-md text-label-md text-primary border border-primary px-4 py-2 rounded-xl hover:bg-primary-soft transition-colors">Transparansi</button>
+<button class="font-label-md text-label-md bg-[#fd761a] text-white px-4 py-2 rounded-xl hover:opacity-90 transition-opacity">Donasi Sekarang</button>
+</div>
+</nav>
+</div>
+</header>
+<main class="pt-[90px] pb-section-gap-lg px-margin-mobile">
+<!-- Page Header -->
+<section class="mb-section-gap-sm">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary mb-2">Agenda PPM Nurisba</h1>
+<p class="font-body-md text-body-md text-text-secondary">Ikuti terus jadwal kegiatan, kajian, dan program pemberdayaan kami. Mari bergabung bersama dalam kebaikan.</p>
+</section>
+<!-- Upcoming Featured Event -->
+<section class="mb-section-gap-sm">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-gutter">Mendatang</h2>
+<div class="bg-surface-container-lowest rounded-2xl shadow-lg overflow-hidden border border-border">
+<div class="bg-cover bg-center w-full h-48" data-alt="A brightly lit, modern Islamic seminar hall with a large, clean presentation screen at the front. The room is filled with attentive attendees sitting in minimalist chairs. Soft, natural sunlight streams through large windows, highlighting a speaker addressing the crowd. The overall color palette is warm whites, teals, and light wood tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBywY0QwmZoErluxd5i7MwsqbNQV9g88tZ9zaS98S4KMVS4fDd81_8Tr3XL5pi9FIwkekNc73edBwxs9UYz-Onziqz65xUsapeixiTxrHyp8rSWYm0Ro-t5Af333vjkEsUi7nlgj3jlxFkL2hukCX7pIN8s34UaBT3U0CsvlhYXy6782e6tdvRWIyUXX73JO1Z5NWNjSlWnYz8BVCFLyArrS1F_BjOkULL5xqjk2FdiG7GMB1Zdi_HO')"></div>
+<div class="p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary-soft text-primary font-label-md text-label-md px-2 py-1 rounded-md">Kajian Akbar</span>
+<span class="text-error font-label-md text-label-md flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">timer</span> H-3</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Menyambut Ramadhan dengan Hati Suci</h3>
+<div class="space-y-2 mb-4">
+<div class="flex items-center gap-2 text-text-secondary">
+<span class="material-symbols-outlined" data-weight="fill">calendar_today</span>
+<span class="font-body-md text-body-md">Minggu, 10 Maret 2024</span>
+</div>
+<div class="flex items-center gap-2 text-text-secondary">
+<span class="material-symbols-outlined" data-weight="fill">schedule</span>
+<span class="font-body-md text-body-md">08:00 - 11:30 WIB</span>
+</div>
+<div class="flex items-center gap-2 text-text-secondary">
+<span class="material-symbols-outlined" data-weight="fill">location_on</span>
+<span class="font-body-md text-body-md">Masjid Raya Nurisba</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-text-secondary mb-4 line-clamp-2">Persiapan rohani dan jasmani menjelang bulan suci Ramadhan bersama Ustadz Abdul Somad. Terbuka untuk umum.</p>
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-3 rounded-xl hover:bg-primary-strong transition-colors min-h-[44px]">Daftar Sekarang</button>
+</div>
+</div>
+</section>
+<!-- Event List -->
+<section class="mb-section-gap-sm">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-gutter">Bulan Ini</h2>
+<div class="space-y-4">
+<!-- Event Item -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-4 flex gap-4 border border-border">
+<div class="flex flex-col items-center justify-center bg-primary-soft rounded-lg w-16 h-16 shrink-0">
+<span class="font-headline-md text-headline-md text-primary">15</span>
+<span class="font-caption text-caption text-primary">Mar</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Penyaluran Zakat Tahap I</h4>
+<div class="flex flex-col gap-1 mb-2">
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 09:00 WIB</span>
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">location_on</span> Halaman Gedung PPM</span>
+</div>
+<a class="font-caption text-caption text-primary font-bold hover:underline" href="#">Lihat Detail</a>
+</div>
+</div>
+<!-- Event Item -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-4 flex gap-4 border border-border">
+<div class="flex flex-col items-center justify-center bg-primary-soft rounded-lg w-16 h-16 shrink-0">
+<span class="font-headline-md text-headline-md text-primary">22</span>
+<span class="font-caption text-caption text-primary">Mar</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Buka Puasa Bersama Anak Yatim</h4>
+<div class="flex flex-col gap-1 mb-2">
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 16:30 WIB</span>
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">location_on</span> Panti Asuhan Al-Ikhlas</span>
+</div>
+<a class="font-caption text-caption text-primary font-bold hover:underline" href="#">Lihat Detail</a>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 border border-primary text-primary font-label-md text-label-md py-3 rounded-xl hover:bg-primary-soft transition-colors min-h-[44px]">Muat Lebih Banyak</button>
+</section>
+<!-- Past Events -->
+<section>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-gutter">Telah Berlalu</h2>
+<div class="bg-surface-container-low rounded-xl p-4 opacity-75">
+<div class="flex flex-col gap-4">
+<div class="border-b border-border pb-4 last:border-0 last:pb-0">
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-1">Pelatihan Relawan Kebencanaan</h4>
+<p class="font-caption text-caption text-text-secondary">28 Februari 2024 • Aula Utama</p>
+</div>
+<div class="border-b border-border pb-4 last:border-0 last:pb-0">
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-1">Kajian Rutin Muslimah</h4>
+<p class="font-caption text-caption text-text-secondary">25 Februari 2024 • Ruang VIP</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface w-full py-section-gap-sm border-t border-surface-container-low dark:border-surface-container-highest">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="mb-gutter md:mb-0">
+<div class="text-headline-md font-headline-md font-extrabold text-primary dark:text-inverse-primary mb-4">
+                    PPM Nurisba
+                </div>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">
+                    © 2024 PPM Nurisba. Hak Cipta Dilindungi.
+                </p>
+</div>
+<div class="flex flex-col gap-2">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors focus:underline decoration-2 underline-offset-4" href="#">Hubungi Kami</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors focus:underline decoration-2 underline-offset-4" href="#">Kebijakan Privasi</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors focus:underline decoration-2 underline-offset-4" href="#">Syarat &amp; Ketentuan</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors focus:underline decoration-2 underline-offset-4" href="#">Peta Situs</a>
+</div>
+</div>
+</footer>
+</body></html>

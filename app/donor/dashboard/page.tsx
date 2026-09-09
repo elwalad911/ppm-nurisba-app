@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { formatRupiah } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -27,7 +28,7 @@ export default async function DonorDashboardPage() {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return null;
+    redirect("/donor/login");
   }
 
   // Fetch profile and donations for this user

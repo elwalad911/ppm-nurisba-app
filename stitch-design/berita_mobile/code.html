@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Berita - PPM Nurisba</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdbca",
+                        "inverse-on-surface": "#f0f1f1",
+                        "border": "#e2e8f0",
+                        "on-primary-fixed-variant": "#005049",
+                        "surface-dim": "#d9dada",
+                        "surface": "#f8f9f9",
+                        "warning": "#f59e0b",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#fd761a",
+                        "on-error-container": "#93000a",
+                        "background": "#f8f9f9",
+                        "on-surface-variant": "#3d4947",
+                        "tertiary-fixed": "#85f8c4",
+                        "tertiary": "#006948",
+                        "on-secondary": "#ffffff",
+                        "primary-soft": "#f0fdfa",
+                        "primary": "#00685f",
+                        "primary-fixed": "#89f5e7",
+                        "on-background": "#191c1c",
+                        "surface-container-low": "#f3f4f4",
+                        "primary-fixed-dim": "#6bd8cb",
+                        "on-primary-container": "#f4fffc",
+                        "surface-container-highest": "#e1e3e3",
+                        "outline": "#6d7a77",
+                        "outline-variant": "#bcc9c6",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2e3131",
+                        "on-tertiary-fixed": "#002114",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "secondary-fixed-dim": "#ffb690",
+                        "secondary": "#9d4300",
+                        "on-secondary-container": "#5c2400",
+                        "tertiary-container": "#00855d",
+                        "surface-tint": "#006a61",
+                        "surface-container-high": "#e7e8e8",
+                        "on-tertiary-container": "#f5fff7",
+                        "text-secondary": "#4b5563",
+                        "danger": "#ef4444",
+                        "on-surface": "#191c1c",
+                        "on-primary-fixed": "#00201d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "surface-bright": "#f8f9f9",
+                        "primary-container": "#008378",
+                        "surface-variant": "#e1e3e3",
+                        "primary-strong": "#115e59",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#edeeee",
+                        "on-secondary-fixed-variant": "#783200",
+                        "text-primary": "#1f2937",
+                        "inverse-primary": "#6bd8cb",
+                        "on-secondary-fixed": "#341100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap-lg": "6rem",
+                        "section-gap-sm": "3rem",
+                        "gutter": "1.5rem",
+                        "touch-target": "44px",
+                        "margin-mobile": "1rem",
+                        "margin-desktop": "2rem",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Geist"],
+                        "number-xl": ["Geist"],
+                        "display-lg-mobile": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "body-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "label-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "number-xl": ["32px", { "lineHeight": "1", "fontWeight": "800" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "caption": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .geist-font { font-family: 'Geist', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased">
+<!-- TopNavBar (Shared Component) - Rendered for Desktop context, but user asked for mobile. Adapting for responsive. -->
+<header class="bg-white/80 dark:bg-inverse-surface/80 backdrop-blur-md fixed top-0 w-full h-[72px] z-50 shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center h-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="text-headline-sm font-headline-sm font-bold text-primary dark:text-inverse-primary">
+                PPM Nurisba
+            </div>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex gap-6 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Profil</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Program</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Kegiatan</a>
+<a class="font-label-md text-label-md text-primary dark:text-inverse-primary border-b-2 border-primary pb-1 hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Berita</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Agenda</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Galeri</a>
+</nav>
+<div class="hidden md:flex items-center gap-4">
+<button class="font-label-md text-label-md text-primary dark:text-inverse-primary bg-transparent border border-primary px-4 py-2 rounded-xl hover:bg-primary-soft transition-colors">Transparansi</button>
+<button class="font-label-md text-label-md bg-secondary-container text-white px-4 py-2 rounded-xl hover:bg-warning transition-colors shadow-sm">Donasi Sekarang</button>
+</div>
+<!-- Mobile Menu Button (Hamburger) -->
+<button class="md:hidden p-2 text-on-surface-variant flex items-center justify-center min-h-[44px] min-w-[44px]">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-[96px] pb-section-gap-sm px-margin-mobile">
+<!-- Page Header -->
+<section class="mb-8">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary-strong mb-2">Berita &amp; Informasi</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Ikuti perkembangan terbaru dan kisah inspiratif dari kegiatan kami.</p>
+</section>
+<!-- Featured Article (Bento-ish) -->
+<section class="mb-12">
+<div class="bg-surface-container-lowest rounded-2xl shadow-md overflow-hidden relative group">
+<div class="h-64 w-full relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A high-quality, inspiring photograph of an Islamic community event in a modern mosque courtyard. Soft, warm sunlight filters through architectural geometric screens, casting dappled light on a group of volunteers organizing charity packages. The scene is vibrant yet peaceful, with a clear focus on community engagement. The color palette features rich teals, warm oranges, and crisp whites, embodying a modern Islamic institutional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmERyrLveHQWFBCGaRiegzV-7sxnjaST908RCvSGNIrQLLhqUBz6RQCFrE1jDYqcP-NN90mL4Al0QREwVDLnI_muCgmJWFGbmbAecMimJA60WE1wPCubEtZV6G8ZNn73UqZBaYMyN5JBm3FYd19Ub8JopUQ3_m6cpx-nuCeGZPoui1NYQDPk9f3VhPAjsRHXZLkCnIGfTsj1pI89mNHh7vc7su1tkNfhyieyFD0IpMSHK5-M9TivTE">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6 w-full text-white">
+<span class="inline-block bg-primary text-on-primary font-label-md text-label-md px-3 py-1 rounded-full mb-3">Sorotan Utama</span>
+<h2 class="font-headline-md text-headline-md mb-2 line-clamp-2">Penyaluran Bantuan Pendidikan untuk Santri Berprestasi di Pelosok Desa</h2>
+<div class="flex items-center gap-2 font-caption text-caption text-gray-300">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span>12 Oktober 2024</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Article Grid (1 Column for Mobile) -->
+<section class="flex flex-col gap-6 mb-12">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col group">
+<div class="h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A bright, optimistic documentary-style photograph of children studying in a newly renovated classroom. The lighting is natural and airy, highlighting modern wooden desks and white walls. A teacher in a teal hijab is smiling while pointing at a whiteboard. The aesthetic is clean, corporate minimal, conveying trust and progress." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2Hq2Dhvg6KOdaKCLs3AXHsXnB5K7FfMG9tlhhSGm7N3kL8cQdeSYsk5MzSUZE7voNdlrqbJASPkyzudphbKVHV21GMihPdVs_-cs-TcdNZiDIlC7sqVkmsvdDoEHZj2VlXzbBWXRMG3VfI4F31api6iCEULr2KVYJJxtkH9C_D2QsvrGkYkZm63SW7yV1G2EZ1G9Z7HI0ttcpMQH6fWeNBvqzPF76Z4BB34awLigm6ledWvXDz7SW">
+<span class="absolute top-4 left-4 bg-white/90 text-primary-strong font-label-md text-label-md px-3 py-1 rounded-full shadow-sm backdrop-blur-sm">Program</span>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 line-clamp-2 group-hover:text-primary transition-colors">Peresmian Gedung Kelas Baru Tahap II Selesai Dilaksanakan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-4 flex-grow">Alhamdulillah, berkat dukungan para donatur, pembangunan gedung kelas baru tahap II telah selesai dan siap digunakan untuk kegiatan belajar mengajar.</p>
+<div class="flex justify-between items-center mt-auto pt-4 border-t border-surface-variant">
+<div class="flex items-center gap-1 font-caption text-caption text-outline">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>10 Okt 2024</span>
+</div>
+<a class="font-label-md text-label-md text-primary flex items-center gap-1 hover:text-primary-strong transition-colors" href="#">
+                            Baca Selengkapnya <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col group">
+<div class="h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A clean, professional close-up shot of hands exchanging a neatly wrapped charity parcel in a bright, modern community hall. The background is softly blurred (bokeh) emphasizing the transaction of trust. The color palette highlights teal uniforms and warm orange packaging accents, reflecting the brand's identity of transparency and care." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD64EvM_2LI_lsWez5whYeKDcMxh3z6rlXpKs-S63su88EHgrMOzbK1O1zhFMV6g5TyYIjLjLXubH6AhMx-yqPaABQKzTO__7cglxsl3k-p3LpX7mvZ5ULaIgTWct7pnnJTJWYi4jYu8BOrhdz2sB2ZtL7jLhqqd4cx3QYL8-wMntAodaLLhnz08TSwEfZ_OceZVOOUY6D9Ov3A0NICjPxqoX35jxFNowbe6O1IlJj23NBcmUcRx_KE">
+<span class="absolute top-4 left-4 bg-white/90 text-primary-strong font-label-md text-label-md px-3 py-1 rounded-full shadow-sm backdrop-blur-sm">Sosial</span>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 line-clamp-2 group-hover:text-primary transition-colors">Distribusi Paket Sembako Rutin Bulanan Berjalan Lancar</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-4 flex-grow">Tim relawan PPM Nurisba kembali mendistribusikan ratusan paket sembako kepada keluarga prasejahtera binaan di wilayah sekitar.</p>
+<div class="flex justify-between items-center mt-auto pt-4 border-t border-surface-variant">
+<div class="flex items-center gap-1 font-caption text-caption text-outline">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>05 Okt 2024</span>
+</div>
+<a class="font-label-md text-label-md text-primary flex items-center gap-1 hover:text-primary-strong transition-colors" href="#">
+                            Baca Selengkapnya <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col group">
+<div class="h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A serene, wide-angle architectural photograph of a modern Islamic center during twilight. The building features clean lines, white facades, and subtle teal lighting accents. People are seen gathering peacefully. The mood is calm, trustworthy, and institutional, with a generous use of negative space in the sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDglakKxr6wxBcIe1Ge4icl_o2_Gae-KsPeinyvJvX0mIDUw2PEGDKsC44lUa2cugr5QMZ0jEh62FLexTbtxM1KAdr7vJS9qy0_wRLdtNikB91Gzu3rd1OP9JKYTkYQstdnha8pegpnmnhNCwIzJzvpCLl0PzPeQsgS4ZsJbBZJP8pusaw2kwNowCcjMnywBmt3wIcSDmTqB6SF4PCd7Xl4BwLa0Nv5tpYXg00umYs8CHQuHq1KlwDX">
+<span class="absolute top-4 left-4 bg-white/90 text-primary-strong font-label-md text-label-md px-3 py-1 rounded-full shadow-sm backdrop-blur-sm">Kajian</span>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 line-clamp-2 group-hover:text-primary transition-colors">Kajian Akbar Bulanan: Menjaga Harmoni dalam Keberagaman</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-4 flex-grow">Ratusan jamaah menghadiri kajian akbar bulanan yang diselenggarakan di aula utama, membahas pentingnya menjaga ukhuwah.</p>
+<div class="flex justify-between items-center mt-auto pt-4 border-t border-surface-variant">
+<div class="flex items-center gap-1 font-caption text-caption text-outline">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>28 Sep 2024</span>
+</div>
+<a class="font-label-md text-label-md text-primary flex items-center gap-1 hover:text-primary-strong transition-colors" href="#">
+                            Baca Selengkapnya <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+</section>
+<!-- Load More Action -->
+<div class="flex justify-center mb-8">
+<button class="font-label-md text-label-md text-primary bg-transparent border-2 border-primary/20 px-6 py-3 rounded-xl hover:bg-primary-soft hover:border-primary transition-all flex items-center gap-2 min-h-[44px]">
+                Muat Lebih Banyak
+                <span class="material-symbols-outlined text-[20px]">refresh</span>
+</button>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface w-full py-section-gap-sm border-t border-surface-container-low dark:border-surface-container-highest">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<div class="text-headline-md font-headline-md font-extrabold text-primary dark:text-inverse-primary">
+                    PPM Nurisba
+                </div>
+<p class="font-body-md text-body-md text-on-surface-variant">Membangun generasi cerdas dan berakhlak mulia melalui program pendidikan dan sosial yang berkelanjutan.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-on-surface font-bold uppercase tracking-wider mb-2">Tautan Pantas</h4>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors focus:underline decoration-2 underline-offset-4" href="#">Hubungi Kami</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors focus:underline decoration-2 underline-offset-4" href="#">Kebijakan Privasi</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors focus:underline decoration-2 underline-offset-4" href="#">Syarat &amp; Ketentuan</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors focus:underline decoration-2 underline-offset-4" href="#">Peta Situs</a>
+</div>
+<div class="flex flex-col gap-4 md:items-end">
+<button class="font-label-md text-label-md bg-secondary-container text-white px-6 py-3 rounded-xl hover:bg-warning transition-colors shadow-sm w-full md:w-auto">Donasi Sekarang</button>
+</div>
+</div>
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mt-8 pt-6 border-t border-surface-variant text-center md:text-left">
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">© 2024 PPM Nurisba. Hak Cipta Dilindungi.</p>
+</div>
+</footer>
+</body></html>

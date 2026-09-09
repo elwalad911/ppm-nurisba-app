@@ -6,6 +6,7 @@ import { Container } from "@/components/container";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { createClient } from "@/lib/supabase/server";
+import { sanitizeHtml } from "@/lib/sanitize";
 import { Calendar, ArrowLeft, Newspaper } from "lucide-react";
 
 interface PageProps {
@@ -106,7 +107,7 @@ export default async function BeritaDetailPage({ params }: PageProps) {
             <div className="prose prose-lg mt-8 max-w-none text-text-secondary space-y-6 leading-relaxed">
               {post.content ? (
                 <div
-                  dangerouslySetInnerHTML={{ __html: post.content }}
+                  dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }}
                   className="space-y-4"
                 />
               ) : (

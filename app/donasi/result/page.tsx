@@ -60,7 +60,7 @@ export default async function DonationResultPage({ searchParams }: PageProps) {
 
       <main className="py-16 sm:py-24 bg-background">
         <Container>
-          <div className="mx-auto max-w-lg rounded-2xl border border-border bg-surface p-8 text-center shadow-lg">
+          <div className="mx-auto max-w-lg rounded-2xl border border-outline-variant/20 bg-white p-8 text-center shadow-2xl">
             {/* SUCCESS STATE */}
             {status === "success" && (
               <>
@@ -126,10 +126,11 @@ export default async function DonationResultPage({ searchParams }: PageProps) {
                   <Clock className="h-10 w-10" />
                 </div>
                 <h1 className="text-2xl font-bold text-text-primary">
-                  Pembayaran Sedang Diproses
+                  Menunggu Pembayaran
                 </h1>
                 <p className="mt-2 text-sm text-text-secondary leading-relaxed">
-                  Selesaikan pembayaran Anda sesuai instruksi pembayaran yang diberikan.
+                  Donasi Anda sudah tercatat. Metode pembayaran online sedang dalam proses penyiapan.
+                  Silakan kembali beberapa saat lagi atau hubungi kami untuk konfirmasi manual.
                 </p>
 
                 {payment && (
@@ -150,10 +151,15 @@ export default async function DonationResultPage({ searchParams }: PageProps) {
                 )}
 
                 <div className="space-y-3">
-                  <Button asChild className="w-full bg-primary hover:bg-primary-strong text-white">
-                    <Link href="/donasi">
-                      Kembali ke Program
-                    </Link>
+                  {campaign && (
+                    <Button asChild className="w-full bg-cta hover:bg-cta/90 text-white">
+                      <Link href={`/donasi/${campaign.slug}`}>
+                        Kembali ke Campaign
+                      </Link>
+                    </Button>
+                  )}
+                  <Button asChild variant="outline" className="w-full">
+                    <Link href="/donasi">Lihat Program Lain</Link>
                   </Button>
                 </div>
               </>

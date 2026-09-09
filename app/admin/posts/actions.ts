@@ -23,7 +23,7 @@ export async function createPost(formData: FormData): Promise<void> {
     slug: formData.get("slug"),
     excerpt: formData.get("excerpt"),
     content: formData.get("content"),
-    thumbnail_url: formData.get("thumbnail_url"),
+    thumbnail_url: formData.get("thumbnail_url") || undefined,
     status: status,
   };
 
@@ -60,7 +60,7 @@ export async function updatePost(id: string, formData: FormData): Promise<void> 
     slug: formData.get("slug"),
     excerpt: formData.get("excerpt"),
     content: formData.get("content"),
-    thumbnail_url: formData.get("thumbnail_url"),
+    thumbnail_url: formData.get("thumbnail_url") || undefined,
     status: status,
   };
 

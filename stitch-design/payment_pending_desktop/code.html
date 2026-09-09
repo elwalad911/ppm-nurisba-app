@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Pembayaran Pending - PPM Nurisba</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#f0f5f2",
+                      "error": "#ba1a1a",
+                      "on-surface": "#171d1c",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary": "#9d4300",
+                      "secondary-container": "#fd761a",
+                      "surface-variant": "#dee4e1",
+                      "surface-container-highest": "#dee4e1",
+                      "inverse-primary": "#6bd8cb",
+                      "on-surface-variant": "#3d4947",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#5c2400",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed": "#ffdbce",
+                      "outline-variant": "#bcc9c6",
+                      "error-container": "#ffdad6",
+                      "inverse-surface": "#2c3130",
+                      "on-tertiary-fixed-variant": "#773215",
+                      "surface-container-high": "#e4e9e7",
+                      "on-secondary-fixed-variant": "#783200",
+                      "outline": "#6d7a77",
+                      "page-bg": "#fbfcfc",
+                      "inverse-on-surface": "#edf2f0",
+                      "section-bg": "#f0fdfa",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#6bd8cb",
+                      "text-heading": "#1f2937",
+                      "surface-tint": "#006a61",
+                      "on-primary-container": "#f4fffc",
+                      "on-secondary-fixed": "#341100",
+                      "secondary-fixed-dim": "#ffb690",
+                      "background": "#f5faf8",
+                      "on-tertiary-container": "#fffbff",
+                      "primary-dark": "#115e59",
+                      "text-body": "#4b5563",
+                      "primary": "#00685f",
+                      "on-error": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed": "#370e00",
+                      "pending": "#f59e0b",
+                      "tertiary": "#924628",
+                      "on-primary-fixed-variant": "#005049",
+                      "success": "#059669",
+                      "tertiary-container": "#b05e3d",
+                      "primary-fixed": "#89f5e7",
+                      "on-primary-fixed": "#00201d",
+                      "tertiary-fixed-dim": "#ffb59a",
+                      "on-background": "#171d1c",
+                      "surface": "#f5faf8",
+                      "secondary-fixed": "#ffdbca",
+                      "surface-dim": "#d6dbd9",
+                      "primary-container": "#008378",
+                      "surface-container": "#eaefed",
+                      "surface-bright": "#f5faf8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "2rem",
+                      "touch-target": "44px",
+                      "gutter": "1.5rem",
+                      "margin-mobile": "1rem"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Geist"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Geist"
+                      ],
+                      "headline-md": [
+                              "Geist"
+                      ],
+                      "headline-sm": [
+                              "Geist"
+                      ],
+                      "number-xl": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "number-xl": [
+                              "32px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background min-h-screen flex flex-col font-body-md text-body-md text-on-surface">
+<!-- Navbar Suppressed per mandate for transactional/linear screens -->
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center p-margin-mobile md:p-margin-desktop py-12">
+<div class="max-w-2xl w-full">
+<div class="bg-surface-container-lowest rounded-2xl shadow-xl p-8 md:p-12 flex flex-col items-center text-center space-y-8 relative overflow-hidden transition-all duration-300">
+<!-- Decorative background elements -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-24 h-24 bg-secondary/5 rounded-tr-full pointer-events-none"></div>
+<!-- Icon Status -->
+<div class="relative w-24 h-24 flex items-center justify-center rounded-full bg-pending/10 animate-pulse">
+<span class="material-symbols-outlined text-[48px] text-pending" style="font-variation-settings: 'FILL' 1;">
+                        schedule
+                    </span>
+<!-- Spinning indicator -->
+<div class="absolute inset-0 rounded-full border-4 border-pending/20 border-t-pending animate-spin"></div>
+</div>
+<!-- Text Content -->
+<div class="space-y-4">
+<h1 class="font-headline-md text-headline-md text-on-surface">Pembayaran Sedang Diproses</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mx-auto">
+                        Kami sedang menunggu konfirmasi pembayaran dari sistem. Silakan cek berkala atau hubungi admin jika saldo sudah terpotong.
+                    </p>
+</div>
+<!-- Transaction Details Card -->
+<div class="w-full bg-surface-container rounded-xl p-6 text-left border border-outline-variant shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
+<h2 class="font-label-md text-label-md text-on-surface-variant mb-4 uppercase tracking-wider">Detail Transaksi</h2>
+<div class="space-y-4 divide-y divide-outline-variant/50">
+<div class="flex flex-col md:flex-row md:justify-between pt-0 pb-2">
+<span class="text-on-surface-variant">Referensi Donasi</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">#NRSB-20241027-002</span>
+</div>
+<div class="flex flex-col md:flex-row md:justify-between py-2">
+<span class="text-on-surface-variant">Program</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold text-right max-w-[250px]">Pembangunan Masjid dan Ruang Kelas/Asrama PPM Nurul Ikhlas</span>
+</div>
+<div class="flex flex-col md:flex-row md:justify-between pt-2">
+<span class="text-on-surface-variant">Total Nominal</span>
+<span class="font-number-xl text-number-xl text-primary font-bold">Rp 250.000</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col w-full sm:flex-row gap-4 justify-center pt-4">
+<button class="bg-primary hover:bg-primary-dark text-on-primary font-label-md text-label-md px-8 py-3 rounded-full min-h-[44px] flex items-center justify-center gap-2 transition-all duration-200 active:scale-95 shadow-md">
+<span class="material-symbols-outlined">refresh</span>
+                        Refresh Status
+                    </button>
+<button class="bg-transparent border border-outline text-primary hover:bg-surface-container hover:text-primary-dark font-label-md text-label-md px-8 py-3 rounded-full min-h-[44px] flex items-center justify-center gap-2 transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined">support_agent</span>
+                        Hubungi Admin
+                    </button>
+</div>
+<div class="pt-4 text-sm text-on-surface-variant/70 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">info</span>
+                     Halaman ini akan otomatis menyegarkan status setiap 30 detik.
+                </div>
+</div>
+</div>
+</main>
+<!-- Footer Suppressed per mandate for transactional screens (focus on the status canvas) -->
+</body></html>

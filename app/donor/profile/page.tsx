@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { DonorProfileClient } from "./donor-profile-client";
 
@@ -15,7 +16,7 @@ export default async function DonorProfilePage() {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return null;
+    redirect("/donor/login");
   }
 
   const { data: profile } = await supabase

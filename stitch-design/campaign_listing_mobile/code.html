@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PPM Nurisba - Program Kebaikan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-dark": "#115e59",
+                        "on-surface-variant": "#3d4947",
+                        "tertiary": "#924628",
+                        "surface-container-high": "#e4e9e7",
+                        "surface-bright": "#f5faf8",
+                        "outline-variant": "#bcc9c6",
+                        "secondary-container": "#fd761a",
+                        "on-secondary-fixed": "#341100",
+                        "on-secondary-container": "#5c2400",
+                        "tertiary-container": "#b05e3d",
+                        "on-primary": "#ffffff",
+                        "pending": "#f59e0b",
+                        "on-background": "#171d1c",
+                        "inverse-on-surface": "#edf2f0",
+                        "inverse-primary": "#6bd8cb",
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "surface-container-low": "#f0f5f2",
+                        "error-container": "#ffdad6",
+                        "success": "#059669",
+                        "on-tertiary-fixed-variant": "#773215",
+                        "page-bg": "#fbfcfc",
+                        "primary-fixed-dim": "#6bd8cb",
+                        "background": "#f5faf8",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "outline": "#6d7a77",
+                        "surface": "#f5faf8",
+                        "on-tertiary-fixed": "#370e00",
+                        "on-tertiary-container": "#fffbff",
+                        "surface-container-lowest": "#ffffff",
+                        "section-bg": "#f0fdfa",
+                        "text-body": "#4b5563",
+                        "on-secondary": "#ffffff",
+                        "text-heading": "#1f2937",
+                        "tertiary-fixed": "#ffdbce",
+                        "primary": "#00685f",
+                        "on-primary-container": "#f4fffc",
+                        "surface-container": "#eaefed",
+                        "on-secondary-fixed-variant": "#783200",
+                        "primary-container": "#008378",
+                        "on-error-container": "#93000a",
+                        "secondary": "#9d4300",
+                        "surface-dim": "#d6dbd9",
+                        "surface-variant": "#dee4e1",
+                        "surface-container-highest": "#dee4e1",
+                        "on-primary-fixed-variant": "#005049",
+                        "on-surface": "#171d1c",
+                        "primary-fixed": "#89f5e7",
+                        "secondary-fixed": "#ffdbca",
+                        "surface-tint": "#006a61",
+                        "secondary-fixed-dim": "#ffb690",
+                        "on-primary-fixed": "#00201d",
+                        "inverse-surface": "#2c3130"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target": "44px",
+                        "margin-mobile": "1rem",
+                        "gutter": "1.5rem",
+                        "margin-desktop": "2rem"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Geist"],
+                        "number-xl": ["Geist"],
+                        "display-lg-mobile": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "number-xl": ["32px", { "lineHeight": "1", "fontWeight": "800" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .progress-bar-fill {
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col pt-[72px] pb-[80px]">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-container/80 backdrop-blur-md border-b border-outline-variant/30 shadow-md">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-touch-target min-h-[72px] max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 rounded-full hover:bg-surface-container-low transition-colors text-primary flex items-center justify-center min-w-[44px] min-h-[44px]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwer8J8farCLJQplUek2VoirS5RmSfgFCQGvoS2i-SjsBTlcUqp6b12FpWaDTKgyWnxgM-M3iHjgoNQmxCQWY2km8-KEaGDTLsvBkhyxWkH-X0dIsx3JflFYYFWBne-_QD2-WQL1TPx33dy1gsPgc0b8Lgyn1nf_4_orPetJEMVxetfW0hUipFw6o3EDdhnTID4LVAeFCM3plBJZ8tGWru9-PrkQdJMmnqjPS_nKQ8UYUiXsh8mmYRcswJORPzJK1EEg" alt="Logo Yayasan Nurul Ikhlas PPM Nurisba" class="h-10 w-10 object-contain rounded-full"><div class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed">PPM Nurisba</div>
+</div>
+<!-- Desktop Nav (Hidden on Mobile) -->
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center h-touch-target font-label-md" href="#">Profil</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 flex items-center h-touch-target font-label-md" href="#">Program</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center h-touch-target font-label-md" href="#">Kegiatan</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center h-touch-target font-label-md" href="#">Berita</a>
+</nav>
+<div class="hidden md:block">
+<button class="bg-secondary-container text-on-primary font-label-md text-label-md px-6 py-3 rounded-full hover:bg-secondary transition-colors min-h-[44px]">
+                    Donasi Sekarang
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col gap-8">
+<!-- Page Header -->
+<section class="flex flex-col gap-2">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-surface">Program Kebaikan</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Mari bersama membangun generasi penerus yang berakhlak mulia.</p>
+</section>
+<!-- Categories/Filters (Horizontal Scroll) -->
+<section class="w-full">
+<div class="flex overflow-x-auto gap-3 pb-2 hide-scrollbar snap-x">
+<button class="snap-start flex-none bg-primary text-on-primary font-label-md text-label-md px-5 py-2.5 rounded-full min-h-[44px] whitespace-nowrap shadow-md">Semua Program</button>
+<button class="snap-start flex-none bg-surface-container text-on-surface-variant font-label-md text-label-md px-5 py-2.5 rounded-full min-h-[44px] whitespace-nowrap hover:bg-surface-container-high transition-colors">Wakaf</button>
+<button class="snap-start flex-none bg-surface-container text-on-surface-variant font-label-md text-label-md px-5 py-2.5 rounded-full min-h-[44px] whitespace-nowrap hover:bg-surface-container-high transition-colors">Zakat</button>
+<button class="snap-start flex-none bg-surface-container text-on-surface-variant font-label-md text-label-md px-5 py-2.5 rounded-full min-h-[44px] whitespace-nowrap hover:bg-surface-container-high transition-colors">Infaq Pendidikan</button>
+<button class="snap-start flex-none bg-surface-container text-on-surface-variant font-label-md text-label-md px-5 py-2.5 rounded-full min-h-[44px] whitespace-nowrap hover:bg-surface-container-high transition-colors">Bantuan Yatim</button>
+</div>
+</section>
+<!-- Campaign List -->
+<section class="flex flex-col gap-6">
+<!-- Featured Campaign Card -->
+<article class="bg-surface-container-lowest rounded-2xl shadow-2xl overflow-hidden flex flex-col relative transform transition-transform hover:-translate-y-1 duration-300">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover" data-alt="Foto peletakan batu pertama pembangunan pusat Islam dan pondok pesantren PPM Nurisba Soreang Bandung" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhu4rGROp8xrRFSNIVxDhPObAeE_AmvbqhkT5p4AQ_gPfUxIYHkHRfX55M8Riogbbn2lknmuNNkVL6ePlyNE9SH60mt1kU9NSbUQeh1Ab9jmTZchPua8fopBSs3Mi09y1qgITHy9vBPkAdJLNl7ed2ulrMYvfyaVlFJXjZ6lw_OtOJYeRPEu57f9DbCXwwH302AMuGpHSZMGlxN2bWSTlO_k8kCGDlHBibHQ1wDTbVsXg21-N00PEtWkmtN6CXk7FnWA">
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 rounded-full font-label-md text-label-md shadow-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+                        Wakaf
+                    </div>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<h2 class="font-headline-sm text-headline-sm text-on-surface line-clamp-2">Pembangunan Masjid dan Ruang Kelas/Asrama</h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Dukung pembangunan fasilitas ibadah dan pendidikan untuk santri PPM Nurisba agar dapat belajar dengan nyaman.</p>
+<!-- Progress Section -->
+<div class="flex flex-col gap-2 mt-2">
+<div class="flex justify-between items-end font-label-md text-label-md">
+<span class="text-primary-dark font-bold text-lg">Rp 750.000.000</span>
+<span class="text-on-surface-variant text-sm">terkumpul dari Rp 1M</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2.5 overflow-hidden">
+<div class="bg-primary h-2.5 rounded-full progress-bar-fill" style="width: 75%;"></div>
+</div>
+<div class="flex justify-between text-xs text-on-surface-variant font-label-md mt-1">
+<span class="">124 Donatur</span>
+<span class="text-primary font-bold">75%</span>
+</div>
+</div>
+<!-- CTA -->
+<button class="mt-4 w-full bg-secondary-container text-on-primary font-label-md text-label-md py-3.5 rounded-xl shadow-md hover:bg-secondary active:scale-95 transition-all duration-200 min-h-[44px] flex justify-center items-center gap-2">
+                        Donasi Sekarang
+                        <span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+</article>
+<!-- Regular Campaign Card 1 -->
+<article class="bg-surface-container-lowest rounded-2xl shadow-md overflow-hidden flex flex-col relative transform transition-transform hover:-translate-y-1 duration-300 border border-outline-variant/20">
+<div class="relative h-40 w-full">
+<img class="w-full h-full object-cover" data-alt="A bright, cheerful photo of young students in a clean, modern classroom environment reading books. The students wear neat uniforms. The room has large windows letting in natural daylight. The mood is optimistic and focused on learning. Soft, airy lighting, professional photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIa8a8epqwq7wclep0QrJGixVkzQGK5yijaegingxb9OqeVP93W45xCbEPB-tOiWmP3ndrT5fIDOo_dpFpmK16icU8EKS9X_nd8LRo_Kf--tNWjeJVAp6Sp9HTJMI8i2lzObA1PKGC7ZqIR0L-4OCY1eFxyBg3PL2q46AlGgqk6I_cPBcObtCdNua-sauGtc5aWgEtW9XoG5ojvpyfy5dpeLAsRZTjU202vhinjrW1FO2yIMu1YON8">
+<div class="absolute top-4 left-4 bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-md text-label-md shadow-sm">
+                        Infaq Pendidikan
+                    </div>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-2 text-[20px]">Beasiswa Santri Berprestasi &amp; Yatim</h3>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end font-label-md text-label-md">
+<span class="text-primary-dark font-bold">Rp 45.000.000</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2 overflow-hidden">
+<div class="bg-primary h-2 rounded-full progress-bar-fill" style="width: 45%;"></div>
+</div>
+</div>
+<button class="w-full border-2 border-primary text-primary font-label-md text-label-md py-2.5 rounded-xl hover:bg-primary/5 active:scale-95 transition-all duration-200 min-h-[44px]">
+                        Donasi
+                    </button>
+</div>
+</article>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface-container-highest border-t border-outline-variant/20 pb-safe z-50">
+<div class="flex justify-around items-center h-[72px] px-2">
+<a class="flex flex-col items-center justify-center w-16 h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="font-label-md text-[10px]">Beranda</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 h-full text-primary" href="#">
+<div class="bg-primary-container text-on-primary-container rounded-full px-4 py-1 mb-1">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">volunteer_activism</span>
+</div>
+<span class="font-label-md text-[10px] font-bold">Program</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1" style="font-variation-settings: 'FILL' 0;">newspaper</span>
+<span class="font-label-md text-[10px]">Berita</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-md text-[10px]">Profil</span>
+</a>
+</div>
+</nav>
+
+
+</body></html>

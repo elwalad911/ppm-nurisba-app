@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PPM Nurisba</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Geist & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#6bd8cb",
+                        "surface-container-low": "#f3f4f4",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#005049",
+                        "on-surface": "#191c1c",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#f4fffc",
+                        "primary-soft": "#f0fdfa",
+                        "secondary-fixed": "#ffdbca",
+                        "surface-dim": "#d9dada",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "inverse-primary": "#6bd8cb",
+                        "secondary": "#9d4300",
+                        "secondary-fixed-dim": "#ffb690",
+                        "text-secondary": "#4b5563",
+                        "on-secondary-fixed": "#341100",
+                        "on-background": "#191c1c",
+                        "on-surface-variant": "#3d4947",
+                        "on-secondary-container": "#5c2400",
+                        "border": "#e2e8f0",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-strong": "#115e59",
+                        "tertiary-container": "#00855d",
+                        "text-primary": "#1f2937",
+                        "background": "#f8f9f9",
+                        "surface-bright": "#f8f9f9",
+                        "tertiary": "#006948",
+                        "inverse-surface": "#2e3131",
+                        "on-tertiary-container": "#f5fff7",
+                        "secondary-container": "#fd761a",
+                        "on-secondary-fixed-variant": "#783200",
+                        "outline-variant": "#bcc9c6",
+                        "surface": "#f8f9f9",
+                        "outline": "#6d7a77",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "primary-container": "#008378",
+                        "surface-container-highest": "#e1e3e3",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e7e8e8",
+                        "surface-container": "#edeeee",
+                        "inverse-on-surface": "#f0f1f1",
+                        "danger": "#ef4444",
+                        "on-primary-fixed": "#00201d",
+                        "surface-tint": "#006a61",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e1e3e3",
+                        "primary-fixed": "#89f5e7",
+                        "on-tertiary-fixed": "#002114",
+                        "warning": "#f59e0b",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#00685f",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#85f8c4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "1.5rem",
+                        "touch-target": "44px",
+                        "margin-mobile": "1rem",
+                        "section-gap-sm": "3rem",
+                        "section-gap-lg": "6rem",
+                        "container-max": "1280px",
+                        "margin-desktop": "2rem"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "body-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "label-md": ["Geist"],
+                        "number-xl": ["Geist"],
+                        "headline-sm": ["Geist"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "caption": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "number-xl": ["32px", { "lineHeight": "1", "fontWeight": "800" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface antialiased overflow-x-hidden min-h-screen flex flex-col relative font-body-md text-body-md pt-[72px] pb-[64px]">
+<!-- Overlay for Drawer (Visible when drawer is open) -->
+<div class="fixed inset-0 bg-on-surface/50 z-40 transition-opacity duration-300 backdrop-blur-sm" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<!-- Navigation Drawer -->
+<aside class="fixed top-0 left-0 h-full w-[280px] bg-surface shadow-lg z-50 transform translate-x-0 transition-transform duration-300 ease-in-out flex flex-col bg-surface-container border-r border-outline-variant/30" id="side-drawer">
+<!-- Drawer Header -->
+<div class="flex items-center justify-between p-4 border-b border-outline-variant/30">
+<h2 class="font-headline-sm text-headline-sm text-primary">Menu Navigasi</h2>
+<button class="p-2 rounded-full hover:bg-surface-container-highest transition-colors flex items-center justify-center w-touch-target h-touch-target" onclick="toggleDrawer()">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">close</span>
+</button>
+</div>
+<!-- Drawer Content -->
+<nav class="flex-1 overflow-y-auto flex flex-col p-4 space-y-2">
+<!-- Active Tab: Profil -->
+<a class="flex items-center space-x-3 px-4 py-3 bg-primary-soft text-primary rounded-xl transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">info</span>
+<span class="font-label-md text-label-md">Profil</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_tree</span>
+<span class="font-label-md text-label-md">Program</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">event_available</span>
+<span class="font-label-md text-label-md">Kegiatan</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">newspaper</span>
+<span class="font-label-md text-label-md">Berita</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+<span class="font-label-md text-label-md">Agenda</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">photo_library</span>
+<span class="font-label-md text-label-md">Galeri</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Transparansi</span>
+</a>
+</nav>
+<!-- Drawer Footer (CTA) -->
+<div class="p-4 border-t border-outline-variant/30">
+<button class="w-full bg-secondary-container text-on-secondary-container font-label-md text-label-md py-3 rounded-xl shadow-md hover:-translate-y-1 transition-transform duration-200">
+                Donasi Sekarang
+            </button>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-30 bg-white/80 backdrop-blur-md shadow-sm transition-all duration-300">
+<div class="flex items-center justify-between h-[72px] px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center space-x-4">
+<button class="md:hidden p-2 rounded-full hover:bg-surface-container transition-colors flex items-center justify-center w-touch-target h-touch-target active:scale-95 transition-transform" onclick="toggleDrawer()">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<div class="flex items-center space-x-3">
+<img alt="Logo PPM Nurisba" class="w-10 h-10 object-contain rounded-full shadow-sm bg-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_-rPsMtSHN8aZmGou9yGVtsF7smTWtkhqwX3_iPKF1HsfaLzeF30Z7KO5IBoIUvqB4q_paX_sbO1Xt7cXafVPNvQygtcKFl2RfH5yAKxiyRCCPBR1xcU8tUduYm3-8D4xmoKcVUVPQrIyCoCjF9q5BuCx-_Pp0qXXwaotT-MikezhpVxPab8rJezyoUwKD3QFXbHDJ9vz1NDtE8o8UV97yOVj7ZBGM1-q5w0QYTyaaQLFOSAzTHb25oxwvJdeYxz2xw">
+<span class="font-headline-sm text-headline-sm-mobile md:text-headline-sm text-primary tracking-tight font-extrabold hidden sm:block">PPM Nurisba</span>
+</div>
+</div>
+<!-- Desktop Nav (Hidden on mobile) -->
+<nav class="hidden md:flex items-center space-x-6">
+<a class="text-primary border-b-2 border-primary font-bold pb-1 font-label-md text-label-md hover:text-secondary transition-colors duration-200" href="#">Profil</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-colors duration-200" href="#">Program</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-colors duration-200" href="#">Berita</a>
+</nav>
+<div class="flex items-center">
+<button class="hidden md:flex bg-secondary-container text-on-secondary-container font-label-md text-label-md px-6 py-2 rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+                    Donasi Sekarang
+                </button>
+<button class="md:hidden text-primary hover:text-secondary transition-colors duration-200 p-2 rounded-full flex items-center justify-center w-touch-target h-touch-target">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">volunteer_activism</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap-sm md:py-section-gap-lg space-y-section-gap-sm">
+<!-- Reusable Page Header -->
+<section class="text-center md:text-left space-y-4 max-w-3xl">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary-strong">Profil Institusi</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Mengenal lebih dekat visi, misi, dan perjalanan PPM Nurisba dalam membangun generasi yang berakhlak dan transparan.</p>
+</section>
+<!-- Bento Grid Layout for Content -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Feature Card 1 (Large) -->
+<div class="md:col-span-2 bg-surface-container-lowest rounded-2xl p-6 shadow-md hover:-translate-y-1 transition-transform duration-300 relative overflow-hidden group">
+<div class="absolute inset-0 opacity-10 bg-gradient-to-br from-primary to-transparent z-0"></div>
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-primary-soft text-primary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Sejarah &amp; Legalitas</h3>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Berdiri sejak awal komitmen untuk memajukan pendidikan Islam yang terstruktur dan terpercaya. Kami beroperasi di bawah naungan legalitas yang jelas.</p>
+</div>
+<button class="self-start text-primary font-label-md text-label-md flex items-center group-hover:text-tertiary-container transition-colors">
+                        Pelajari Selengkapnya <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Feature Card 2 (Small) -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-md hover:-translate-y-1 transition-transform duration-300 flex flex-col items-center text-center justify-center">
+<div class="w-16 h-16 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">diversity_3</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Visi Misi</h3>
+<p class="text-on-surface-variant font-body-md text-body-md text-sm">Membangun ekosistem pendidikan yang inklusif.</p>
+</div>
+<!-- Info Card -->
+<div class="md:col-span-3 bg-primary-soft border border-primary-fixed-dim/30 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between">
+<div class="flex items-center space-x-4 mb-4 md:mb-0">
+<div class="bg-white p-3 rounded-full shadow-sm text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary-strong">Lembaga Terverifikasi</h4>
+<p class="font-caption text-caption text-on-surface-variant">Terdaftar resmi dan diawasi oleh pihak berwenang.</p>
+</div>
+</div>
+<button class="px-6 py-2 border-2 border-primary text-primary rounded-xl font-label-md text-label-md hover:bg-primary hover:text-white transition-colors duration-200">
+                     Lihat Sertifikat
+                 </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-section-gap-sm pb-10 bg-surface-container-highest mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="space-y-4">
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight font-extrabold">PPM Nurisba</span>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">Pusat Pendidikan dan Manajemen Nurul Ikhlas Soreang Bandung. Berkomitmen pada pendidikan dan transparansi.</p>
+</div>
+<div class="space-y-2 flex flex-col">
+<h4 class="font-label-md text-label-md text-on-surface mb-2">Tautan Pantas</h4>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline font-body-md text-body-md" href="#">Tentang Kami</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline font-body-md text-body-md" href="#">Kebijakan Privasi</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline font-body-md text-body-md" href="#">Hubungi Kami</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline font-body-md text-body-md" href="#">Laporan Tahunan</a>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md text-on-surface">Tetap Terhubung</h4>
+<div class="flex space-x-4">
+<!-- Social Placeholders -->
+<a class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center shadow-sm hover:bg-primary-soft transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+<a class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center shadow-sm hover:bg-primary-soft transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+</div>
+</div>
+</div>
+<div class="mt-8 border-t border-outline-variant/50 pt-6 text-center px-margin-mobile">
+<p class="font-caption text-caption text-on-surface-variant">© 2024 PPM Nurisba. Amanah &amp; Transparan.</p>
+</div>
+</footer>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-40 md:hidden bg-surface/95 backdrop-blur-sm border-t border-outline-variant flex justify-around items-center h-[64px] pb-safe shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-primary font-caption text-caption active:scale-90 transition-transform p-2 min-w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-caption text-caption active:scale-90 transition-transform hover:text-primary p-2 min-w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">newspaper</span>
+<span>Berita</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-caption text-caption active:scale-90 transition-transform hover:text-primary p-2 min-w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">photo_library</span>
+<span>Galeri</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-caption text-caption active:scale-90 transition-transform hover:text-primary p-2 min-w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">volunteer_activism</span>
+<span>Donasi</span>
+</a>
+</nav>
+<script>
+        // Simple Drawer Toggle Logic
+        let drawerOpen = true; // Start open based on prompt requirement for display
+        
+        function toggleDrawer() {
+            const drawer = document.getElementById('side-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            
+            if (drawerOpen) {
+                drawer.classList.remove('translate-x-0');
+                drawer.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            } else {
+                drawer.classList.remove('-translate-x-full');
+                drawer.classList.add('translate-x-0');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+            drawerOpen = !drawerOpen;
+        }
+
+        // Initialize state to match the prompt's request (drawer open)
+        // Usually it would be closed by default, but prompt asks to "showcase the open Navigation Drawer"
+        document.addEventListener("DOMContentLoaded", () => {
+             const drawer = document.getElementById('side-drawer');
+             const overlay = document.getElementById('drawer-overlay');
+             drawer.classList.add('translate-x-0');
+             drawer.classList.remove('-translate-x-full');
+             overlay.classList.remove('hidden');
+             document.body.style.overflow = 'hidden';
+        });
+
+    </script>
+</body></html>

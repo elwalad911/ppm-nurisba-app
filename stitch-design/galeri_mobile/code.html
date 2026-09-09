@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Galeri - PPM Nurisba</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#ffdbca",
+                      "inverse-on-surface": "#f0f1f1",
+                      "border": "#e2e8f0",
+                      "on-primary-fixed-variant": "#005049",
+                      "surface-dim": "#d9dada",
+                      "surface": "#f8f9f9",
+                      "warning": "#f59e0b",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "secondary-container": "#fd761a",
+                      "on-error-container": "#93000a",
+                      "background": "#f8f9f9",
+                      "on-surface-variant": "#3d4947",
+                      "tertiary-fixed": "#85f8c4",
+                      "tertiary": "#006948",
+                      "on-secondary": "#ffffff",
+                      "primary-soft": "#f0fdfa",
+                      "primary": "#00685f",
+                      "primary-fixed": "#89f5e7",
+                      "on-background": "#191c1c",
+                      "surface-container-low": "#f3f4f4",
+                      "primary-fixed-dim": "#6bd8cb",
+                      "on-primary-container": "#f4fffc",
+                      "surface-container-highest": "#e1e3e3",
+                      "outline": "#6d7a77",
+                      "outline-variant": "#bcc9c6",
+                      "error-container": "#ffdad6",
+                      "inverse-surface": "#2e3131",
+                      "on-tertiary-fixed": "#002114",
+                      "tertiary-fixed-dim": "#68dba9",
+                      "secondary-fixed-dim": "#ffb690",
+                      "secondary": "#9d4300",
+                      "on-secondary-container": "#5c2400",
+                      "tertiary-container": "#00855d",
+                      "surface-tint": "#006a61",
+                      "surface-container-high": "#e7e8e8",
+                      "on-tertiary-container": "#f5fff7",
+                      "text-secondary": "#4b5563",
+                      "danger": "#ef4444",
+                      "on-surface": "#191c1c",
+                      "on-primary-fixed": "#00201d",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#005137",
+                      "surface-bright": "#f8f9f9",
+                      "primary-container": "#008378",
+                      "surface-variant": "#e1e3e3",
+                      "primary-strong": "#115e59",
+                      "on-primary": "#ffffff",
+                      "surface-container": "#edeeee",
+                      "on-secondary-fixed-variant": "#783200",
+                      "text-primary": "#1f2937",
+                      "inverse-primary": "#6bd8cb",
+                      "on-secondary-fixed": "#341100"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap-lg": "6rem",
+                      "section-gap-sm": "3rem",
+                      "gutter": "1.5rem",
+                      "touch-target": "44px",
+                      "margin-mobile": "1rem",
+                      "margin-desktop": "2rem",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "headline-sm": [
+                              "Geist"
+                      ],
+                      "number-xl": [
+                              "Geist"
+                      ],
+                      "display-lg-mobile": [
+                              "Geist"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Geist"
+                      ],
+                      "headline-md": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "caption": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "number-xl": [
+                              "32px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        /* Hide scrollbar for horizontal scrolling chips */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased pt-[72px]">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-[72px] z-50 bg-white/80 dark:bg-inverse-surface/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center h-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Brand Logo -->
+<a class="text-headline-sm font-headline-sm font-bold text-primary dark:text-inverse-primary flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-3xl" data-icon="mosque">mosque</span>
+<span>PPM Nurisba</span>
+</a>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-primary p-2 h-touch-target w-touch-target flex items-center justify-center rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="menu">menu</span>
+</button>
+<!-- Navigation Links (Hidden on Mobile) -->
+<div class="hidden md:flex items-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Profil</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Program</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Kegiatan</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Berita</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Agenda</a>
+<a class="font-label-md text-label-md text-primary dark:text-inverse-primary border-b-2 border-primary pb-1 hover:text-primary dark:hover:text-primary-fixed transition-colors active:scale-95 transition-transform duration-200" href="#">Galeri</a>
+</div>
+<!-- Trailing Actions (Hidden on Mobile) -->
+<div class="hidden md:flex items-center gap-4">
+<a class="font-label-md text-label-md text-primary border border-primary px-4 py-2 rounded-xl hover:bg-primary-soft transition-colors h-touch-target flex items-center justify-center" href="#">Transparansi</a>
+<a class="font-label-md text-label-md bg-secondary-container text-on-secondary-container px-6 py-2 rounded-xl hover:bg-warning transition-colors shadow-sm hover:shadow-md h-touch-target flex items-center justify-center font-bold" href="#">Donasi Sekarang</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="w-full pb-section-gap-sm pt-8">
+<!-- Header Section -->
+<header class="px-margin-mobile md:px-margin-desktop mb-8 max-w-container-max mx-auto text-center">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary-strong mb-4">Galeri PPM Nurisba</h1>
+<p class="font-body-md text-body-md text-text-secondary max-w-2xl mx-auto">Dokumentasi kegiatan, lingkungan, dan momen berharga di Pondok Pesantren Mahasiswa Nurisba. Menumbuhkan generasi Islami yang cerdas dan berakhlak mulia.</p>
+</header>
+<!-- Category Filters (Scrollable Chips on Mobile) -->
+<section class="mb-8 w-full">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex gap-3 overflow-x-auto no-scrollbar py-2">
+<button class="flex-shrink-0 px-6 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm h-touch-target flex items-center justify-center active:scale-95 transition-transform">Semua</button>
+<button class="flex-shrink-0 px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant border border-border font-label-md text-label-md hover:bg-surface-container-high transition-colors h-touch-target flex items-center justify-center">Lingkungan</button>
+<button class="flex-shrink-0 px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant border border-border font-label-md text-label-md hover:bg-surface-container-high transition-colors h-touch-target flex items-center justify-center">Kajian Rutin</button>
+<button class="flex-shrink-0 px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant border border-border font-label-md text-label-md hover:bg-surface-container-high transition-colors h-touch-target flex items-center justify-center">Kegiatan Santri</button>
+<button class="flex-shrink-0 px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant border border-border font-label-md text-label-md hover:bg-surface-container-high transition-colors h-touch-target flex items-center justify-center">Acara Besar</button>
+<button class="flex-shrink-0 px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant border border-border font-label-md text-label-md hover:bg-surface-container-high transition-colors h-touch-target flex items-center justify-center">Fasilitas</button>
+</div>
+</section>
+<!-- Image Grid (Bento Style on Mobile) -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[150px] md:auto-rows-[250px]">
+<!-- Item 1 (Large) -->
+<div class="col-span-2 row-span-2 rounded-2xl overflow-hidden relative group shadow-sm hover:shadow-md transition-shadow">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A wide angle shot of a clean, modern Islamic boarding school mosque during the day, with beautiful white and teal architecture, clear blue sky, and students in neat white uniforms walking peacefully in the foreground. High quality lighting, optimistic mood, corporate minimalism style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATpewXuNWjwPez3AyW5mRLCnFViAMbtQHP3apoRCHyBy7K0u8LHJ4WG3Tb-20znJxPFoeG-kBm2NOz08m74Q84dDVJ5fOEWg4Cx47gkplXW7niPw9HY0EJm5xTXwZZ2Z7AVMcJwxoJdYEhIPBY60KgWTXsBJpzmI-zgK59YerKNxM_MLGd4DufgdW_KZHaR1pVYvnEhNITGQwsdh8pldd-jnnPfkscKKeBY1CZVZ0CxNUM27aGIcGz">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<span class="inline-block px-2 py-1 bg-primary/80 backdrop-blur-sm text-on-primary font-caption text-caption rounded mb-2">Lingkungan</span>
+<h3 class="font-headline-sm text-headline-sm text-white">Masjid Utama Nurisba</h3>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="rounded-xl overflow-hidden relative group shadow-sm hover:shadow-md transition-shadow">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Close up of a young male student in a white kopiah and neat shirt, intensely reading a large open Quran in a well-lit library setting. Soft natural light streaming from a window, warm and scholarly mood, shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2lcRlydPRMAapP75SMf-clMxXqTVLYYRhVv2SrKtva55NURXQrj-VESU764qHHkFoZQvTCczmi4b-5gkjT6CHASXf39AcazlOmm_yQVK1njHXK9KpE5Su73sEVaZUK7PSrtW9Gtt8RaiYIQfnyNku70FLpnugK4pIO-JBwTPKOK8uj-Bs7UecwY-f6g94M7YldKk94idBiPFEqzI67ZX6iY7Yyvie-i5gTmIlvsya_CTKO5htPNux">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="absolute bottom-0 left-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<p class="font-label-md text-label-md text-white">Kajian Pagi</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="rounded-xl overflow-hidden relative group shadow-sm hover:shadow-md transition-shadow">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A group of female students wearing matching elegant dark green hijabs sitting in a circle on a clean carpet, discussing and smiling warmly. Bright overhead lighting, clean and professional institutional environment, strong sense of community." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjb-dHzlK8US3Id6msqhAGjgL3rA4SDjJT60scWaSPve5PID7QUhunO450Vp7-4W6-1nc0coljJF-D-kLT1io2Ptf0qrGHqxdQBcqaL9GY1lR10TDXmjZJvBQWJrOkbNp8hLztI7xpjXEuiKK1t4FtnrRxa9vVfq8T-8fRXuMjH2jlfHw56ML1Qr7c6UiZ0Y3gv0FuprWov_Vy_5rq4Qsep3BbueH0t__RBHInsrQeqdAig4x-NAJ5">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="absolute bottom-0 left-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<p class="font-label-md text-label-md text-white">Diskusi Kelompok</p>
+</div>
+</div>
+<!-- Item 4 (Tall) -->
+<div class="col-span-1 row-span-2 rounded-xl overflow-hidden relative group shadow-sm hover:shadow-md transition-shadow hidden md:block">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Vertical shot of the tall modern minaret of the mosque against a vibrant sunset sky with orange and purple hues. Minimalist architectural details, striking silhouette, inspiring and peaceful evening atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0lI-mG3HmsH_AcbtYgCVPQUWJUL-aKmwJAf99UCCw30tY74cVNhbKa1lV44GPEZShxBJWnsahYsBuX8YbcxyZojjVCOuTOwKcyV-F9T09v6xDOd5SjY9dPLq3I31r5ojJHpGlAMtOedF_0WbEXQywTrpRAGkXNh9x4zaN2_fAhmil7biKXSPsFDBz9gXJw0HUhBoLCiakWgbPSfAUNkAGPeB6OK_3VbmmMpVBitCh3EsgVNAjrkr3">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<span class="inline-block px-2 py-1 bg-surface-tint/80 backdrop-blur-sm text-white font-caption text-caption rounded mb-2">Fasilitas</span>
+<h3 class="font-label-md text-label-md text-white">Menara Utama</h3>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="rounded-xl overflow-hidden relative group shadow-sm hover:shadow-md transition-shadow">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A wide shot of a large modern auditorium filled with neatly arranged chairs, a clean stage with a digital projector screen showing an Islamic geometric pattern in teal. Professional event setup, bright and airy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR9idD01-v07HcZ30p6-HVoC25DxDS5WfsQOzpQmJ-TpeODjjEsrw9bQal0xVWM28F6aztLzqazAfoanWvfpWFOwvtHGLwgCvOUI28Ojq7ONRefM0pPqPSi1ALjmU4qADToIF18N-AME-0oTl1m4KZxZyHTR5FF1kKaYy6Oq4CKZ8F413FTUz1KHZW4i-XZq7y6wojfQCnSfZcwcxo1hb8vHAA4jQrt0CQBNF2dpj6l9QaPVQ3660A">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="absolute bottom-0 left-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<p class="font-label-md text-label-md text-white">Aula Utama</p>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="rounded-xl overflow-hidden relative group shadow-sm hover:shadow-md transition-shadow">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Action shot of students engaging in a community service event, cleaning up a garden area with bright green plants. Bright sunny day, casual but uniform clothing, energetic and collaborative mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmRrI77zJZDS4pVLQ1TvTJ4cy44V5Q_I2aNxj1tDJ0EqdIyQuzI26Z4vqo8WnX7Y5Ir1xTS4eoLrPNk1cZ_BgYq2hPwxuZRbKH039Rl7NVBpt63Y7mQ8gRVWTLPAA08sfn93xw366n1U21PBiUx4OguzyfJywYbWk6wlrxQYX0dvgldbB7R83GYaw3W1TP4fMuNHbhLfk4QuYdzKlbE1MENGMsEMHwsXU_t0Q703uKNFxwUmflbQnu">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="absolute bottom-0 left-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<p class="font-label-md text-label-md text-white">Kerja Bakti</p>
+</div>
+</div>
+<!-- Item 7 (Wide) -->
+<div class="col-span-2 rounded-xl overflow-hidden relative group shadow-sm hover:shadow-md transition-shadow">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Panoramic view of a large iftar gathering in an open courtyard, long rows of white mats laid out with dates and water. Evening twilight lighting with warm string lights strung overhead. Festive, communal, and serene atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrOp_LGMXD4wXZBpkdFhmtd6VWAMfGwLlxsShDR8fEcVNWbEF77EkaACfZqeYIzsUMiweukFZvjdrKwWGYNe9Ta3TBk2c3MtiwFkI9yfoSxkUXEu6hZiY77B2rN59bhsddiFqY7-EYQbVEsvLaeLJibl-8lOo-t8yfIZy_Mo3YxWUon957MvEsoH9pqceXgx8i23lz3_6NH8_yODITcVYvtRb_nDkbn12BTMsWkI_LD1Z97qv9PR1n">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<span class="inline-block px-2 py-1 bg-secondary/80 backdrop-blur-sm text-white font-caption text-caption rounded mb-1">Acara Besar</span>
+<h3 class="font-label-md text-label-md text-white">Buka Puasa Bersama</h3>
+</div>
+</div>
+</div>
+<!-- Load More Button -->
+<div class="mt-8 flex justify-center">
+<button class="px-8 py-3 rounded-xl border-2 border-primary text-primary font-label-md text-label-md hover:bg-primary-soft transition-colors flex items-center gap-2 h-touch-target">
+<span>Muat Lebih Banyak</span>
+<span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap-sm bg-surface-container-lowest dark:bg-inverse-surface mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Brand Column -->
+<div class="flex flex-col gap-4">
+<a class="text-headline-md font-headline-md font-extrabold text-primary dark:text-inverse-primary flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-4xl" data-icon="mosque">mosque</span>
+<span>PPM Nurisba</span>
+</a>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant max-w-xs">Membangun generasi unggul yang berakhlak mulia dan berwawasan luas berlandaskan nilai-nilai Islam.</p>
+</div>
+<!-- Links Column -->
+<div class="flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-2">Tautan Cepat</h4>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors focus:underline decoration-2 underline-offset-4 flex items-center h-touch-target" href="#">Hubungi Kami</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors focus:underline decoration-2 underline-offset-4 flex items-center h-touch-target" href="#">Kebijakan Privasi</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors focus:underline decoration-2 underline-offset-4 flex items-center h-touch-target" href="#">Syarat &amp; Ketentuan</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors focus:underline decoration-2 underline-offset-4 flex items-center h-touch-target" href="#">Peta Situs</a>
+</div>
+<!-- Contact/Social Column -->
+<div class="flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-2">Kontak</h4>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">Jl. Pesantren No. 123, Bandung, Jawa Barat</p>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">info@ppmnurisba.or.id</p>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">+62 812 3456 7890</p>
+</div>
+</div>
+<!-- Copyright Bottom Bar -->
+<div class="mt-8 pt-8 border-t border-surface-container-high dark:border-surface-container-highest px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center md:text-left">
+<p class="font-caption text-caption text-on-surface-variant dark:text-outline-variant">© 2024 PPM Nurisba. Hak Cipta Dilindungi.</p>
+</div>
+</footer>
+</body></html>

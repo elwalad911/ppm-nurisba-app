@@ -148,23 +148,11 @@ export async function POST(req: NextRequest) {
             });
 
           if (!ledgerError) {
-            // Fetch current campaign amount and increment atomically / safely
-            const { data: campaign } = await supabase
-              .from("campaigns")
-              .select("current_amount")
-              .eq("id", campaignId)
-              .single();
-
-            if (campaign) {
-              const updatedAmount = Number(campaign.current_amount) + amount;
-              await supabase
-                .from("campaigns")
-                .update({
-                  current_amount: updatedAmount,
-                  updated_at: new Date().toISOString(),
-                })
-                .eq("id", campaignId);
-            }
+            // Atomic increment via PostgreSQL RPC — no race condition
+            await supabase.rpc("increment_campaign_amount", {
+              p_campaign_id: campaignId,
+              p_amount: amount,
+            });
           }
         }
       }

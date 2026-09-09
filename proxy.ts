@@ -35,15 +35,17 @@ export async function proxy(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const url = request.nextUrl;
-  const isLoginPage = url.pathname === "/admin/login";
-  const isAdminRoute = url.pathname.startsWith("/admin");
+  const pathname = url.pathname;
 
-  if (isAdminRoute && !isLoginPage) {
+  // === Admin routes ===
+  const isAdminLogin = pathname === "/admin/login";
+  const isAdminRoute = pathname.startsWith("/admin");
+
+  if (isAdminRoute && !isAdminLogin) {
     if (!user) {
       return NextResponse.redirect(new URL("/admin/login", request.url));
     }
 
-    // Check if user has admin role in public.profiles
     const { data: profile } = await supabase
       .from("profiles")
       .select("role")
@@ -51,14 +53,12 @@ export async function proxy(request: NextRequest) {
       .single();
 
     if (!profile || profile.role !== "admin") {
-      // Not an admin, sign out and redirect to login with error
       await supabase.auth.signOut();
       return NextResponse.redirect(new URL("/admin/login?error=unauthorized", request.url));
     }
   }
 
-  if (isLoginPage && user) {
-    // If already logged in as admin, redirect to admin dashboard
+  if (isAdminLogin && user) {
     const { data: profile } = await supabase
       .from("profiles")
       .select("role")
@@ -70,6 +70,22 @@ export async function proxy(request: NextRequest) {
     }
   }
 
+  // === Donor routes ===
+  const isDonorLogin = pathname === "/donor/login";
+  const isDonorRegister = pathname === "/donor/register";
+  const isDonorAuthPage = isDonorLogin || isDonorRegister;
+  const isDonorRoute = pathname.startsWith("/donor");
+
+  if (isDonorRoute && !isDonorAuthPage) {
+    if (!user) {
+      return NextResponse.redirect(new URL("/donor/login", request.url));
+    }
+  }
+
+  if (isDonorAuthPage && user) {
+    return NextResponse.redirect(new URL("/donor/dashboard", request.url));
+  }
+
   return supabaseResponse;
 }
 
@@ -79,5 +95,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/donor/:path*"],
 };

@@ -1,0 +1,281 @@
+<!DOCTYPE html><html class="light" lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Donasi - PPM Nurisba</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Geist:wght@400..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#341100",
+                        "secondary-fixed-dim": "#ffb690",
+                        "surface-dim": "#d6dbd9",
+                        "surface-tint": "#006a61",
+                        "on-primary-fixed-variant": "#005049",
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "outline-variant": "#bcc9c6",
+                        "secondary": "#9d4300",
+                        "outline": "#6d7a77",
+                        "surface": "#f5faf8",
+                        "on-surface": "#171d1c",
+                        "surface-container-high": "#e4e9e7",
+                        "primary-container": "#008378",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#edf2f0",
+                        "on-tertiary-fixed-variant": "#773215",
+                        "tertiary": "#924628",
+                        "surface-container": "#eaefed",
+                        "tertiary-container": "#b05e3d",
+                        "section-bg": "#f0fdfa",
+                        "surface-variant": "#dee4e1",
+                        "on-surface-variant": "#3d4947",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#dee4e1",
+                        "text-body": "#4b5563",
+                        "on-tertiary-fixed": "#370e00",
+                        "on-primary-fixed": "#00201d",
+                        "inverse-primary": "#6bd8cb",
+                        "surface-container-low": "#f0f5f2",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#5c2400",
+                        "on-tertiary-container": "#fffbff",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2c3130",
+                        "surface-bright": "#f5faf8",
+                        "on-error": "#ffffff",
+                        "text-heading": "#1f2937",
+                        "background": "#f5faf8",
+                        "primary-fixed-dim": "#6bd8cb",
+                        "on-primary-container": "#f4fffc",
+                        "page-bg": "#fbfcfc",
+                        "primary": "#00685f",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#fd761a",
+                        "pending": "#f59e0b",
+                        "on-secondary-fixed-variant": "#783200",
+                        "primary-dark": "#115e59",
+                        "on-background": "#171d1c",
+                        "primary-fixed": "#89f5e7",
+                        "tertiary-fixed": "#ffdbce",
+                        "success": "#059669",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#ffdbca"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1rem"
+                    },
+                    "spacing": {
+                        "touch-target": "44px",
+                        "gutter": "1.5rem",
+                        "margin-desktop": "2rem",
+                        "margin-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Geist"],
+                        "number-xl": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "label-md": ["Geist"],
+                        "display-lg-mobile": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "number-xl": ["32px", { "lineHeight": "1", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md antialiased pt-8 pb-24">
+<!-- Minimal Header / Back Navigation -->
+<header class="max-w-3xl mx-auto px-margin-mobile md:px-0 mb-8 flex items-center justify-between">
+<a aria-label="Kembali ke halaman sebelumnya" class="flex items-center gap-2 text-primary hover:text-primary-dark transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+<span class="font-label-md text-label-md">Kembali</span>
+</a>
+<div class="font-headline-sm text-headline-sm font-bold text-primary"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_Sjkdtj9RLnK4o47D6yVr09NLmd3IHd3cCZPSY618h2hrLtB02ztWM4s9GMmQxqXz7vmFMhgPeez24Rv9jMPDeMr9ItimHFljtCS8XyKwaJH9qvFv5lKh8ScDCK17Bsh4k2vDB3MGJTsEodqPCGCL7vTx4O4zBTneYyagLAnfr71FGb5aMSKSWYKtzqxXHSBFd6fvDOeJY_RvPWLNqEY0smdB9MMlzUzrh7Z_Wk6mcReYiV0wE1rroLMHkLzRHmzk0A" alt="Logo Yayasan Nurul Ikhlas PPM Nurisba" class="w-8 h-8 object-contain rounded-full"><span class="font-headline-sm text-headline-sm font-bold text-primary">PPM Nurisba</span></div></div>
+</header>
+<!-- Main Content Container -->
+<main class="max-w-3xl mx-auto px-margin-mobile md:px-0 grid gap-8">
+<!-- 1. Mini Campaign Summary -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-md p-6 border border-surface-variant flex items-start gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 bg-surface-container">
+<img alt="Peletakan batu pertama pembangunan PPM Nurisba" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASm_WWBUoJva_fvBMwIYDP3kb9wmLQ4gGcvGxJTWAbPratFmTJrcM1-QpvK-IjluqgwNdC_SOxZ0iCbhmCsh-Xh5-5UmywUiJESx3PZZgp3AEK-r5PKa1WHdd9C3mzbJT-tYiFlgTMDLOhdYE3M7auNWAVdGSPyFc_-CxZW-RySILsCjG-6SMz3v3J-_QHV2EOau--sJNRnLNlBdLtGLDguKcMXIWX8j9vJvEXAzK8s0gkFtNX1bzKthD4Qw4_ja0lTg">
+</div>
+<div class="flex-1">
+<h1 class="font-headline-sm text-headline-sm text-on-surface mb-2">Pembangunan Masjid dan Ruang Kelas/Asrama</h1>
+<div class="flex items-center gap-2 mb-2">
+<span class="font-label-md text-label-md text-primary">Terkumpul: Rp 150.000.000</span>
+<span class="text-on-surface-variant text-sm">dari target Rp 500.000.000</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 30%"></div>
+</div>
+</div>
+</section>
+<!-- Form Container -->
+<form class="bg-surface-container-lowest rounded-2xl shadow-2xl p-6 md:p-10 border border-surface-variant flex flex-col gap-10">
+<!-- 2. Nominal Donasi -->
+<section>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-6 border-b border-surface-variant pb-2">1. Pilih Nominal Donasi</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+<!-- Preset Options -->
+<label class="cursor-pointer">
+<input class="peer sr-only" name="donation_amount" type="radio" value="50000">
+<div class="h-touch-target flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary font-label-md text-label-md">
+                            Rp 50.000
+                        </div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="donation_amount" type="radio" value="100000">
+<div class="h-touch-target flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary font-label-md text-label-md">
+                            Rp 100.000
+                        </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="donation_amount" type="radio" value="500000">
+<div class="h-touch-target flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary font-label-md text-label-md">
+                            Rp 500.000
+                        </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="donation_amount" type="radio" value="1000000">
+<div class="h-touch-target flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary font-label-md text-label-md">
+                            Rp 1.000.000
+                        </div>
+</label>
+</div>
+<!-- Custom Amount -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="custom_amount">Atau masukkan nominal lainnya</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="text-on-surface-variant font-label-md text-label-md">Rp</span>
+</div>
+<input class="block w-full pl-12 pr-4 h-[56px] rounded-xl border-outline-variant bg-surface-bright focus:border-primary focus:ring focus:ring-primary/20 transition-shadow text-lg font-medium text-on-surface placeholder:text-on-surface-variant/50" id="custom_amount" name="custom_amount" placeholder="0" type="text">
+</div>
+<p class="mt-2 text-sm text-on-surface-variant">Minimum donasi Rp 10.000</p>
+</div>
+</section>
+<!-- 3. Data Donatur -->
+<section>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-6 border-b border-surface-variant pb-2">2. Data Donatur</h2>
+<div class="grid gap-6">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="full_name">Nama Lengkap</label>
+<input class="block w-full px-4 h-[48px] rounded-xl border-outline-variant bg-surface-bright focus:border-primary focus:ring focus:ring-primary/20 transition-shadow text-on-surface" id="full_name" name="full_name" type="text">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="email">Alamat Email (Opsional)</label>
+<input class="block w-full px-4 h-[48px] rounded-xl border-outline-variant bg-surface-bright focus:border-primary focus:ring focus:ring-primary/20 transition-shadow text-on-surface placeholder:text-on-surface-variant/50" id="email" name="email" placeholder="Untuk menerima bukti donasi" type="email">
+</div>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center justify-center">
+<input class="peer sr-only" name="hide_name" type="checkbox">
+<div class="w-6 h-6 rounded border-2 border-outline-variant peer-checked:bg-primary peer-checked:border-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[16px] opacity-0 peer-checked:opacity-100 transition-opacity icon-filled">check</span>
+</div>
+</div>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Sembunyikan nama saya (Hamba Allah)</span>
+</label>
+</div>
+</section>
+<!-- 4. Doa & Dukungan -->
+<section>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-6 border-b border-surface-variant pb-2">3. Doa &amp; Dukungan</h2>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="message">Tulis doa atau pesan dukungan (Opsional)</label>
+<textarea class="block w-full p-4 rounded-xl border-outline-variant bg-surface-bright focus:border-primary focus:ring focus:ring-primary/20 transition-shadow text-on-surface resize-y" id="message" name="message" placeholder="Semoga berkah..." rows="4"></textarea>
+</div>
+</section>
+<!-- 5. Ringkasan & 6. Action -->
+<section class="bg-surface rounded-xl p-6 border border-surface-variant mt-4">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-4 uppercase tracking-wider">Ringkasan Pembayaran</h3>
+<div class="flex justify-between items-center mb-6">
+<span class="font-body-lg text-body-lg text-on-surface">Total Donasi</span>
+<span class="font-headline-md text-headline-md text-primary">Rp 100.000</span>
+</div>
+<button class="w-full h-[56px] bg-secondary-container hover:bg-secondary text-on-secondary-container hover:text-white rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 active:scale-95" type="button">
+<span class="material-symbols-outlined icon-filled">volunteer_activism</span>
+                    Bayar Sekarang
+                </button>
+<p class="text-center text-sm text-on-surface-variant mt-4 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+                    Pembayaran aman &amp; terenkripsi
+                </p>
+</section>
+</form>
+</main>
+<script>
+        // Simple script to handle radio vs custom input logic visually
+        document.addEventListener('DOMContentLoaded', () => {
+            const radioButtons = document.querySelectorAll('input[name="donation_amount"]');
+            const customInput = document.getElementById('custom_amount');
+            const totalDisplay = document.querySelector('.text-primary.font-headline-md');
+
+            function updateTotal(amount) {
+                // Format to IDR basic string
+                const formatted = parseInt(amount || 0).toLocaleString('id-ID');
+                totalDisplay.textContent = `Rp ${formatted}`;
+            }
+
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        customInput.value = '';
+                        updateTotal(e.target.value);
+                    }
+                });
+            });
+
+            customInput.addEventListener('input', (e) => {
+                const val = e.target.value.replace(/\D/g, '');
+                e.target.value = val; // keep only numbers in input visual
+                
+                if (val) {
+                    // Deselect radios
+                    radioButtons.forEach(r => r.checked = false);
+                    updateTotal(val);
+                } else {
+                    // If empty, revert to default radio
+                    const defaultRadio = document.querySelector('input[name="donation_amount"][value="100000"]');
+                    if(defaultRadio) {
+                        defaultRadio.checked = true;
+                        updateTotal(100000);
+                    } else {
+                        updateTotal(0);
+                    }
+                }
+            });
+        });
+    </script>
+
+
+</body></html>

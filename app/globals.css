@@ -26,8 +26,10 @@
   /* Surface & background — exact from Stitch */
   --background: #f8f9f9;
   --surface: #f8f9f9;
+  --surface-dim: #f1f5f9;
   --surface-container: #edeeee;
   --surface-container-low: #f3f4f4;
+  --surface-container-high: #e7e8e8;
   --surface-container-highest: #e1e3e3;
   --surface-container-lowest: #ffffff;
 
@@ -40,14 +42,17 @@
 
   /* Border — exact from Stitch */
   --border: #e2e8f0;
+  --outline: #6d7a77;
   --outline-variant: #bcc9c6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
   --color-surface-container: var(--surface-container);
   --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container-high: var(--surface-container-high);
   --color-surface-container-highest: var(--surface-container-highest);
   --color-surface-container-lowest: var(--surface-container-lowest);
 
@@ -75,8 +80,9 @@
   --color-on-surface: var(--on-surface);
   --color-on-surface-variant: var(--on-surface-variant);
 
-  /* Border */
+  /* Border & Outline */
   --color-border: var(--border);
+  --color-outline: var(--outline);
   --color-outline-variant: var(--outline-variant);
 
   /* Font */
