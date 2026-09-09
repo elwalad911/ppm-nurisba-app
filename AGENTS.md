@@ -60,3 +60,28 @@ Setiap kali menerima perintah coding dari user, OpenCode WAJIB menjalankan tahap
 3. **Reuse:** Manfaatkan komponen dan utilitas yang sudah ada di repositori.
 4. **Code:** Tulis kode lengkap, bersih, modular, tanpa placeholder komentar yang belum selesai (hindari `// implement later`).
 5. **Verify:** Pastikan tidak ada type error, broken imports, atau visual regression pada layout responsif.
+
+---
+
+## Visual Source of Truth (Update Sep 2026)
+
+Folder `stitch-design/` di root project adalah SATU-SATUNYA acuan visual
+pixel-accurate untuk seluruh UI, MENGGANTIKAN Stitch MCP (sudah di-disable)
+dan mengoreksi bagian visual DESIGN.md yang mungkin sudah tidak akurat.
+
+Setiap subfolder di `stitch-design/` merepresentasikan satu halaman/state
+spesifik (nama folder deskriptif, misal `campaign_detail_desktop`,
+`donation_form_mobile_default_state`, `payment_success_desktop`).
+
+WAJIB untuk setiap task yang menyentuh UI:
+1. Cari subfolder yang relevan di stitch-design/ SEBELUM menulis/mengubah kode.
+2. Baca file HTML/CSS di dalamnya sebagai referensi pixel-accurate: layout,
+   spacing, typography, warna, struktur komponen.
+3. Reconcile ke semantic token DESIGN.md §3 (jangan hardcode value custom dari
+   Stitch kalau ada token terdekat yang sudah didefinisikan) — TAPI kalau ada
+   konflik nyata antara struktur/spacing Stitch vs DESIGN.md, Stitch folder
+   lokal ini yang menang untuk urusan visual, laporkan konflik yang ditemukan.
+4. Kalau subfolder untuk halaman tertentu TIDAK ada, treat DESIGN.md sebagai
+   fallback authoritative (contoh: admin dashboard tidak punya referensi Stitch).
+
+DILARANG memanggil Stitch MCP lagi untuk task apa pun ke depannya.
