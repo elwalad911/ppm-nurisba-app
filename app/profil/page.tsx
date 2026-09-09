@@ -5,12 +5,7 @@ import { PageHeader } from "@/components/page-header";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  Building2,
-  Users,
-  ShieldCheck,
-} from "lucide-react";
+import { ArrowRight, Building2, Users, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Profil",
@@ -46,16 +41,16 @@ export default function ProfilPage() {
                 </h3>
                 <div className="space-y-4 text-sm leading-relaxed text-on-surface-variant">
                   <p>
-                    Kemajuan teknologi, perkembangan zaman, serta terbukanya arus
-                    informasi memberikan tantangan baru dalam pembentukan mindset dan
-                    karakter generasi bangsa.
+                    Kemajuan teknologi, perkembangan zaman, serta terbukanya
+                    arus informasi memberikan tantangan baru dalam pembentukan
+                    mindset dan karakter generasi bangsa.
                   </p>
                   <p>
-                    Kemudahan memperoleh informasi tidak selalu memberikan dampak
-                    positif. Berbagai persoalan sosial seperti pergaulan bebas,
-                    kekerasan, dan kenakalan generasi muda menjadi tantangan yang
-                    perlu dihadapi melalui pendidikan yang membangun karakter dan
-                    akhlak.
+                    Kemudahan memperoleh informasi tidak selalu memberikan
+                    dampak positif. Berbagai persoalan sosial seperti pergaulan
+                    bebas, kekerasan, dan kenakalan generasi muda menjadi
+                    tantangan yang perlu dihadapi melalui pendidikan yang
+                    membangun karakter dan akhlak.
                   </p>
                   <p>
                     Atas dasar tersebut, Yayasan Nurul Ikhlas Soreang Bandung
@@ -66,9 +61,6 @@ export default function ProfilPage() {
                   </p>
                 </div>
               </div>
-              <button className="self-start mt-6 text-sm font-semibold text-primary flex items-center group-hover:text-cta transition-colors">
-                Pelajari Selengkapnya <ArrowRight className="h-4 w-4 ml-1" />
-              </button>
             </div>
           </div>
 
@@ -98,7 +90,8 @@ export default function ProfilPage() {
                   Lembaga Terverifikasi
                 </h4>
                 <p className="text-xs text-on-surface-variant">
-                  Terdaftar resmi dan diawasi oleh pihak berwenang. AHU-0008977.AH.01.04.Tahun 2019
+                  Terdaftar resmi dan diawasi oleh pihak berwenang.
+                  AHU-0008977.AH.01.04.Tahun 2019
                 </p>
               </div>
             </div>
@@ -148,9 +141,9 @@ export default function ProfilPage() {
             centered={false}
           />
           <p className="mt-4 text-sm leading-relaxed text-on-surface-variant">
-            Yayasan Nurul Ikhlas Soreang Bandung berupaya memberikan
-            pendidikan yang memadukan pendidikan agama dengan pendidikan modern
-            agar generasi muda memiliki:
+            Yayasan Nurul Ikhlas Soreang Bandung berupaya memberikan pendidikan
+            yang memadukan pendidikan agama dengan pendidikan modern agar
+            generasi muda memiliki:
           </p>
           <ul className="mt-4 space-y-2 text-sm text-on-surface-variant">
             {[

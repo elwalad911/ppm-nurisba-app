@@ -1,21 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Lock, Mail, Loader2 } from "lucide-react";
 
 export function AdminLoginClient() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const errorQuery = searchParams.get("error");
 
+  const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(
-    errorQuery === "unauthorized" ? "Akun Anda tidak memiliki hak akses administrator." : null
-  );
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -70,7 +66,9 @@ export function AdminLoginClient() {
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary-soft text-primary mb-3">
             <Lock className="h-6 w-6" />
           </div>
-          <h1 className="text-2xl font-bold text-text-primary">Admin Dashboard</h1>
+          <h1 className="text-2xl font-bold text-text-primary">
+            Admin Dashboard
+          </h1>
           <p className="text-sm text-text-secondary mt-1">
             Masuk ke panel administrasi PPM Nurisba
           </p>

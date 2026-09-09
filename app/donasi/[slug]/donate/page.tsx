@@ -26,14 +26,16 @@ export default async function DonatePage({ params }: PageProps) {
     <>
       <Navbar />
 
-      <main className="py-12 sm:py-16 lg:py-20 bg-background">
-        <div className="w-full max-w-md mx-auto px-4 pt-4 pb-8 flex flex-col gap-6">
+      <main className="py-20 md:py-28 bg-background min-h-screen">
+        <div className="w-full max-w-md md:max-w-3xl mx-auto px-4 flex flex-col gap-6">
           <DonationFormClient
             campaignId={campaign.id}
             campaignTitle={campaign.title}
             campaignCategory={campaign.category}
             campaignImageUrl={campaign.image_url}
             campaignDescription={campaign.description}
+            campaignTargetAmount={Number(campaign.target_amount)}
+            campaignCurrentAmount={Number(campaign.current_amount)}
           />
         </div>
       </main>

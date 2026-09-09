@@ -35,7 +35,9 @@ export function Sidebar() {
   };
 
   return (
-    <aside className="flex flex-col border-r border-border bg-surface w-64 min-h-screen p-4 shrink-0">
+    <aside
+      className="flex flex-col border-r border-border bg-surface w-64 min-h-screen p-4 shrink-0"
+    >
       <div className="py-4 px-3 mb-4 border-b border-border-light">
         <h2 className="text-lg font-bold text-primary">PPM Nurisba Admin</h2>
         <p className="text-xs text-text-muted">Panel Pengelolaan Data</p>
