@@ -96,7 +96,7 @@ export function Sidebar() {
     <>
       <button
         onClick={() => setMobileOpen(true)}
-        className="fixed top-4 left-4 z-50 md:hidden flex items-center justify-center w-10 h-10 rounded-xl bg-surface border border-border shadow-sm hover:bg-primary-soft transition-colors"
+        className="fixed top-4 left-4 z-50 md:hidden flex items-center justify-center w-11 h-11 rounded-xl bg-surface border border-border shadow-sm hover:bg-primary-soft transition-colors"
         aria-label="Buka menu navigasi"
       >
         <Menu className="h-5 w-5 text-text-primary" />
