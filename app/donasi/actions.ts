@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { createServiceRoleClient } from "@/lib/supabase/service-role";
 import { donationSchema, type DonationInput } from "@/lib/validations/donation";
 
 type PaymentMethodChoice = "midtrans" | "manual_bank" | "qris_manual";
@@ -16,6 +17,8 @@ export async function createPendingDonation(input: DonationInput) {
   }
 
   const data = result.data;
+
+  // Anon key client for donations insert (has RLS INSERT policy)
   const supabase = await createClient();
 
   // Insert donation with status 'pending'
@@ -43,10 +46,12 @@ export async function createPendingDonation(input: DonationInput) {
     };
   }
 
-  // Also create corresponding payment row with unique order_id
+  // Service-role client for payments insert (NO RLS INSERT policy — only service-role may write)
+  const serviceSupabase = createServiceRoleClient();
+
   const orderId = `NURRISBA-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-  
-  const { error: paymentError } = await supabase.from("payments").insert({
+
+  const { error: paymentError } = await serviceSupabase.from("payments").insert({
     donation_id: donation.id,
     provider: "midtrans",
     order_id: orderId,
