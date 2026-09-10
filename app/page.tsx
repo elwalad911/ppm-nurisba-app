@@ -61,6 +61,7 @@ export default async function HomePage() {
             alt="PPM Nurisba"
             width={122}
             height={122}
+            priority
             className="object-contain"
           />
         </div>
@@ -81,7 +82,7 @@ export default async function HomePage() {
         <div className="flex flex-col sm:flex-row w-full max-w-xs sm:max-w-md gap-3 sm:gap-4 justify-center">
           <Link
             href="/donasi"
-            className="w-full sm:w-auto px-8 h-12 bg-cta text-white rounded-xl text-sm font-semibold shadow-md active:translate-y-0.5 hover:bg-cta-strong hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-8 h-12 bg-cta text-text-primary rounded-xl text-sm font-semibold shadow-md active:translate-y-0.5 hover:bg-cta-strong hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2"
           >
             <HandHeart className="h-5 w-5" />
             Donasi Sekarang

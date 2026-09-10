@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/container";
 import { Navbar } from "@/components/navbar";
@@ -15,6 +16,11 @@ import {
   Receipt,
   Heart,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Hasil Donasi",
+  description: "Status transaksi donasi Anda untuk PPM Nurisba.",
+};
 
 interface PageProps {
   searchParams: Promise<{ donationId?: string; orderId?: string }>;
@@ -201,7 +207,7 @@ export default async function DonationResultPage({ searchParams }: PageProps) {
                   {campaign && (
                     <Link
                       href={`/donasi/${campaign.slug}`}
-                      className="w-full sm:w-auto px-6 h-12 bg-cta hover:bg-cta-strong text-white font-bold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+                      className="w-full sm:w-auto px-6 h-12 bg-cta hover:bg-cta-strong text-text-primary font-bold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
                     >
                       <span>Kembali ke Campaign</span>
                       <ArrowRight className="h-4 w-4" />
@@ -271,7 +277,7 @@ export default async function DonationResultPage({ searchParams }: PageProps) {
                   {campaign && (
                     <Link
                       href={`/donasi/${campaign.slug}/donate`}
-                      className="w-full sm:w-auto px-6 h-12 bg-cta hover:bg-cta-strong text-white font-bold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+                      className="w-full sm:w-auto px-6 h-12 bg-cta hover:bg-cta-strong text-text-primary font-bold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
                     >
                       <RefreshCcw className="h-4 w-4" />
                       <span>Ulangi Donasi</span>
@@ -339,7 +345,7 @@ export default async function DonationResultPage({ searchParams }: PageProps) {
                   {campaign && (
                     <Link
                       href={`/donasi/${campaign.slug}/donate`}
-                      className="w-full sm:w-auto px-6 h-12 bg-cta hover:bg-cta-strong text-white font-bold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+                      className="w-full sm:w-auto px-6 h-12 bg-cta hover:bg-cta-strong text-text-primary font-bold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
                     >
                       <Heart className="h-4 w-4" />
                       <span>Donasi Lagi</span>

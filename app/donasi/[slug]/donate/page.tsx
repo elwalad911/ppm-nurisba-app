@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { Navbar } from "@/components/navbar";
@@ -6,6 +7,21 @@ import { DonationFormClient } from "./donation-form-client";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const supabase = await createClient();
+  const { data: campaign } = await supabase
+    .from("campaigns")
+    .select("title")
+    .eq("slug", slug)
+    .single();
+
+  return {
+    title: campaign ? `Donasi — ${campaign.title}` : "Form Donasi",
+    description: "Wujudkan kebaikan melalui donasi untuk program PPM Nurisba.",
+  };
 }
 
 export default async function DonatePage({ params }: PageProps) {

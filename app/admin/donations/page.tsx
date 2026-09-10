@@ -54,7 +54,8 @@ export default async function AdminDonationsPage() {
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
+      {/* Desktop Table View */}
+      <div className="hidden sm:block overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
         <table className="w-full text-left text-sm">
           <thead className="bg-primary-soft/50 text-xs font-semibold uppercase text-text-secondary">
             <tr>
@@ -113,6 +114,47 @@ export default async function AdminDonationsPage() {
             )}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile Card View */}
+      <div className="sm:hidden space-y-3">
+        {donationList.length === 0 ? (
+          <div className="rounded-2xl border border-border bg-surface p-8 text-center text-sm text-text-muted">
+            Belum ada transaksi donasi.
+          </div>
+        ) : (
+          donationList.map((item) => (
+            <div key={item.id} className="rounded-2xl border border-border bg-surface p-4 shadow-sm">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0 flex-1">
+                  <p className="font-bold text-text-primary line-clamp-1">{item.donor_name}</p>
+                  <p className="text-xs text-text-muted">
+                    {item.campaigns?.title || "Campaign"}
+                  </p>
+                </div>
+                <span
+                  className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                    item.status === "success"
+                      ? "bg-success-soft text-success"
+                      : item.status === "pending"
+                      ? "bg-warning-soft text-warning"
+                      : "bg-danger-soft text-danger"
+                  }`}
+                >
+                  {item.status}
+                </span>
+              </div>
+              <div className="mt-3 flex items-center justify-between">
+                <p className="text-sm font-bold text-primary tabular-nums">
+                  {formatRupiah(item.amount)}
+                </p>
+                <p className="font-mono text-xs text-text-muted">
+                  {item.payments?.[0]?.order_id || "-"}
+                </p>
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

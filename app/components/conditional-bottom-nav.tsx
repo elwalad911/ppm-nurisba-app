@@ -5,11 +5,9 @@ import { MobileBottomNav } from "@/components/mobile-bottom-nav";
 
 export function ConditionalBottomNav() {
   const pathname = usePathname();
-  // Only show bottom nav on PUBLIC routes (not admin or donor)
-  const showNav = !["/admin", "/donor"].includes(pathname);
+  const isHidden = pathname.startsWith("/admin") || pathname.startsWith("/donor");
 
-  // Don't render if should be hidden
-  if (!showNav) {
+  if (isHidden) {
     return null;
   }
 

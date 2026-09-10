@@ -93,7 +93,7 @@ export default async function AdminDashboardPage() {
               <div key={i} className="flex items-center justify-between py-3">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-soft text-primary font-bold">
-                    {d.donor_name.charAt(0).toUpperCase()}
+                    {d.donor_name?.charAt(0)?.toUpperCase() || "?"}
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-text-primary">

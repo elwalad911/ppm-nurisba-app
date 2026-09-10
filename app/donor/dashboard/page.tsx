@@ -77,7 +77,7 @@ export default async function DonorDashboardPage() {
             <p className="text-xs text-text-secondary mt-1">Salurkan wakaf dan sedekah baru</p>
           </div>
           <div className="mt-4 flex gap-3">
-            <Button asChild className="bg-cta hover:bg-cta/90 text-white">
+            <Button asChild className="bg-cta hover:bg-cta/90 text-text-primary">
               <Link href="/donasi">
                 Pilih Program
                 <ArrowRight className="h-4 w-4 ml-2" />

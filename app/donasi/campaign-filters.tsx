@@ -169,7 +169,7 @@ export function CampaignFilters({ campaigns }: { campaigns: Campaign[] }) {
                       {isFeatured ? (
                         <Link
                           href={`/donasi/${campaign.slug}`}
-                          className="w-full bg-cta text-white text-sm font-semibold py-3 rounded-xl shadow-md hover:bg-cta-strong active:scale-95 transition-all duration-200 min-h-[44px] flex justify-center items-center gap-2"
+                          className="w-full bg-cta text-text-primary text-sm font-semibold py-3 rounded-xl shadow-md hover:bg-cta-strong active:scale-95 transition-all duration-200 min-h-[44px] flex justify-center items-center gap-2"
                         >
                           Donasi Sekarang
                           <Heart className="h-4 w-4" />

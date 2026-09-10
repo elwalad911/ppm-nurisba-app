@@ -55,12 +55,14 @@ export default async function CampaignDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const percentage = Math.min(
-    Math.round(
-      (Number(campaign.current_amount) / Number(campaign.target_amount)) * 100
-    ),
-    100
-  );
+  const percentage = Number(campaign.target_amount) > 0
+    ? Math.min(
+        Math.round(
+          (Number(campaign.current_amount) / Number(campaign.target_amount)) * 100
+        ),
+        100
+      )
+    : 0;
 
   const endDate = campaign.end_date ? new Date(campaign.end_date) : null;
   const now = new Date();
@@ -383,7 +385,7 @@ export default async function CampaignDetailPage({ params }: PageProps) {
                   {/* Actions */}
                   <Link
                     href={`/donasi/${campaign.slug}/donate`}
-                    className="w-full bg-cta text-white hover:bg-cta-strong transition-all font-bold text-sm py-3.5 rounded-xl shadow-md hover:-translate-y-0.5 active:scale-95 flex justify-center items-center gap-2 mb-3 min-h-[44px]"
+                    className="w-full bg-cta text-text-primary hover:bg-cta-strong transition-all font-bold text-sm py-3.5 rounded-xl shadow-md hover:-translate-y-0.5 active:scale-95 flex justify-center items-center gap-2 mb-3 min-h-[44px]"
                   >
                     <Heart className="h-4 w-4" />
                     Donasi Sekarang
@@ -420,7 +422,7 @@ export default async function CampaignDetailPage({ params }: PageProps) {
       <div className="fixed bottom-0 left-0 right-0 lg:hidden bg-white/95 backdrop-blur-md border-t border-outline-variant/30 p-4 shadow-[0_-4px_15px_rgba(0,0,0,0.08)] z-50">
         <Link
           href={`/donasi/${campaign.slug}/donate`}
-          className="w-full bg-cta text-white text-base font-bold py-3.5 rounded-xl shadow-md hover:bg-cta-strong active:scale-95 transition-all flex items-center justify-center gap-2"
+          className="w-full bg-cta text-text-primary text-base font-bold py-3.5 rounded-xl shadow-md hover:bg-cta-strong active:scale-95 transition-all flex items-center justify-center gap-2"
         >
           <Heart className="h-5 w-5" />
           Donasi Sekarang

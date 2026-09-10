@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { createPendingDonation } from "@/app/donasi/actions";
+import { createPendingDonation, createManualDonation } from "@/app/donasi/actions";
 import { formatRupiah } from "@/lib/utils";
 import {
   Loader2,
@@ -12,8 +12,14 @@ import {
   AlertCircle,
   Lock,
   Check,
+  CreditCard,
+  Building2,
+  QrCode,
+  CheckCircle2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+type PaymentMethodChoice = "midtrans" | "manual_bank" | "qris_manual";
 
 const QUICK_AMOUNTS = [50000, 100000, 250000, 500000];
 
@@ -44,6 +50,7 @@ export function DonationFormClient({
   const [donorEmail, setDonorEmail] = useState<string>("");
   const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethodChoice>("midtrans");
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
@@ -79,22 +86,46 @@ export function DonationFormClient({
     setIsSubmitting(true);
 
     try {
-      const result = await createPendingDonation({
-        campaign_id: campaignId,
-        amount,
-        donor_name: isAnonymous ? "Hamba Allah" : donorName || "Hamba Allah",
-        donor_email: donorEmail,
-        is_anonymous: isAnonymous,
-        message,
-      });
+      if (paymentMethod === "midtrans") {
+        const result = await createPendingDonation({
+          campaign_id: campaignId,
+          amount,
+          donor_name: isAnonymous ? "Hamba Allah" : donorName || "Hamba Allah",
+          donor_email: donorEmail,
+          is_anonymous: isAnonymous,
+          message,
+        });
 
-      if (!result.success) {
-        setError(result.error || "Terjadi kesalahan saat memproses donasi.");
-        setIsSubmitting(false);
-        return;
+        if (!result.success) {
+          setError(result.error || "Terjadi kesalahan saat memproses donasi.");
+          setIsSubmitting(false);
+          return;
+        }
+
+        router.push(`/donasi/result?donationId=${result.donationId}&orderId=${result.orderId}`);
+      } else {
+        const result = await createManualDonation(
+          {
+            campaign_id: campaignId,
+            amount,
+            donor_name: isAnonymous ? "Hamba Allah" : donorName || "Hamba Allah",
+            donor_email: donorEmail,
+            is_anonymous: isAnonymous,
+            message,
+          },
+          paymentMethod
+        );
+
+        if (!result.success) {
+          setError(result.error || "Terjadi kesalahan saat memproses donasi.");
+          setIsSubmitting(false);
+          return;
+        }
+
+        router.push(
+          `/donasi/manual-confirm?donationId=${result.donationId}&method=${paymentMethod}&amount=${amount}`
+        );
       }
-
-      router.push(`/donasi/result?donationId=${result.donationId}&orderId=${result.orderId}`);
     } catch {
       setError("Gagal terhubung ke server. Silakan coba lagi.");
       setIsSubmitting(false);
@@ -183,7 +214,7 @@ export function DonationFormClient({
                   )}
                 >
                   {val === 100000 && (
-                    <span className="absolute -top-2 right-2 bg-cta text-white text-[9px] font-bold px-1.5 py-0.2 rounded-full">
+                    <span className="absolute -top-2 right-2 bg-cta text-text-primary text-[9px] font-bold px-1.5 py-0.2 rounded-full">
                       Populer
                     </span>
                   )}
@@ -287,6 +318,100 @@ export function DonationFormClient({
           />
         </section>
 
+        {/* 5. Metode Pembayaran Section */}
+        <section>
+          <h2 className="text-base sm:text-lg font-bold text-on-surface mb-4 border-b border-border pb-2">
+            4. Pilih Metode Pembayaran
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {/* Midtrans Online */}
+            <button
+              type="button"
+              onClick={() => setPaymentMethod("midtrans")}
+              className={cn(
+                "relative flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer text-center min-h-[44px]",
+                paymentMethod === "midtrans"
+                  ? "border-primary bg-primary-soft shadow-xs"
+                  : "border-outline-variant/50 bg-surface hover:bg-surface-container"
+              )}
+            >
+              <CreditCard className={cn("h-6 w-6", paymentMethod === "midtrans" ? "text-primary" : "text-text-muted")} />
+              <div>
+                <p className={cn("text-sm font-bold", paymentMethod === "midtrans" ? "text-primary" : "text-on-surface")}>
+                  Bayar Online
+                </p>
+                <p className="text-[10px] text-text-muted mt-0.5">Kartu / VA / E-Wallet</p>
+              </div>
+              {paymentMethod === "midtrans" && (
+                <div className="absolute top-2 right-2">
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                </div>
+              )}
+            </button>
+
+            {/* Manual Bank Transfer */}
+            <button
+              type="button"
+              onClick={() => setPaymentMethod("manual_bank")}
+              className={cn(
+                "relative flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer text-center min-h-[44px]",
+                paymentMethod === "manual_bank"
+                  ? "border-primary bg-primary-soft shadow-xs"
+                  : "border-outline-variant/50 bg-surface hover:bg-surface-container"
+              )}
+            >
+              <Building2 className={cn("h-6 w-6", paymentMethod === "manual_bank" ? "text-primary" : "text-text-muted")} />
+              <div>
+                <p className={cn("text-sm font-bold", paymentMethod === "manual_bank" ? "text-primary" : "text-on-surface")}>
+                  Transfer Bank
+                </p>
+                <p className="text-[10px] text-text-muted mt-0.5">BJB / BCA / BRI</p>
+              </div>
+              {paymentMethod === "manual_bank" && (
+                <div className="absolute top-2 right-2">
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                </div>
+              )}
+            </button>
+
+            {/* QRIS Manual */}
+            <button
+              type="button"
+              onClick={() => setPaymentMethod("qris_manual")}
+              className={cn(
+                "relative flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer text-center min-h-[44px]",
+                paymentMethod === "qris_manual"
+                  ? "border-primary bg-primary-soft shadow-xs"
+                  : "border-outline-variant/50 bg-surface hover:bg-surface-container"
+              )}
+            >
+              <QrCode className={cn("h-6 w-6", paymentMethod === "qris_manual" ? "text-primary" : "text-text-muted")} />
+              <div>
+                <p className={cn("text-sm font-bold", paymentMethod === "qris_manual" ? "text-primary" : "text-on-surface")}>
+                  QRIS Manual
+                </p>
+                <p className="text-[10px] text-text-muted mt-0.5">Scan QR statis</p>
+              </div>
+              {paymentMethod === "qris_manual" && (
+                <div className="absolute top-2 right-2">
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                </div>
+              )}
+            </button>
+          </div>
+
+          {/* Manual payment info hint */}
+          {paymentMethod !== "midtrans" && (
+            <div className="mt-4 rounded-xl bg-primary-soft/50 border border-primary/20 p-3.5 text-xs text-text-secondary leading-relaxed">
+              <p>
+                Pembayaran manual memerlukan <strong className="text-primary">konfirmasi via WhatsApp</strong> kepada
+                panitia setelah transfer. Donasi akan diverifikasi secara manual oleh admin.
+              </p>
+            </div>
+          )}
+        </section>
+
         {/* 5. Payment Summary & Submit Action */}
         <section className="bg-surface-container-low rounded-xl p-5 border border-outline-variant/30 space-y-4">
           <div className="flex justify-between items-center">
@@ -301,7 +426,7 @@ export function DonationFormClient({
           <button
             type="submit"
             disabled={isSubmitting || amount < 10000}
-            className="w-full h-12 bg-cta hover:bg-cta-strong text-white rounded-xl text-sm font-bold shadow-md hover:shadow-lg active:scale-98 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+            className="w-full h-12 bg-cta hover:bg-cta-strong text-text-primary rounded-xl text-sm font-bold shadow-md hover:shadow-lg active:scale-98 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
           >
             {isSubmitting ? (
               <>
@@ -339,7 +464,7 @@ export function DonationFormClient({
             type="button"
             onClick={handleSubmit}
             disabled={isSubmitting || amount < 10000}
-            className="bg-cta hover:bg-cta-strong text-white text-sm font-bold px-6 py-3 rounded-xl shadow-md flex items-center justify-center gap-2 flex-1 max-w-[200px] min-h-[44px] disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 transition-all"
+            className="bg-cta hover:bg-cta-strong text-text-primary text-sm font-bold px-6 py-3 rounded-xl shadow-md flex items-center justify-center gap-2 flex-1 max-w-[200px] min-h-[44px] disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 transition-all"
           >
             {isSubmitting ? (
               <>

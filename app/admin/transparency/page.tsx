@@ -76,7 +76,8 @@ export default async function AdminTransparencyPage() {
         <h3 className="text-xl font-bold text-text-primary">
           Catatan Pengeluaran Aktual (Manual Admin)
         </h3>
-        <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
+        {/* Desktop Table View */}
+        <div className="hidden sm:block overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
           <table className="w-full text-left text-sm">
             <thead className="bg-primary-soft/50 text-xs font-semibold uppercase text-text-secondary">
               <tr>
@@ -114,6 +115,37 @@ export default async function AdminTransparencyPage() {
               )}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile Card View */}
+        <div className="sm:hidden space-y-3">
+          {expenseList.length === 0 ? (
+            <div className="rounded-2xl border border-border bg-surface p-8 text-center text-sm text-text-muted">
+              Belum ada pengeluaran proyek yang dicatat.
+            </div>
+          ) : (
+            expenseList.map((item) => (
+              <div key={item.id} className="rounded-2xl border border-border bg-surface p-4 shadow-sm">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-bold text-text-primary line-clamp-1">{item.description}</p>
+                    <p className="text-xs text-text-muted mt-0.5">{item.campaigns?.title}</p>
+                  </div>
+                  <p className="text-sm font-bold text-danger tabular-nums shrink-0">
+                    -{formatRupiah(item.amount)}
+                  </p>
+                </div>
+                <div className="mt-2 flex items-center justify-between">
+                  <p className="text-xs text-text-secondary">
+                    {new Date(item.transaction_date).toLocaleDateString("id-ID")}
+                  </p>
+                  {item.reference && (
+                    <p className="font-mono text-xs text-text-muted">{item.reference}</p>
+                  )}
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
 

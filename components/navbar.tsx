@@ -76,12 +76,12 @@ export function Navbar() {
           <nav className="flex h-[72px] items-center justify-between">
             {/* Brand Logo & Name */}
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm shadow-sm border border-primary/20">
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm shadow-sm border border-primary/20 overflow-hidden">
                 <Image
                   src="/logo-ppm-nurisba.png"
                   alt="PPM Nurisba"
-                  width={122}
-                  height={122}
+                  width={56}
+                  height={56}
                   className="object-contain"
                 />
               </div>
@@ -132,7 +132,7 @@ export function Navbar() {
               {/* Desktop CTA Button */}
               <Link
                 href="/donasi"
-                className="hidden sm:inline-flex items-center gap-2 bg-cta text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-md transition-all duration-200 hover:bg-cta-strong hover:-translate-y-0.5 active:scale-95"
+                className="hidden sm:inline-flex items-center gap-2 bg-cta text-text-primary px-6 py-2.5 rounded-xl text-sm font-semibold shadow-md transition-all duration-200 hover:bg-cta-strong hover:-translate-y-0.5 active:scale-95"
               >
                 <Heart className="h-4 w-4" />
                 Donasi Sekarang
@@ -184,12 +184,12 @@ export function Navbar() {
         {/* Drawer header */}
         <div className="flex items-center justify-between p-4 border-b border-outline-variant/30">
           <div className="flex items-center gap-2">
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs overflow-hidden">
               <Image
                 src="/logo-ppm-nurisba.png"
                 alt="PPM Nurisba"
-                width={16}
-                height={16}
+                width={48}
+                height={48}
                 className="object-contain"
               />
             </div>
@@ -235,7 +235,7 @@ export function Navbar() {
           <Link
             href="/donasi"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center justify-center gap-2 w-full bg-cta text-white py-3.5 rounded-xl text-sm font-semibold shadow-md transition-all duration-200 hover:bg-cta-strong hover:-translate-y-0.5 active:scale-95"
+            className="flex items-center justify-center gap-2 w-full bg-cta text-text-primary py-3.5 rounded-xl text-sm font-semibold shadow-md transition-all duration-200 hover:bg-cta-strong hover:-translate-y-0.5 active:scale-95"
           >
             <Heart className="h-4 w-4" />
             Donasi Sekarang

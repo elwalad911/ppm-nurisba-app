@@ -47,7 +47,8 @@ export default async function AdminEventsPage() {
         </Button>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
+      {/* Desktop Table View */}
+      <div className="hidden sm:block overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
         <table className="w-full text-left text-sm">
           <thead className="bg-primary-soft/50 text-xs font-semibold uppercase text-text-secondary">
             <tr>
@@ -105,6 +106,55 @@ export default async function AdminEventsPage() {
             )}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile Card View */}
+      <div className="sm:hidden space-y-3">
+        {eventList.length === 0 ? (
+          <div className="rounded-2xl border border-border bg-surface p-8 text-center text-sm text-text-muted">
+            Belum ada agenda yang dijadwalkan.
+          </div>
+        ) : (
+          eventList.map((item) => (
+            <div key={item.id} className="rounded-2xl border border-border bg-surface p-4 shadow-sm">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0 flex-1">
+                  <Link
+                    href={`/admin/events/${item.id}`}
+                    className="font-bold text-text-primary hover:text-primary transition-colors line-clamp-1"
+                  >
+                    {item.title}
+                  </Link>
+                  <p className="text-xs text-text-muted mt-0.5">
+                    {item.location || "Lokasi tidak diset"}
+                  </p>
+                </div>
+                <span
+                  className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                    item.status === "published"
+                      ? "bg-success-soft text-success"
+                      : item.status === "draft"
+                      ? "bg-warning-soft text-warning"
+                      : "bg-border text-text-secondary"
+                  }`}
+                >
+                  {item.status}
+                </span>
+              </div>
+              <div className="mt-3 flex items-center justify-between">
+                <p className="text-xs text-text-secondary">
+                  {new Date(item.start_at).toLocaleString("id-ID", {
+                    dateStyle: "medium",
+                    timeStyle: "short",
+                  })}
+                </p>
+                <Button asChild size="sm" variant="outline">
+                  <Link href={`/admin/events/${item.id}`}>Edit</Link>
+                </Button>
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
