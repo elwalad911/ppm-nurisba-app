@@ -8,7 +8,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node -e \"const fs=require('fs');const p=require('path');function c(s,d){fs.cpSync(s,d,{recursive:true})}c('public',p.join('.next','standalone','public'));c(p.join('.next','static'),p.join('.next','standalone','.next','static'))\"",
     "start": "next start",
+    "start:standalone": "node .next/standalone/server.js",
     "lint": "eslint"
   },
   "dependencies": {
