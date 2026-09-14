@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
-import { Heart, Lock, Mail, User, Loader2 } from "lucide-react";
+import { Heart, Lock, Mail, User, Loader2, CheckCircle2 } from "lucide-react";
 
 export function DonorRegisterClient() {
   const router = useRouter();
@@ -13,11 +13,13 @@ export function DonorRegisterClient() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    setSuccessMessage(null);
     setIsLoading(true);
 
     const supabase = createClient();
@@ -35,20 +37,18 @@ export function DonorRegisterClient() {
       return;
     }
 
-    // Ensure profile row with role='donor' (hardcoded) is created
-    const { error: profileError } = await supabase.from("profiles").insert({
-      user_id: authData.user.id,
-      name,
-      email,
-      role: "donor", // Hardcoded 'donor' — client cannot set 'admin'
-    });
+    // Profile is now automatically created by database trigger (handle_new_user)
+    // securely on auth.users insert, preventing RLS violation and privilege escalation.
 
-    if (profileError) {
-      console.error("Profile creation error:", profileError);
+    if (authData.session) {
+      router.push("/donor/dashboard");
+      router.refresh();
+    } else {
+      setSuccessMessage(
+        "Pendaftaran berhasil! Silakan periksa email Anda untuk verifikasi akun sebelum masuk."
+      );
+      setIsLoading(false);
     }
-
-    router.push("/donor/dashboard");
-    router.refresh();
   };
 
   return (
@@ -70,79 +70,96 @@ export function DonorRegisterClient() {
           </div>
         )}
 
-        <form onSubmit={handleRegister} className="space-y-4">
-          <div>
-            <label className="block text-sm font-semibold text-text-primary mb-1.5">
-              Nama Lengkap
-            </label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3.5 text-text-muted">
-                <User className="h-4 w-4" />
-              </span>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Nama Anda"
-                className="flex h-11 w-full rounded-xl border border-border bg-background pl-10 pr-4 text-sm text-text-primary placeholder:text-text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                required
-              />
+        {successMessage && (
+          <div className="mb-6 rounded-xl bg-success-soft p-4 text-sm text-success font-medium flex items-start gap-2">
+            <CheckCircle2 className="h-5 w-5 shrink-0 mt-0.5" />
+            <div>
+              <p>{successMessage}</p>
+              <Link
+                href="/donor/login"
+                className="mt-2 inline-block font-bold text-primary underline"
+              >
+                Masuk ke halaman login
+              </Link>
             </div>
           </div>
+        )}
 
-          <div>
-            <label className="block text-sm font-semibold text-text-primary mb-1.5">
-              Email
-            </label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3.5 text-text-muted">
-                <Mail className="h-4 w-4" />
-              </span>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="nama@email.com"
-                className="flex h-11 w-full rounded-xl border border-border bg-background pl-10 pr-4 text-sm text-text-primary placeholder:text-text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                required
-              />
+        {!successMessage && (
+          <form onSubmit={handleRegister} className="space-y-4">
+            <div>
+              <label className="block text-sm font-semibold text-text-primary mb-1.5">
+                Nama Lengkap
+              </label>
+              <div className="relative">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3.5 text-text-muted">
+                  <User className="h-4 w-4" />
+                </span>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Nama Anda"
+                  className="flex h-11 w-full rounded-xl border border-border bg-background pl-10 pr-4 text-sm text-text-primary placeholder:text-text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  required
+                />
+              </div>
             </div>
-          </div>
 
-          <div>
-            <label className="block text-sm font-semibold text-text-primary mb-1.5">
-              Password
-            </label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3.5 text-text-muted">
-                <Lock className="h-4 w-4" />
-              </span>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="flex h-11 w-full rounded-xl border border-border bg-background pl-10 pr-4 text-sm text-text-primary placeholder:text-text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                required
-              />
+            <div>
+              <label className="block text-sm font-semibold text-text-primary mb-1.5">
+                Email
+              </label>
+              <div className="relative">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3.5 text-text-muted">
+                  <Mail className="h-4 w-4" />
+                </span>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="nama@email.com"
+                  className="flex h-11 w-full rounded-xl border border-border bg-background pl-10 pr-4 text-sm text-text-primary placeholder:text-text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  required
+                />
+              </div>
             </div>
-          </div>
 
-          <Button
-            type="submit"
-            disabled={isLoading}
-            className="w-full bg-primary hover:bg-primary-strong text-white h-11 font-semibold mt-2"
-          >
-            {isLoading ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Memproses...
-              </>
-            ) : (
-              "Daftar Akun"
-            )}
-          </Button>
-        </form>
+            <div>
+              <label className="block text-sm font-semibold text-text-primary mb-1.5">
+                Password
+              </label>
+              <div className="relative">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3.5 text-text-muted">
+                  <Lock className="h-4 w-4" />
+                </span>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="flex h-11 w-full rounded-xl border border-border bg-background pl-10 pr-4 text-sm text-text-primary placeholder:text-text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  required
+                />
+              </div>
+            </div>
+
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-primary hover:bg-primary-strong text-white h-11 font-semibold mt-2"
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Memproses...
+                </>
+              ) : (
+                "Daftar Akun"
+              )}
+            </Button>
+          </form>
+        )}
 
         <p className="mt-6 text-center text-xs text-text-secondary">
           Sudah punya akun?{" "}

@@ -11,8 +11,8 @@ const quickLinks = [
 
 const helpLinks = [
   { href: "/kontak", label: "Hubungi Kami" },
-  { href: "#", label: "Kebijakan Privasi" },
-  { href: "#", label: "Syarat & Ketentuan" },
+  { href: "/kebijakan-privasi", label: "Kebijakan Privasi" },
+  { href: "/syarat-ketentuan", label: "Syarat & Ketentuan" },
   { href: "#", label: "FAQ" },
 ];
 

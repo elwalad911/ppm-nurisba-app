@@ -929,11 +929,15 @@ PPM Nurisba
 │   ├── Actual Expense
 │   └── Reports
 │
-└── Organization
-    ├── Yayasan
-    ├── Pengarah
-    ├── Panitia
-    └── Sections
+├── Organization
+│   ├── Yayasan
+│   ├── Pengarah
+│   ├── Panitia
+│   └── Sections
+│
+└── Legal
+    ├── Kebijakan Privasi
+    └── Syarat & Ketentuan
 ```
 
 ---
@@ -978,3 +982,149 @@ Ketika proposal baru diterbitkan:
 10. Update CMS/database jika diperlukan.
 
 Semua perubahan finansial harus melalui verifikasi pengelola sebelum dipublikasikan.
+
+---
+
+# 39. Kebijakan Privasi
+
+Pendahuluan
+
+Yayasan Nurul Ikhlas Soreang Bandung ("Yayasan", "kami") mengelola situs web PPM Nurisba
+(nurisba.id) sebagai platform informasi Pondok Pesantren Modern Nurul Ikhlas Soreang Bandung
+dan platform penggalangan dana donasi/wakaf. Kebijakan ini menjelaskan bagaimana kami
+mengumpulkan, menggunakan, dan melindungi data pribadi pengunjung dan donatur ("Anda").
+
+1. Data yang Kami Kumpulkan
+
+Nama, email, nomor telepon (opsional saat donasi), pesan/doa yang Anda tulis, dan riwayat
+donasi Anda. Jika Anda mendaftar akun donatur, kami menyimpan data akun sesuai yang Anda
+daftarkan. Untuk pembayaran, data transaksi diproses oleh Midtrans sebagai payment gateway;
+kami tidak menyimpan data kartu pembayaran Anda di server kami.
+
+2. Bagaimana Kami Menggunakan Data
+
+Memproses donasi Anda, memverifikasi transfer manual, mengirimkan konfirmasi/tanda terima
+donasi, menampilkan riwayat donasi di portal donatur (hanya dapat diakses oleh Anda sendiri),
+menghubungi Anda bila diperlukan terkait donasi, dan keperluan pelaporan transparansi program
+secara agregat.
+
+3. Donasi Anonim
+
+Jika Anda memilih opsi anonim saat berdonasi, nama Anda tidak akan ditampilkan secara publik
+di halaman campaign atau transparansi. Data tersebut tetap tercatat secara internal untuk
+keperluan audit dan pelaporan keuangan.
+
+4. Berbagi Data dengan Pihak Ketiga
+
+Kami membagikan data transaksi yang diperlukan kepada Midtrans untuk memproses pembayaran
+Anda. Kami tidak menjual, menyewakan, atau membagikan data pribadi Anda kepada pihak ketiga
+lain untuk tujuan pemasaran.
+
+5. Keamanan Data
+
+Data Anda disimpan menggunakan Supabase dengan Row Level Security aktif. Akses ke data
+transaksi keuangan dibatasi hanya untuk sistem yang terverifikasi (webhook payment gateway)
+dan admin yang berwenang.
+
+6. Hak Anda
+
+Anda dapat meminta akses, koreksi, atau penghapusan data pribadi Anda dengan menghubungi kami,
+kecuali untuk data yang wajib kami simpan demi kepatuhan hukum atau keperluan audit keuangan
+(misalnya bukti transaksi donasi).
+
+7. Cookies
+
+Situs ini dapat menggunakan cookies untuk fungsi dasar, misalnya menjaga sesi login pada
+portal donatur.
+
+8. Perubahan Kebijakan
+
+Kami dapat memperbarui kebijakan ini dari waktu ke waktu. Perubahan signifikan akan
+diinformasikan melalui halaman ini.
+
+9. Kontak
+
+Pertanyaan seputar kebijakan privasi dapat disampaikan melalui WhatsApp 082262893646 atau
+email nurulikhlassoreangbandung@gmail.com.
+
+---
+
+# 40. Syarat & Ketentuan
+
+Pendahuluan
+
+Dengan mengakses dan menggunakan situs PPM Nurisba (nurisba.id), Anda menyetujui syarat dan
+ketentuan berikut.
+
+1. Sifat Layanan
+
+Situs ini adalah platform informasi resmi Pondok Pesantren Modern Nurul Ikhlas Soreang Bandung
+(PPM Nurisba) di bawah Yayasan Nurul Ikhlas Soreang Bandung, termasuk fasilitas penggalangan
+dana donasi/wakaf untuk program pembangunan dan operasional pesantren. Situs ini bukan
+platform jual-beli barang atau jasa komersial.
+
+2. Donasi
+
+Donasi yang diberikan melalui situs bersifat sukarela dan digunakan sesuai program yang
+dipilih donatur. Nominal donasi ditentukan sepenuhnya oleh donatur. Donasi yang telah berhasil
+diproses (status "success") bersifat final dan tidak dapat dibatalkan atau dikembalikan,
+kecuali terjadi kesalahan teknis pada sistem pembayaran yang dapat dibuktikan.
+
+3. Metode Pembayaran
+
+Pembayaran donasi diproses melalui payment gateway pihak ketiga (Midtrans) yang mendukung
+QRIS, e-wallet, dan virtual account/transfer bank, atau melalui transfer manual ke rekening
+resmi yayasan yang tercantum di situs (lihat Section 19). Status donasi manual baru dinyatakan
+"success" setelah bukti transfer diverifikasi oleh panitia/admin, bukan berdasarkan klaim
+sepihak dari donatur (lihat Section 20).
+
+4. Keakuratan Informasi
+
+Kami berupaya menjaga keakuratan informasi program, target dana, dan progres pembangunan yang
+ditampilkan berdasarkan data resmi yayasan/panitia. Kami berhak melakukan koreksi data tanpa
+pemberitahuan sebelumnya bila ditemukan ketidaksesuaian.
+
+5. Akun Donatur
+
+Jika Anda mendaftar akun donor portal, Anda bertanggung jawab menjaga kerahasiaan kredensial
+akun dan seluruh aktivitas yang terjadi melalui akun tersebut.
+
+6. Hak Kekayaan Intelektual
+
+Seluruh konten situs (teks, logo, gambar) adalah milik Yayasan Nurul Ikhlas Soreang Bandung
+kecuali dinyatakan lain, dan tidak boleh digunakan atau disalin tanpa izin tertulis.
+
+7. Batasan Tanggung Jawab
+
+Yayasan tidak bertanggung jawab atas kerugian tidak langsung yang timbul dari penggunaan
+situs, termasuk gangguan teknis pada penyedia pembayaran pihak ketiga.
+
+8. Perubahan Ketentuan
+
+Kami berhak mengubah syarat dan ketentuan ini sewaktu-waktu. Versi terbaru akan selalu
+tersedia di halaman ini.
+
+9. Hukum yang Berlaku
+
+Syarat dan ketentuan ini tunduk pada hukum yang berlaku di Republik Indonesia.
+
+10. Kontak
+
+Pertanyaan terkait syarat dan ketentuan ini dapat disampaikan melalui WhatsApp 082262893646
+atau email nurulikhlassoreangbandung@gmail.com.
+
+Catatan implementasi: Tanggal "terakhir diperbarui" harus diisi manual saat halaman
+pertama kali dipublikasikan, jangan di-hardcode tanggal hari ini di kode.
+
+LARANGAN
+
+Jangan ubah/renumber section 1-38 yang sudah ada.
+Jangan ubah konten lain di luar 3 edit di atas.
+Jangan hardcode tanggal publish di dalam content-website.md ini, cukup catatan placeholder.
+
+DEFINITION OF DONE
+
+Section 32 Quick Links berisi 11 item (9 lama + 2 baru).
+Section 36 tree punya node "Legal" dengan 2 child.
+Section 39 dan 40 ada di akhir file dengan isi persis seperti di atas.
+File lain tidak berubah.
