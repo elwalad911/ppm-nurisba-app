@@ -56,13 +56,34 @@ export async function proxy(request: NextRequest) {
   try {
     const {
       data: { user: authUser },
+      error: authError,
     } = await withTimeout(
       supabase.auth.getUser(),
       SUPABASE_TIMEOUT_MS
     );
-    user = authUser;
-  } catch {
-    console.error("[proxy] supabase.auth.getUser() failed, allowing request through");
+
+    if (authError) {
+      if (
+        authError.message?.includes("Refresh Token") ||
+        authError.message?.includes("Invalid Refresh Token")
+      ) {
+        // Clear stale session cookies to break the refresh loop / race condition
+        await supabase.auth.signOut();
+      }
+    } else {
+      user = authUser;
+    }
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : String(err);
+    console.error("[proxy] supabase.auth.getUser() failed:", errorMessage);
+    if (
+      errorMessage.includes("Refresh Token") ||
+      errorMessage.includes("Invalid Refresh Token")
+    ) {
+      try {
+        await supabase.auth.signOut();
+      } catch {}
+    }
   }
 
   const url = request.nextUrl;
