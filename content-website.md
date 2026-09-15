@@ -781,6 +781,8 @@ Bagian dari Yayasan Nurul Ikhlas Soreang Bandung.
 - Transparansi
 - Pendaftaran
 - Kontak
+- Kebijakan Privasi
+- Syarat & Ketentuan
 
 ## Donation
 
