@@ -63,7 +63,7 @@ export async function createTransparencyReport(formData: FormData): Promise<void
     description: formData.get("description"),
     period_start: formData.get("period_start"),
     period_end: formData.get("period_end"),
-    document_url: formData.get("document_url") || null,
+    document_url: formData.get("document_url") || undefined,
     publish,
   };
 
