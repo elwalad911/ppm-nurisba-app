@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { createPendingDonation, createManualDonation } from "@/app/donasi/actions";
+import { createManualDonation } from "@/app/donasi/actions";
 import { formatRupiah } from "@/lib/utils";
 import {
   Loader2,
@@ -12,14 +12,13 @@ import {
   AlertCircle,
   Lock,
   Check,
-  CreditCard,
   Building2,
   QrCode,
   CheckCircle2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type PaymentMethodChoice = "midtrans" | "manual_bank" | "qris_manual";
+type PaymentMethodChoice = "manual_bank" | "qris_manual";
 
 const QUICK_AMOUNTS = [50000, 100000, 250000, 500000];
 
@@ -50,7 +49,7 @@ export function DonationFormClient({
   const [donorEmail, setDonorEmail] = useState<string>("");
   const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethodChoice>("midtrans");
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethodChoice>("manual_bank");
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
@@ -86,46 +85,27 @@ export function DonationFormClient({
     setIsSubmitting(true);
 
     try {
-      if (paymentMethod === "midtrans") {
-        const result = await createPendingDonation({
+      const result = await createManualDonation(
+        {
           campaign_id: campaignId,
           amount,
           donor_name: isAnonymous ? "Hamba Allah" : donorName || "Hamba Allah",
           donor_email: donorEmail,
           is_anonymous: isAnonymous,
           message,
-        });
+        },
+        paymentMethod
+      );
 
-        if (!result.success) {
-          setError(result.error || "Terjadi kesalahan saat memproses donasi.");
-          setIsSubmitting(false);
-          return;
-        }
-
-        router.push(`/donasi/result?donationId=${result.donationId}&orderId=${result.orderId}`);
-      } else {
-        const result = await createManualDonation(
-          {
-            campaign_id: campaignId,
-            amount,
-            donor_name: isAnonymous ? "Hamba Allah" : donorName || "Hamba Allah",
-            donor_email: donorEmail,
-            is_anonymous: isAnonymous,
-            message,
-          },
-          paymentMethod
-        );
-
-        if (!result.success) {
-          setError(result.error || "Terjadi kesalahan saat memproses donasi.");
-          setIsSubmitting(false);
-          return;
-        }
-
-        router.push(
-          `/donasi/manual-confirm?donationId=${result.donationId}&method=${paymentMethod}&amount=${amount}`
-        );
+      if (!result.success) {
+        setError(result.error || "Terjadi kesalahan saat memproses donasi.");
+        setIsSubmitting(false);
+        return;
       }
+
+      router.push(
+        `/donasi/manual-confirm?donationId=${result.donationId}&method=${paymentMethod}&amount=${amount}`
+      );
     } catch {
       setError("Gagal terhubung ke server. Silakan coba lagi.");
       setIsSubmitting(false);
@@ -324,32 +304,7 @@ export function DonationFormClient({
             4. Pilih Metode Pembayaran
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {/* Midtrans Online */}
-            <button
-              type="button"
-              onClick={() => setPaymentMethod("midtrans")}
-              className={cn(
-                "relative flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer text-center min-h-[44px]",
-                paymentMethod === "midtrans"
-                  ? "border-primary bg-primary-soft shadow-xs"
-                  : "border-outline-variant/50 bg-surface hover:bg-surface-container"
-              )}
-            >
-              <CreditCard className={cn("h-6 w-6", paymentMethod === "midtrans" ? "text-primary" : "text-text-muted")} />
-              <div>
-                <p className={cn("text-sm font-bold", paymentMethod === "midtrans" ? "text-primary" : "text-on-surface")}>
-                  Bayar Online
-                </p>
-                <p className="text-[10px] text-text-muted mt-0.5">Kartu / VA / E-Wallet</p>
-              </div>
-              {paymentMethod === "midtrans" && (
-                <div className="absolute top-2 right-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary" />
-                </div>
-              )}
-            </button>
-
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* Manual Bank Transfer */}
             <button
               type="button"
@@ -401,15 +356,12 @@ export function DonationFormClient({
             </button>
           </div>
 
-          {/* Manual payment info hint */}
-          {paymentMethod !== "midtrans" && (
-            <div className="mt-4 rounded-xl bg-primary-soft/50 border border-primary/20 p-3.5 text-xs text-text-secondary leading-relaxed">
-              <p>
-                Pembayaran manual memerlukan <strong className="text-primary">konfirmasi via WhatsApp</strong> kepada
-                panitia setelah transfer. Donasi akan diverifikasi secara manual oleh admin.
-              </p>
-            </div>
-          )}
+          <div className="mt-4 rounded-xl bg-primary-soft/50 border border-primary/20 p-3.5 text-xs text-text-secondary leading-relaxed">
+            <p>
+              Pembayaran manual memerlukan <strong className="text-primary">konfirmasi via WhatsApp</strong> kepada
+              panitia setelah transfer. Donasi akan diverifikasi secara manual oleh admin.
+            </p>
+          </div>
         </section>
 
         {/* 5. Payment Summary & Submit Action */}

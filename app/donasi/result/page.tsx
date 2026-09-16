@@ -167,8 +167,9 @@ export default async function DonationResultPage({ searchParams }: PageProps) {
                   Menunggu Pembayaran
                 </h1>
                 <p className="text-sm sm:text-base text-on-surface-variant mb-8 max-w-md mx-auto leading-relaxed">
-                  Donasi Anda telah kami catat. Metode pembayaran online sedang dalam proses penyiapan.
-                  Silakan kembali beberapa saat lagi atau hubungi kami untuk konfirmasi manual.
+                  Donasi Anda telah kami catat. Silakan lakukan pembayaran
+                  melalui transfer bank atau QRIS, lalu konfirmasi ke panitia
+                  via WhatsApp.
                 </p>
 
                 {/* Details Card */}

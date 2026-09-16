@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { createServiceRoleClient } from "@/lib/supabase/service-role";
 
 const MANUAL_METHODS = ["manual_bank", "qris_manual"];
 
@@ -128,8 +129,9 @@ export async function verifyManualDonation(donationId: string) {
     return { success: false, error: "Gagal mencatat transaksi ke buku kas." };
   }
 
-  // 3. Atomic increment campaign amount — REUSES the same RPC as webhook
-  const { error: rpcError } = await supabase.rpc("increment_campaign_amount", {
+  // 3. Atomic increment campaign amount via trusted service-role client
+  const serviceSupabase = createServiceRoleClient();
+  const { error: rpcError } = await serviceSupabase.rpc("increment_campaign_amount", {
     p_campaign_id: donation.campaign_id,
     p_amount: donation.amount,
   });
