@@ -11,6 +11,7 @@ import {
   Newspaper,
   CalendarDays,
   Image as ImageIcon,
+  BarChart3,
   LogOut,
   Menu,
   X,
@@ -24,6 +25,7 @@ const adminNavItems = [
   { href: "/admin/posts", label: "Posts (Berita)", icon: Newspaper },
   { href: "/admin/events", label: "Events (Agenda)", icon: CalendarDays },
   { href: "/admin/gallery", label: "Gallery", icon: ImageIcon },
+  { href: "/admin/transparency", label: "Transparansi", icon: BarChart3 },
 ];
 
 export function Sidebar() {
