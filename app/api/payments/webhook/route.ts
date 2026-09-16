@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { verifySignature, mapMidtransStatus } from "@/lib/midtrans/utils";
+import { isDuplicateIncomeError } from "@/lib/financial/idempotency";
 
 // Supabase client with service role key for trusted server-side webhook processing
 function getServiceRoleClient() {
@@ -147,7 +148,19 @@ export async function POST(req: NextRequest) {
               description: `Donasi sukses via Midtrans (Order ID: ${order_id})`,
             });
 
-          if (!ledgerError) {
+          if (ledgerError) {
+            // Concurrent duplicate: another notification already recorded
+            // the income (partial unique index violation). The winner also
+            // performed the campaign increment, so it must NOT run again.
+            // Any other ledger error is logged as a genuine failure.
+            if (isDuplicateIncomeError(ledgerError)) {
+              console.warn(
+                `[webhook] Duplicate income suppressed by unique index for donation ${donationId} (order ${order_id}). Already processed — skipping campaign increment.`
+              );
+            } else {
+              console.error("[webhook] Failed to insert ledger entry:", ledgerError);
+            }
+          } else {
             // Atomic increment via PostgreSQL RPC — no race condition
             await supabase.rpc("increment_campaign_amount", {
               p_campaign_id: campaignId,

@@ -67,6 +67,30 @@ export function ImageUpload({
       try {
         const supabase = createClient();
 
+        // Ensure an authenticated admin session is present BEFORE attempting
+        // the upload. The browser client sends the user's JWT with the
+        // Storage request, allowing the Storage RLS policy
+        // (auth.uid() -> profiles.role = 'admin') to evaluate.
+        // RLS remains the enforcement boundary — this check only produces
+        // a clear error instead of a raw policy failure.
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+
+        if (!user) {
+          throw new Error("Sesi tidak valid. Silakan login ulang sebagai admin.");
+        }
+
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("role")
+          .eq("user_id", user.id)
+          .single();
+
+        if (!profile || profile.role !== "admin") {
+          throw new Error("Hanya admin yang dapat mengupload gambar.");
+        }
+
         // Generate unique filename
         const ext = file.name.split(".").pop() || "jpg";
         const timestamp = Date.now();
@@ -81,6 +105,15 @@ export function ImageUpload({
           });
 
         if (uploadError) {
+          if (
+            uploadError.message.includes("row-level security") ||
+            uploadError.message.includes("Unauthorized") ||
+            uploadError.message.includes("permission")
+          ) {
+            throw new Error(
+              "Anda tidak memiliki izin untuk mengupload gambar. Pastikan akun Anda adalah admin."
+            );
+          }
           throw new Error(uploadError.message);
         }
 

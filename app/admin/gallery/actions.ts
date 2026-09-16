@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { requireAdmin } from "@/lib/supabase/require-admin";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -28,6 +29,11 @@ async function deleteStorageFile(supabase: Awaited<ReturnType<typeof createClien
 
 export async function createGalleryItem(formData: FormData): Promise<void> {
   const supabase = await createClient();
+
+  // Explicit admin verification (defense in depth — middleware + RLS
+  // remain the enforcement boundaries, and the storage request below
+  // carries the admin JWT so the Storage policy can evaluate auth.uid()).
+  await requireAdmin(supabase);
 
   const rawData = {
     title: formData.get("title"),
@@ -64,6 +70,11 @@ export async function createGalleryItem(formData: FormData): Promise<void> {
 
 export async function deleteGalleryItem(id: string): Promise<void> {
   const supabase = await createClient();
+
+  // Explicit admin verification before touching the DB row and the
+  // Storage object. The storage `.remove()` call below uses this same
+  // user-scoped client, so the Storage DELETE policy sees auth.uid().
+  await requireAdmin(supabase);
 
   const { data: item, error: fetchError } = await supabase
     .from("gallery")

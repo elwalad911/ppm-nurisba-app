@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/page-header";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { createClient } from "@/lib/supabase/server";
+import { isReportDocumentPath } from "@/lib/transparency/documents";
 import { formatRupiah } from "@/lib/utils";
 import { FileText, ArrowUpRight, ArrowDownRight, Wallet } from "lucide-react";
 
@@ -248,7 +249,11 @@ export default async function TransparencyPage() {
                     {r.document_url && (
                       <div className="mt-6 pt-4 border-t border-border-light">
                         <a
-                          href={r.document_url}
+                          href={
+                            isReportDocumentPath(r.document_url, r.id)
+                              ? `/api/transparency/${r.id}/document`
+                              : r.document_url
+                          }
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"

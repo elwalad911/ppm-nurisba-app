@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { createServiceRoleClient } from "@/lib/supabase/service-role";
+import { isDuplicateIncomeError } from "@/lib/financial/idempotency";
 
 const MANUAL_METHODS = ["manual_bank", "qris_manual"];
 
@@ -120,6 +121,20 @@ export async function verifyManualDonation(donationId: string) {
     });
 
   if (ledgerError) {
+    // Concurrent duplicate: another request already recorded the income
+    // for this donation (unique index violation). The winner also performed
+    // the campaign increment, so: do NOT roll back the donation, do NOT
+    // increment again — converge to the verified end state idempotently.
+    if (isDuplicateIncomeError(ledgerError)) {
+      console.warn(
+        `[verifyManualDonation] Duplicate income suppressed by unique index for donation ${donationId}. Already processed — skipping campaign increment.`
+      );
+      await supabase
+        .from("donations")
+        .update({ status: "success", updated_at: now })
+        .eq("id", donationId);
+      return { success: true };
+    }
     console.error("Failed to insert ledger entry:", ledgerError);
     // Rollback donation status
     await supabase
