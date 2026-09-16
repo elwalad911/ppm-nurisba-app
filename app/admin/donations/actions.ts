@@ -157,8 +157,9 @@ export async function verifyManualDonation(donationId: string) {
     // Campaign amount inconsistency is a lesser failure — log for manual fix.
   }
 
-  // 4. Insert audit trail entry
-  await supabase.from("audit_logs").insert({
+  // 4. Insert audit trail entry (observability only — a failed audit
+  // write must never roll back the already-committed financial result).
+  const { error: auditError } = await supabase.from("audit_logs").insert({
     user_id: user.id,
     action: "verify_manual_donation",
     entity_type: "donation",
@@ -171,6 +172,13 @@ export async function verifyManualDonation(donationId: string) {
       verified_at: now,
     },
   });
+
+  if (auditError) {
+    console.error(
+      `[verifyManualDonation] Audit trail write failed for donation ${donationId}:`,
+      auditError.message
+    );
+  }
 
   return { success: true };
 }
