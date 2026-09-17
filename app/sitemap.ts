@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://nurulikhlas.org";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://ppm.nurisba.id";
   const supabase = await createClient();
 
   // Static routes
@@ -25,7 +25,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Dynamic campaigns
-  const { data: campaigns } = await supabase.from("campaigns").select("slug, updated_at").eq("status", "active");
+  const { data: campaigns } = await supabase
+    .from("campaigns")
+    .select("slug, updated_at")
+    .eq("status", "active");
   const campaignRoutes = (campaigns || []).map((c) => ({
     url: `${baseUrl}/donasi/${c.slug}`,
     lastModified: c.updated_at ? new Date(c.updated_at) : new Date(),
@@ -34,7 +37,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Dynamic posts
-  const { data: posts } = await supabase.from("posts").select("slug, updated_at").eq("status", "published");
+  const { data: posts } = await supabase
+    .from("posts")
+    .select("slug, updated_at")
+    .eq("status", "published");
   const postRoutes = (posts || []).map((p) => ({
     url: `${baseUrl}/berita/${p.slug}`,
     lastModified: p.updated_at ? new Date(p.updated_at) : new Date(),
