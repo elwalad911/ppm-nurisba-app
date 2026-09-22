@@ -37,8 +37,8 @@ const BANK_ACCOUNTS = [
   },
   {
     bank: "BRI",
-    number: "054401040681501",
-    name: "Tita Rosita",
+    number: "54401014668535",
+    name: "Yayasan Nurul Ikhlas Soreang Bandung",
   },
 ];
 
