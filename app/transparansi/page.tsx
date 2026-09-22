@@ -24,9 +24,11 @@ export default async function TransparencyPage() {
     { data: transactions },
     { data: reports },
   ] = await Promise.all([
+    // Public-safe projection object. The relational join is gone
+    // by design: the projection exposes campaign_title, never campaign_id.
     supabase
-      .from("financial_transactions")
-      .select("*, campaigns(title)")
+      .from("public_financial_transactions")
+      .select("transaction_date, description, amount, type, reference, campaign_title")
       .order("transaction_date", { ascending: false }),
     supabase
       .from("transparency_reports")
@@ -35,7 +37,17 @@ export default async function TransparencyPage() {
       .order("period_start", { ascending: false }),
   ]);
 
-  const txList = transactions || [];
+  // Exact contract of the public-safe ledger projection object.
+  interface PublicLedgerRow {
+    transaction_date: string;
+    description: string | null;
+    amount: number;
+    type: string;
+    reference: string | null;
+    campaign_title: string | null;
+  }
+
+  const txList = (transactions || []) as unknown as PublicLedgerRow[];
   const reportList = reports || [];
 
   const totalIncome = txList
@@ -157,14 +169,14 @@ export default async function TransparencyPage() {
                         </td>
                       </tr>
                     ) : (
-                      incomeTx.map((t) => (
-                        <tr key={t.id}>
+                      incomeTx.map((t, i) => (
+                        <tr key={`income-${i}`}>
                           <td className="px-4 py-3 text-xs text-text-secondary whitespace-nowrap">
                             {new Date(t.transaction_date).toLocaleDateString("id-ID")}
                           </td>
                           <td className="px-4 py-3">
                             <p className="font-medium">{t.description}</p>
-                            <p className="text-xs text-text-muted">{t.campaigns?.title}</p>
+                            <p className="text-xs text-text-muted">{t.campaign_title}</p>
                           </td>
                           <td className="px-4 py-3 text-right font-bold text-success tabular-nums whitespace-nowrap">
                             +{formatRupiah(t.amount)}
@@ -200,8 +212,8 @@ export default async function TransparencyPage() {
                         </td>
                       </tr>
                     ) : (
-                      expenseTx.map((t) => (
-                        <tr key={t.id}>
+                      expenseTx.map((t, i) => (
+                        <tr key={`expense-${i}`}>
                           <td className="px-4 py-3 text-xs text-text-secondary whitespace-nowrap">
                             {new Date(t.transaction_date).toLocaleDateString("id-ID")}
                           </td>

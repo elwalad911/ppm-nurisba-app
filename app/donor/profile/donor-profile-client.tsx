@@ -35,9 +35,11 @@ export function DonorProfileClient({ profile }: DonorProfileClientProps) {
       return;
     }
 
+    // Only the user-editable field is sent. updated_at is
+    // server-controlled (set by the database on update).
     const { error } = await supabase
       .from("profiles")
-      .update({ name, updated_at: new Date().toISOString() })
+      .update({ name })
       .eq("user_id", user.id);
 
     if (error) {
