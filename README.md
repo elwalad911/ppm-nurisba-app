@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PPM Nurisba App — Portal Donasi & Website Resmi PPM Nurul Ikhlas
 
-## Getting Started
+Website resmi dan portal donasi **Pondok Pesantren Modern Nurul Ikhlas (PPM Nurisba)**, Soreang Bandung — produksi: `https://ppm.nurisba.id`.
 
-First, run the development server:
+Melayani: profil pesantren, program/kegiatan, berita, agenda, galeri, **donasi online** (transfer bank manual / QRIS + verifikasi admin, dengan infrastruktur Midtrans Snap & webhook yang disiapkan untuk integrasi berikutnya), portal donatur, dashboard admin, dan halaman transparansi dana pembangunan.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tech Stack
+
+| Lapisan | Teknologi |
+|---|---|
+| Framework | Next.js 16.3.5 (App Router), React 19, TypeScript `strict: true` |
+| Styling/UI | Tailwind CSS, shadcn/ui, Lucide React |
+| Database & Auth | Supabase PostgreSQL + Auth + Storage (RLS aktif di semua tabel publik) |
+| Validasi | Zod (form client + handler server-side) |
+| Payment | Midtrans Snap SDK & server-side webhook handler (saat ini **disabled** di UI publik; alur aktif = transfer manual/QRIS) |
+| Runtime | Node.js `>= 24`, output `standalone` |
+
+## Prasyarat
+
+- Node.js `>= 24.15.0` (wajib — dependency `isomorphic-dompurify`/`jsdom` menolak versi di bawahnya)
+- npm (lockfile `package-lock.json` — gunakan `npm ci` untuk install reproduksibel)
+- Project Supabase (URL + anon key + service-role key)
+
+## Environment Variables
+
+Salin dan isi sesuai environment (jangan commit file `.env*`):
+
+```env
+NODE_ENV=development
+PORT=3000
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+MIDTRANS_SERVER_KEY=
+MIDTRANS_IS_PRODUCTION=false
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Variabel `NEXT_PUBLIC_*` terbaca browser — hanya untuk nilai publik.
+- `SUPABASE_SERVICE_ROLE_KEY` dan `MIDTRANS_SERVER_KEY` **server-only**, tidak boleh bocor ke client/Git.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Kegunaan |
+|---|---|
+| `npm run dev` | Development server (Turbopack) |
+| `npm run build` | Production build — **wajib via webpack** (`next build --webpack`) karena Turbopack butuh native binding GLIBC ≥ 2.29 yang tidak ada di server Hostinger |
+| `npm run start` | Jalankan hasil build standar |
+| `npm run start:standalone` | Jalankan server standalone (`.next/standalone/server.js`) — dipakai di Hostinger |
+| `npm run lint` | ESLint |
 
-## Learn More
+`postbuild` otomatis menyalin `public/` dan `.next/static/` ke dalam folder standalone.
 
-To learn more about Next.js, take a look at the following resources:
+## Struktur Project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/                    # Routes (App Router): public, donasi, transparansi,
+                        # donor/*, admin/*, api/* (webhook, health, dokumen)
+components/             # UI (admin, donor, shared) + shadcn/ui
+lib/                    # Supabase clients, Midtrans, validasi Zod, utilitas,
+                        # financial/idempotency, transparency helpers
+proxy.ts                # Proteksi route /admin/* dan /donor/*
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Dokumen acuan (baca sebelum coding, sesuai `AGENTS.md`):
 
-## Deploy on Vercel
+- `PRD.md`, `project-plan.md` — scope & roadmap
+- `content-website.md` — single source of truth teks publik, legalitas, rekening, RAB
+- `DESIGN.md` + `stitch-design/` — acuan visual
+- `database.md` + `lib/supabase/migrations/` — skema & RLS
+- `DEPLOY_HOSTINGER.md` — panduan deploy Hostinger
+- `HOSTINGER-MCP.md` — governance pemanggilan Hostinger API
+- `checklist-keamanan-produksi-ppm-nurisba-id.md` — checklist keamanan pre-deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Alur Donasi (ringkas)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Donatur isi form (`/donasi/[slug]/donate`) → validasi Zod → donasi `pending`.
+2. Transfer bank / scan QRIS → konfirmasi via WhatsApp.
+3. Admin verifikasi di dashboard → status `success`, ledger `financial_transactions` tercatat, agregat campaign ter-update atomik.
+4. Frontend **tidak pernah** berhak mengubah status menjadi `success` — hanya server-side terverifikasi (admin action / webhook Midtrans terverifikasi SHA-512 + idempotent).
+
+## Deploy
+
+Lihat `DEPLOY_HOSTINGER.md` (Node.js Web App, build `npm run build`, start standalone, env production, domain `ppm.nurisba.id`).
+
+## Kontak
+
+Panitia PPM Nurisba via WhatsApp **082262893646** (Yayasan Nurul Ikhlas Soreang Bandung).

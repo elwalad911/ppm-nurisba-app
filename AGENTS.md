@@ -25,6 +25,7 @@ OpenCode WAJIB membaca dan mematuhi dokumen acuan sesuai urutan prioritas beriku
 2. **`content-website.md`:** Sumber tunggal kebenaran (single source of truth) untuk seluruh teks publik, data legalitas yayasan (AHU-0008977.AH.01.04.Tahun 2019), rekening bank resmi, dan rincian RAB (Target: Rp1.203.800.000). Dilarang mengarang atau memalsukan data keuangan/institusi.
 3. **`DESIGN.md`:** Panduan visual, tipografi, dan layout. Wajib menggunakan token warna semantik (Primary Teal `#0d9488`, CTA Orange `#fb923c`, Success Emerald `#059669`, Background `#fbfcfc`), ukuran touch target minimal 44x44px, dan pendekatan mobile-first.
 4. **`database.md`:** Standar skema database Supabase PostgreSQL, relasi entitas, Row Level Security (RLS), dan penanganan webhook transaksi finansial.
+5. **`HOSTINGER-MCP.md`:** Governance & operational rules yang WAJIB dipatuhi setiap kali tool `hostinger_*` dipanggil — approval gate (billing/domain/DNS/VPS/database destruktif/website create/env-replace wajib konfirmasi Walid), operasi read-only yang boleh jalan, aturan kredensial & koneksi DB, dan pola async/polling.
 
 ---
 
