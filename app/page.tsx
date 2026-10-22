@@ -466,10 +466,10 @@ export default async function HomePage() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { value: "450+", label: "Santri Aktif", color: "text-primary" },
-              { value: "12K+", label: "Donatur Tergabung", color: "text-cta" },
+              { value: "70+", label: "Santri Aktif", color: "text-primary" },
+              { value: "5+", label: "Donatur Tergabung", color: "text-cta" },
               {
-                value: "50+",
+                value: "10+",
                 label: "Pengajar & Musyrif",
                 color: "text-primary",
               },
