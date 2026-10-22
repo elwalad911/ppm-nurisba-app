@@ -448,50 +448,7 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      {/* ===== STATS: DAMPAK KEBAIKAN ===== */}
-      <section className="py-12 md:py-20 px-4 bg-background">
-        <Container>
-          <div className="text-center max-w-xl mx-auto mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-cta">
-              Akuntabilitas
-            </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mt-1">
-              Dampak Kebaikan
-            </h2>
-            <p className="text-sm text-on-surface-variant mt-2">
-              Setiap donasi dan wakaf dikelola untuk memberikan dampak nyata
-              berkelanjutan.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { value: "70+", label: "Santri Aktif", color: "text-primary" },
-              { value: "5+", label: "Donatur Tergabung", color: "text-cta" },
-              {
-                value: "10+",
-                label: "Pengajar & Musyrif",
-                color: "text-primary",
-              },
-              { value: "100%", label: "Transparansi Dana", color: "text-cta" },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="bg-surface-dim rounded-2xl p-6 text-center border border-border flex flex-col items-center justify-center h-36 shadow-xs hover:shadow-sm transition-shadow"
-              >
-                <span
-                  className={`text-[32px] sm:text-[38px] font-extrabold leading-none ${stat.color}`}
-                >
-                  {stat.value}
-                </span>
-                <span className="text-xs sm:text-sm font-semibold text-on-surface-variant mt-2">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
 
       {/* ===== LATEST NEWS (KABAR TERBARU) ===== */}
       <section className="py-12 md:py-20 bg-surface-dim border-t border-outline-variant/30">
