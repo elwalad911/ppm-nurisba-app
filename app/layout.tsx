@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { site } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,12 +21,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
     default: "PPM Nurisba — Pondok Pesantren Modern Nurul Ikhlas Soreang Bandung",
     template: "%s | PPM Nurisba",
   },
-  description:
-    "Pondok Pesantren Modern Nurul Ikhlas Soreang Bandung — memadukan pendidikan salafiyah dan modern untuk generasi berilmu dan berakhlak. Program wakaf pembangunan masjid dan ruang kelas/asrama.",
+  description: site.description,
   keywords: [
     "pondok pesantren",
     "nurul ikhlas",
@@ -38,10 +39,20 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "PPM Nurisba — Pondok Pesantren Modern Nurul Ikhlas Soreang Bandung",
-    description:
-      "Pondok Pesantren Modern Nurul Ikhlas Soreang Bandung — memadukan pendidikan salafiyah dan modern untuk generasi berilmu dan berakhlak.",
+    description: site.description,
     type: "website",
-    locale: "id_ID",
+    locale: site.locale,
+    siteName: site.siteName,
+    url: site.url,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PPM Nurisba — Pondok Pesantren Modern Nurul Ikhlas Soreang Bandung",
+    description: site.description,
+    site: site.siteName,
+  },
+  alternates: {
+    canonical: site.url,
   },
 };
 

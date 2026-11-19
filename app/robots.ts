@@ -1,14 +1,13 @@
 import { MetadataRoute } from "next";
+import { site } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://ppm.nurisba.id";
-
   return {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/admin/", "/donor/"],
+      disallow: ["/admin", "/donor", "/api"],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${site.url}/sitemap.xml`,
   };
 }
