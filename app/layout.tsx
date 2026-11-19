@@ -44,6 +44,14 @@ export const metadata: Metadata = {
     locale: site.locale,
     siteName: site.siteName,
     url: site.url,
+    images: [
+      {
+        url: "/og-ppm-nurisba.png",
+        width: 1200,
+        height: 630,
+        alt: "PPM Nurisba — Pondok Pesantren Modern Nurul Ikhlas Soreang Bandung",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
