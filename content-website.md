@@ -27,8 +27,10 @@ RT. 01/RW. 24, Soreang
 Bandung 40911, Jawa Barat
 
 ## **Website:**
+https://ppm.nurisba.id/
 
 ## **Email:**
+nurulikhlassoreangbandung@gmail.com 
 
 **Kontak / WhatsApp:**  
 082262893646
@@ -796,9 +798,9 @@ Pembangunan Masjid dan Ruang Kelas/Asrama PPM Nurisba.
 
 **WhatsApp:** 082262893646
 
-**Email:** nurulikh lassoreangbandung@gmail.com
+**Email:** nurulikhlassoreangbandung@gmail.com
 
-**Website:** https://nurulikhlas.org
+**Website:** https://ppm.nurisba.id/
 
 ## Address
 
